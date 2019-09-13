@@ -1,32 +1,20 @@
 ﻿<Properties StartupConfiguration="{A8965439-ADC0-4E87-B91B-C5F5749B8DA6}|">
   <MonoDevelop.Ide.ItemProperties.Project1 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Project1/index.html">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Project1/classes/Quiz.cs">
     <Files>
-      <File FileName="../../CIS3344/Project 5/Project 5/Classes/Connection.cs" Line="35" Column="30" />
-      <File FileName="../../CIS3344/Project 5/Project 5/Classes/pet.cs" Line="27" Column="42" />
-      <File FileName="../../CIS3344/Project 5/Project 5/Classes/Adoption.cs" Line="45" Column="1" />
-      <File FileName="../../CIS3344/Project 5/Project 5/Controllers/PetsController.cs" Line="75" Column="9" />
-      <File FileName="../../CIS3344/Project 5/Project 5/Classes/User.cs" Line="34" Column="10" />
-      <File FileName="../../CIS3344/Project 5/Project 5/Program.cs" Line="13" Column="2" />
-      <File FileName="Project1/Quiz_results.aspx" Line="14" Column="12" NotebookId="1" />
-      <File FileName="Project1/Quiz_results.aspx.cs" Line="18" Column="6" NotebookId="1" />
-      <File FileName="Project1/classes/Quiz.cs" Line="9" Column="1" NotebookId="1" />
-      <File FileName="Project1/index.html" Line="26" Column="24" NotebookId="1" />
+      <File FileName="Project1/Quiz_results.aspx" Line="16" Column="8" />
+      <File FileName="Project1/index.html" />
+      <File FileName="Project1/classes/Quiz.cs" Line="20" Column="52" />
+      <File FileName="Project1/Quiz_results.aspx.cs" Line="15" Column="50" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Project 5" expanded="True">
-            <Node name="Project 5" expanded="True">
-              <Node name="Classes" expanded="True" />
-              <Node name="Controllers" expanded="True" />
-              <Node name="Properties" expanded="True" />
-            </Node>
-          </Node>
           <Node name="Project1" expanded="True">
             <Node name="Project1" expanded="True">
-              <Node name="classes" expanded="True" />
-              <Node name="index.html" selected="True" />
+              <Node name="classes" expanded="True">
+                <Node name="Quiz.cs" selected="True" />
+              </Node>
               <Node name="Quiz_results.aspx" expanded="True" />
             </Node>
           </Node>
@@ -37,9 +25,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/rewt/CIS3344/Project 5/Project 5/Classes/pet.cs" line="83" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
