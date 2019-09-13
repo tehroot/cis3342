@@ -2,6 +2,10 @@
     <link rel='stylesheet' href='site-sheet.css' />
 </head>
 <body>
+    <div>
+        <h1>Programming Concepts Quiz: </h1>
+    </div>
+
     <div class="container">
         <form action="Quiz_results.aspx" method="post">
             <div class="row">
@@ -9,7 +13,7 @@
                     <label for="question1">Enter Name Here: </label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="question1" name="firstName" placeholder="Name" required>
+                    <input type="text" id="question0" name="firstName" placeholder="Name" required>
                 </div>
             </div>
             <div class="row">
@@ -17,126 +21,142 @@
                     <label for="question2">Enter TUID number: </label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="question2" name="lastName" placeholder="" required>
+                    <input type="text" id="question0" name="lastName" placeholder="" required>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="question3"></label>
+                    <label for="question3">A _______ is a template or blueprint from which objects can be instantiated from.</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="question3" name="3" placeholder="" required>
+                    <input type="text" id="question1" name="1" placeholder="" required>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="question4">Main DSMAC correlation method?</label>
+                    <label for="question2">A ________ is a subroutine defined within a class to implement functionality.</label>
                 </div>
                 <div class="col-75">
-                    <input type="radio" name="4" value="binary" required> Binary Correlation<br>
-                    <input type="radio" name="4" value="ternary" required> Ternary Correlation<br>
-                    <input type="radio" name="4" value="quaternary" required> Quarternion Correlation<br>
+                    <input type="radio" name="2" value="method" required> Method<br>
+                    <input type="radio" name="2" value="function" required>Function<br>
+                    <input type="radio" name="2" value="object" required>Object<br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="question5">Navigation concept?</label>
+                    <label for="question3">A _________ is a variable defined within a class to store a value or values. </label>
                 </div>
                 <div class="col-75">
-                    <input type="radio" name="5" value="where" required> Where am I?<br>
-                    <input type="radio" name="5" value="who" required> Who am I?<br>
-                    <input type="radio" name="5" value="what" required> What am I?<br>
+                    <input type="radio" name="3" value="variable" required>variable<br>
+                    <input type="radio" name="3" value="getter" required>getter<br>
+                    <input type="radio" name="3" value="attribute" required>attribute<br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="question6">Guidance concept?</label>
+                    <label for="question4">What is created when you create an instance of a class? </label>
                 </div>
                 <div class="col-75">
-                    <input type="radio" name="6" value="how" required> How do I get there?<br>
-                    <input type="radio" name="6" value="who" required> How do I fly?<br>
-                    <input type="radio" name="6" value="there" required> How do I work?<br>
+                    <input type="radio" name="4" value="instance" required>An Instance<br>
+                    <input type="radio" name="4" value="object" required>An Object<br>
+                    <input type="radio" name="4" value="reference" required>A reference<br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="question7">Control concept?</label>
+                    <label for="question5">What is the process of restricting access to class properties or methods referred to as?</label>
                 </div>
                 <div class="col-75">
-                    <input type="radio" name="7" value="how" required> How do I make it happen?<br>
-                    <input type="radio" name="7" value="who" required> How do I make what happen?<br>
-                    <input type="radio" name="7" value="there" required> How do I make that happen?<br>
+                    <input type="radio" name="5" value="polymorphism" required>Polymorphism<br>
+                    <input type="radio" name="5" value="reflection" required>Reflection<br>
+                    <input type="radio" name="5" value="encapsulation" required>Encapsulation<br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="question8">Control concept?</label>
+                    <label for="question6">What keyword allows a class to inherit from another class?</label>
                 </div>
                 <div class="col-75">
-                    <input type="radio" name="8" value="how" required> How do I make it happen?<br>
-                    <input type="radio" name="8" value="who" required> How do I make what happen?<br>
-                    <input type="radio" name="8" value="there" required> How do I make that happen?<br>
+                    <input type="radio" name="6" value="implements" required>Implements<br>
+                    <input type="radio" name="6" value="extends" required>Extends<br>
+                    <input type="radio" name="6" value="obfuscates" required>Obfuscates<br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="question9">Control concept?</label>
+                    <label for="question7">If you define a class constructor as private, can that class be inherited by other classes?</label>
                 </div>
                 <div class="col-75">
-                    <input type="radio" name="9" value="how" required> How do I make it happen?<br>
-                    <input type="radio" name="9" value="who" required> How do I make what happen?<br>
-                    <input type="radio" name="9" value="there" required> How do I make that happen?<br>
+                    <input type="radio" name="7" value="false" required>Always No<br>
+                    <input type="radio" name="7" value="true" required>Always Yes<br>
+                    <input type="radio" name="7" value="false" required>Sometimes<br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="question10">Control concept?</label>
+                    <label for="question8">What does abstraction mean in Object-oriented programming?</label>
                 </div>
                 <div class="col-75">
-                    <input type="radio" name="10" value="how" required> How do I make it happen?<br>
-                    <input type="radio" name="10" value="who" required> How do I make what happen?<br>
-                    <input type="radio" name="10" value="there" required> How do I make that happen?<br>
+                    <input type="radio" name="8" value="true" required>Abstraction allows for only the essential characteristics of an object to be expressed<br>
+                    <input type="radio" name="8" value="false" required>Abstraction allows for easy encapsulation of data from objects<br>
+                    <input type="radio" name="8" value="false" required>Abstraction allows for us to hide data and protect users from poor design<br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="question11">Control concept?</label>
+                    <label for="question9">Polymorphism is: </label>
                 </div>
                 <div class="col-75">
-                    <input type="radio" name="11" value="how" required> How do I make it happen?<br>
-                    <input type="radio" name="11" value="who" required> How do I make what happen?<br>
-                    <input type="radio" name="11" value="there" required> How do I make that happen?<br>
+                    <input type="radio" name="9" value="true" required>A way for operations to be performed differently depending on the object<br>
+                    <input type="radio" name="9" value="false" required>A way for operations to be performed differently depending on the class <br>
+                    <input type="radio" name="9" value="false" required>A way for operations to be performed differently depending on the method<br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="question12"></label>
+                    <label for="question10">What are the two common characteristics shared by all objects?</label>
                 </div>
                 <div class="col-75">
-                    <select name="12" multiple size="5">
-                        <option value="USA">USA</option>
-                        <option value="Russia">Russia</option>
-                        <option value="India">India</option>
-                        <option value="Britain">Britain</option>
+                    <select name="10" multiple size="4">
+                        <option value="methods">Methods</option>
+                        <option value="interfaces">Interfaces</option>
+                        <option value="state">State</option>
+                        <option value="behavior">Behavior</option>
                     </select>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="question13"></label>
+                    <label for="question11">What does a child class inherit from a parent class(with respect to inheritance)?</label>
                 </div>
                 <div class="col-75">
-                    <select name="13" multiple size="5">
-                        <option value="USA">USA</option>
-                        <option value="Russia">Russia</option>
-                        <option value="India">India</option>
-                        <option value="Britain">Britain</option>
+                    <select name="11" multiple size="4">
+                        <option value="data">Data</option>
+                        <option value="methods">Methods</option>
+                        <option value="properties">Properties</option>
+                        <option value="features">Features</option>
                     </select>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="question14"></label>
+                    <label for="question12">A ________ method or property cannot be accessed from outside the owning class: </label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="question12" name="12" placeholder="" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="question13">A _________ is a public method used to retrieve attribute of a class property: </label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="question13" name="13" placeholder="" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="question14">A __________ is a method of a class that is automatically called when a new object is instantiated from the base class: </label>
                 </div>
                 <div class="col-75">
                     <input type="text" id="question14" name="14" placeholder="" required>
@@ -144,7 +164,7 @@
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="question15"></label>
+                    <label for="question17">___________ inheritance: when a class has multiple parent classes: </label>
                 </div>
                 <div class="col-75">
                     <input type="text" id="question15" name="15" placeholder="" required>
@@ -152,7 +172,7 @@
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="question16"></label>
+                    <label for="question18">Another name for a child class or a derived class: </label>
                 </div>
                 <div class="col-75">
                     <input type="text" id="question16" name="16" placeholder="" required>
@@ -160,7 +180,7 @@
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="question17"></label>
+                    <label for="question19"></label>
                 </div>
                 <div class="col-75">
                     <input type="text" id="question17" name="17" placeholder="" required>
@@ -168,30 +188,35 @@
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="question18"></label>
-                </div>
-                <div class="col-75">
-                    <input type="text" id="question18" name="18" placeholder="" required>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-25">
                     <label for="question19"></label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="question19" name="19" placeholder="" required>
+                    <input type="text" id="question19" name="18" placeholder="" required>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="question20"></label>
+                    <label for="question19">Which operators cannot be overloaded? </label>
                 </div>
                 <div class="col-75">
-                    <input type="radio" name="20" value="how" required> How do I make it happen?<br>
-                    <input type="radio" name="20" value="who" required> How do I make what happen?<br>
-                    <input type="radio" name="20" value="there" required> How do I make that happen?<br>
+                    <input type="radio" name="19" value="false" required>Ternary Operator<br>
+                    <input type="radio" name="19" value="false" required>Bitwise Operator <br>
+                    <input type="radio" name="19" value="true" required>Scope Resolution Operator<br>
+                    <input type="radio" name="19" value="false" required>Assignment Operator<br>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="question20">What are the differences between Heap and Stack memory?</label>
+                </div>
+                <div class="col-75">
+                    <input type="radio" name="20" value="false" required>The stack is used to host local variables and arguments and the method call chain.<br>
+                    <input type="radio" name="20" value="false" required>The heap is used to host dynamically allocated objects. <br>
+                    <input type="radio" name="20" value="false" required>None of the above.<br>
+                    <input type="radio" name="20" value="true" required>All of the above.<br>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-25">
                     <input type="submit" value="Submit">

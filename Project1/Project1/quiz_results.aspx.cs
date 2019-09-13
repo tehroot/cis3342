@@ -11,8 +11,7 @@ namespace Project1 {
         protected void Page_Load(object sender, EventArgs e) {
             foreach (String s in Request.Form.AllKeys) {
                 //lmao the collection sort shit L M A O
-
-                Debug.WriteLine(Request.Form[s]);
+                Debug.WriteLine(s + ", " +Request.Form[s]);
             }
         }
     }
