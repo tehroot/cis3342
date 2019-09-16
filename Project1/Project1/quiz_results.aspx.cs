@@ -19,6 +19,7 @@ namespace Project1 {
         protected void Page_Load(object sender, EventArgs e) {
             NameValueCollection request = Request.Form;
             IDictionary<int, Boolean> score = quiz.gradeQuiz(quiz, request);
+            label1.Text = "test";
         }
     }
 }

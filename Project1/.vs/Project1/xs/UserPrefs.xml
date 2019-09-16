@@ -2,10 +2,10 @@
   <MonoDevelop.Ide.ItemProperties.Project1 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Project1/Quiz_results.aspx">
     <Files>
-      <File FileName="Project1/Quiz_results.aspx" Line="16" Column="8" />
+      <File FileName="Project1/Quiz_results.aspx" Line="12" Column="13" />
       <File FileName="Project1/index.html" />
       <File FileName="Project1/classes/Quiz.cs" />
-      <File FileName="Project1/Quiz_results.aspx.cs" />
+      <File FileName="Project1/Quiz_results.aspx.cs" Line="24" Column="2" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,9 +13,7 @@
           <Node name="Project1" expanded="True">
             <Node name="Project1" expanded="True">
               <Node name="classes" expanded="True" />
-              <Node name="Quiz_results.aspx" expanded="True">
-                <Node name="Quiz_results.aspx.cs" selected="True" />
-              </Node>
+              <Node name="Quiz_results.aspx" expanded="True" selected="True" />
             </Node>
           </Node>
         </State>
