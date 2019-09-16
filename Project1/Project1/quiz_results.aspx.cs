@@ -10,16 +10,15 @@ using System.Web.UI.WebControls;
 
 namespace Project1 {
     public partial class Quiz_results : System.Web.UI.Page {
+        Quiz quiz = new Quiz();
 
         protected void Page_Init(object sender, EventArgs e) {
-            Quiz quiz = new Quiz();
             quiz.buildQuizKey();
-            NameValueCollection request = Request.Form;
-            IDictionary<int, Boolean> score = quiz.gradeQuiz(quiz, request);
 
         }
         protected void Page_Load(object sender, EventArgs e) {
-            
+            NameValueCollection request = Request.Form;
+            IDictionary<int, Boolean> score = quiz.gradeQuiz(quiz, request);
         }
     }
 }
