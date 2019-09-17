@@ -65,7 +65,5 @@ namespace Project1 {
             }
             return score / quizResults.Count;
         }
-
-
     }
 }
