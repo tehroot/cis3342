@@ -8,9 +8,20 @@ namespace Project1 {
     public class Quiz {
         //quiz has one attribute, a questionlist assembled from a loaded file located in the base project directory.
         public Dictionary<int, String> questionSet { get; set; }
+        public Dictionary<int, String> questionList { get; set; }
 
         public Quiz() {
             
+        }
+
+        public void buildQuizList() {
+            questionList = new Dictionary<int, string>();
+            String filePath = HttpContext.Current.Request.PhysicalApplicationPath + "/questions.txt";
+            List<String> fileRead = new List<String>(File.ReadAllLines(filePath));
+            foreach (String s in fileRead) {
+                String[] splitStrings = s.Split(new[] { ',' }, 2);
+                questionList.Add(int.Parse(splitStrings[0]), splitStrings[1].TrimEnd('\\'));
+            }
         }
 
         public void buildQuizKey() {

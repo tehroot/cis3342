@@ -20,6 +20,15 @@ namespace Project1 {
             NameValueCollection request = Request.Form;
             IDictionary<int, Boolean> score = quiz.gradeQuiz(quiz, request);
             label1.Text = "test";
+            foreach (int i in quiz.questionList.Keys) {
+                if (score[i]) {
+
+                } else if (!score[i]) {
+
+                } else {
+
+                }
+            }
         }
     }
 }
