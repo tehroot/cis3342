@@ -9,6 +9,11 @@
 <body>
     <form id="form1" runat="server">
         <div class="">
+            <h1>Quiz Results for</h1>
+            <asp:Label ID="name" runat="server"></asp:Label>
+            <asp:Label ID="tuid" runat="server"></asp:Label>
+        </div>
+        <div class="container">
              <asp:Label id="label1" runat="server"></asp:Label>
         </div>
     </form>

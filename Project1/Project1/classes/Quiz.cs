@@ -9,6 +9,9 @@ namespace Project1 {
         //quiz has one attribute, a questionlist assembled from a loaded file located in the base project directory.
         public Dictionary<int, String> questionSet { get; set; }
         public Dictionary<int, String> questionList { get; set; }
+        public IDictionary<String, String> userAnswers { get; set; }
+        public IDictionary<int, String> userQuizAnswers { get; set; }
+
 
         public Quiz() {
             
@@ -34,6 +37,17 @@ namespace Project1 {
             }
         }
 
+        public void processUserAnswers(Quiz quiz, NameValueCollection nameValueCollection) {
+            foreach (String s in nameValueCollection.AllKeys) {
+                quiz.userAnswers.Add(s, nameValueCollection[s]);
+            }
+
+            foreach (String s in nameValueCollection.AllKeys) {
+                quiz.userQuizAnswers.Add(int.Parse(s), nameValueCollection[s]);
+
+            }
+        }
+
         public IDictionary<int, Boolean> gradeQuiz(Quiz quiz, NameValueCollection nameValueCollection) {
             IDictionary<String, String> dict = new Dictionary<String, String>();
             IDictionary<int, String> new_dict = new Dictionary<int, String>();
@@ -41,11 +55,13 @@ namespace Project1 {
             foreach (var k in nameValueCollection.AllKeys) {
                 dict.Add(k, nameValueCollection[k]);
             }
+            quiz.userAnswers = dict;
             dict.Remove("firstName");
             dict.Remove("tuid");
             foreach (var k in dict.Keys) {
                 new_dict.Add(int.Parse(k), dict[k]);
             }
+            quiz.userQuizAnswers = new_dict;
             foreach(int i in new_dict.Keys) {
                 if (questionSet[i] == new_dict[i]) {
                     big_dict.Add(i, true);
