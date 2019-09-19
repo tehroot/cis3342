@@ -35,22 +35,23 @@ namespace Project1 {
                     //needs to be formatted in the row/column design used in the main site in order to be easily buildable
                     String htmlText = "<div class='row'>" +
                                         "<div class='col-25-alternate'>" +
-                                            "<div class='image'><img src='/check-mark-yes.svg'/></div><div class='label-col'><label for='question" + i+"'>"+quiz.questionList[i]+""+
-                                            "</label></div>" +
+                                            "<label for='answer'>Your answer: " + quiz.userQuizAnswers[i] + "</label>" +
                                         "</div>" +
                                         "<div class='col-75-alternate'>" +
-                                            "<label for='answer'>Your answer: "+quiz.userQuizAnswers[i]+"</label>" +
+                                            "<div class='image'><img src='/check-mark-yes.svg'/></div><div class='label-col'><label for='question" + i + "'>" + quiz.questionList[i] + "" +
+                                            "</label></div>"
+                                             +
                                         "</div>"+
                                       "</div>";
                     stringBuilder.Append(htmlText);
                 } else if (!quizgrade[i]) {
                     String htmlText = "<div class='row'>" +
-                                        "<div class='col-25-alternate'>" +
-                                            "<div class='image'><img src='/error-mark.svg'/></div><div class='label-col'><label for='question"+i+"'>"+quiz.questionList[i]+""+ 
-                                            "</label></div>" +
+                                        "<div class='col-25-alternate-wrong'>" +
+                                            "<label for='answer'>Your Answer: " + quiz.userQuizAnswers[i] + "</label><br><label for='right-answer'> Right Answer: " + quiz.questionSet[i] + "</label>" +
                                         "</div>" +
                                         "<div class='col-75-alternate-wrong'>" +
-                                            "<label for='answer'>Your Answer: "+quiz.userQuizAnswers[i]+"</label><label for='right-answer'> Right Answer: "+quiz.questionSet[i]+"" +
+                                            "<div class='image'><img src='/error-mark.svg'/></div><div class='label-col'><label for='question" + i + "'>" + quiz.questionList[i] + "" +
+                                            "</label></div>" +
                                         "</div>"+
                                       "</div>";
                     stringBuilder.Append(htmlText);

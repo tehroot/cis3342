@@ -142,7 +142,16 @@ div.desc {
 .col-25-alternate {
     border-style: solid;
     border-width: 2px;
-    background-color: #f2f2f2;
+    background-color: lightgreen;
+    float: left;
+    width: 20%;
+    margin-top: 10px;
+}
+
+.col-25-alternate-wrong {
+    border-style: solid;
+    border-width: 2px;
+    background-color: crimson;
     float: left;
     width: 20%;
     margin-top: 10px;
@@ -203,7 +212,7 @@ input[type=submit] {
 }
 
 .image {
-    width:10%;
+    width:5%;
     display: inline-block;
 }
 
@@ -224,3 +233,4 @@ input[type=submit] {
 .user-info {
 
 }
+
