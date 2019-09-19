@@ -20,14 +20,16 @@ namespace Project1 {
         protected void Page_Load(object sender, EventArgs e) {
             StringBuilder stringBuilder = new StringBuilder();
             NameValueCollection request = Request.Form;
-            IDictionary<int, Boolean> score = quiz.gradeQuiz(quiz, request);
+            IDictionary<int, Boolean> quizgrade = quiz.gradeQuiz(quiz, request);
+            var grade = quiz.scoreQuiz(quizgrade);
             //need to write html responses for the css/classes etc in here in the label text
             //need to append inside the 
             name.Text = Request["firstName"];
             tuid.Text = Request["tuid"];
+            score.Text = grade.ToString();
             
             foreach (int i in quiz.questionList.Keys) {
-                if (score[i]) {
+                if (quizgrade[i]) {
                     //c# stringbuilder class for processing here, need to build an extremely large HTML string and render it to the asp label control
                     //in the opposing view, I assume that we need to do a sb.append for each object and then build it to the actual label at the end
                     //needs to be formatted in the row/column design used in the main site in order to be easily buildable
@@ -41,7 +43,7 @@ namespace Project1 {
                                         "</div>"+
                                       "</div>";
                     stringBuilder.Append(htmlText);
-                } else if (!score[i]) {
+                } else if (!quizgrade[i]) {
                     String htmlText = "<div class='row'>" +
                                         "<div class='col-25-alternate'>" +
                                             "<div class='image'><img src='/error-mark.svg'/></div><div class='label-col'><label for='question"+i+"'>"+quiz.questionList[i]+""+ 

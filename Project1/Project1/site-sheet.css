@@ -141,7 +141,7 @@ div.desc {
 
 .col-25-alternate {
     border-style: solid;
-    border-width: 5px;
+    border-width: 2px;
     background-color: #f2f2f2;
     float: left;
     width: 20%;
@@ -160,7 +160,8 @@ div.desc {
     margin-top: 10px;
     margin-left:20px;
     border-style: solid;
-    background-color: green;
+    border-width:2px;
+    background-color: lightgreen;
 }
 
 .col-75-alternate-wrong {
@@ -169,7 +170,7 @@ div.desc {
     margin-top: 10px;
     margin-left: 20px;
     border-style: solid;
-    background-color: red;
+    background-color: crimson;
 }
 
 input[type=text], select, textarea {
@@ -214,4 +215,12 @@ input[type=submit] {
     width:90%;
     display: inline-block;
     text-align:center;
+}
+
+.information {
+
+}
+
+.user-info {
+
 }

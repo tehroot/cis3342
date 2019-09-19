@@ -79,7 +79,7 @@ namespace Project1 {
                     score++;
                 }
             }
-            return score / quizResults.Count;
+            return score / quizResults.Count * 100;
         }
     }
 }
