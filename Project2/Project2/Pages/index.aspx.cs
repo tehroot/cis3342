@@ -15,10 +15,12 @@ namespace Project2.Pages {
         }
 
         public void displayData() {
-            String selectProducts = "SELECT * FROM drinks";
-            gvCoffee.DataSource = dBConnect.GetDataSet(selectProducts);
+            String selectCoffeeProducts = "SELECT * FROM drinks WHERE item_category = 'Coffee'";
+            String selectTeaProducts = "SELECT * FROM drinks WHERE item_category ='tea'";
+            gvTea.DataSource = dBConnect.GetDataSet(selectTeaProducts);
+            gvTea.DataBind();
+            gvCoffee.DataSource = dBConnect.GetDataSet(selectCoffeeProducts);
             gvCoffee.DataBind();
         }
-
     }
 }
