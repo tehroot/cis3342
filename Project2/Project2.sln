@@ -1,6 +1,7 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project2", "Project2\Project2.csproj", "{9652DFB6-799C-4CE5-9243-7D9DCB23C072}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project2.Tests", "Project2.Tests\Project2.Tests.csproj", "{F58A0468-B946-4D64-9986-12D359457A39}"
@@ -19,5 +20,11 @@ Global
 		{F58A0468-B946-4D64-9986-12D359457A39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F58A0468-B946-4D64-9986-12D359457A39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F58A0468-B946-4D64-9986-12D359457A39}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B9CFBA1-63AC-40A6-BF94-7FA0A7BA7B53}
 	EndGlobalSection
 EndGlobal
