@@ -22,5 +22,9 @@ namespace Project2.Pages {
             gvCoffee.DataSource = dBConnect.GetDataSet(selectCoffeeProducts);
             gvCoffee.DataBind();
         }
+
+        protected void buildOrderObject_Click(object sender, EventArgs e) {
+
+        }
     }
 }

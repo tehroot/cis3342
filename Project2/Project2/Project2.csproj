@@ -60,6 +60,8 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Pages\index.aspx" />
+    <Content Include="Pages\scripts.js" />
+    <Content Include="Pages\stylesheet.css" />
     <Content Include="Web.config" />
     <Content Include="packages.config" />
   </ItemGroup>
