@@ -62,6 +62,7 @@
     <Content Include="Pages\index.aspx" />
     <Content Include="Pages\scripts.js" />
     <Content Include="Pages\stylesheet.css" />
+    <Content Include="Pages\userform.aspx" />
     <Content Include="Web.config" />
     <Content Include="packages.config" />
   </ItemGroup>
@@ -79,6 +80,13 @@
     </Compile>
     <Compile Include="Pages\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\userform.aspx.cs">
+      <DependentUpon>userform.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\userform.aspx.designer.cs">
+      <DependentUpon>userform.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />
