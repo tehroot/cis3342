@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Project2.Classes;
 using Utilities;
 
 
@@ -29,7 +30,15 @@ namespace Project2.Pages {
         }
 
         protected void buildOrderObject_Click(object sender, EventArgs e) {
-            
+            foreach (GridViewRow row in gvTea.Rows) {
+                Drink drink = new Drink();
+                CheckBox selected = (CheckBox)row.FindControl("checkbox");
+                if (selected.Checked) {
+                    for (int i = 0; i < row.Cells.Count; i++) {
+                        
+                    }
+                }
+            }
         }
     }
 }
