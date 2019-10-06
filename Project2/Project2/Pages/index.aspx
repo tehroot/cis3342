@@ -14,6 +14,7 @@
         $(document).ready(function () {
             $('#button-reset').prop('disabled', true);
             $.fn.verify();
+            $.fn.getTableData();
         })
     </script>
 <body>
@@ -93,6 +94,8 @@
                                 <asp:CheckBox ID="checkbox" runat="server" />
                             </ItemTemplate>
                         </asp:TemplateField>
+                        <%--<asp:BoundField DataField="item_id" ItemStyle-CssClass="hidden-form" HeaderStyle-CssClass="hidden-form" ReadOnly="true"/>--%>
+                        <asp:BoundField DataField="item_id" HeaderText="Id" ReadOnly="true"/>
                         <asp:BoundField DataField="item_title" HeaderText="Drink Name" ReadOnly="true" />
                         <asp:BoundField DataField="item_description" HeaderText="Drink Description" ReadOnly="true" />
                         <asp:BoundField DataField="item_base_price" HeaderText="Drink Price" ReadOnly="true" />
@@ -130,6 +133,8 @@
                                     <asp:CheckBox id="checkbox" runat="server" />
                                 </ItemTemplate>
                         </asp:TemplateField>
+                        <%--<asp:BoundField DataField="item_id" ItemStyle-CssClass="hidden-form" HeaderStyle-CssClass="hidden-form" ReadOnly="true"/>--%>
+                        <asp:BoundField DataField="item_id" HeaderText="Id" ReadOnly="true"/>
                         <asp:BoundField DataField="item_title" HeaderText="Drink Name" ReadOnly="true" />
                         <asp:BoundField DataField="item_description" HeaderText="Drink Description" ReadOnly="true" />
                         <asp:BoundField DataField="item_base_price" HeaderText="Drink Price" ReadOnly="true" />
@@ -160,6 +165,11 @@
                 </asp:GridView>
             </div>
                 <div class="form-group row">
+                    <div class="col-sm-10">
+                        <button type="button" class="btn btn-primary" id="button-verify">Verify Order</button>
+                    </div>
+                </div>
+                <div class="form-group row hidden-form" id="order-submit-button">
                     <div class="col-sm-10">
                         <asp:Button ID="buildOrderObject" runat="server" Text="Submit Order" OnClick="buildOrderObject_Click" OnClientClick="" CssClass="btn btn-primary"/>
                     </div>

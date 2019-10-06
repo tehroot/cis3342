@@ -14,9 +14,8 @@ namespace Project2.Pages {
 
         DBConnect dBConnect = new DBConnect();
         protected void Page_Load(object sender, EventArgs e) {
-            displayData();
-            foreach (String key in Request.Form.Keys) {
-                Debug.WriteLine(key);
+            if (!IsPostBack) {
+                displayData();
             }
         }
 
@@ -35,7 +34,8 @@ namespace Project2.Pages {
                 CheckBox selected = (CheckBox)row.FindControl("checkbox");
                 if (selected.Checked) {
                     for (int i = 0; i < row.Cells.Count; i++) {
-                        
+                        Debug.WriteLine(row.Cells[i]);
+
                     }
                 }
             }
