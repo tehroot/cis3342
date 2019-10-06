@@ -57,17 +57,5 @@ $.fn.getTableData = function () {
                 }
             });
         });
-        $('#gvCoffee tr').each(function (i, row) {
-            var $row = $(row),
-                $checkBoxes = $row.find('input[type=checkbox]:checked');
-            $checkBoxes.each(function (i, checkbox) {
-                console.log($(checkbox).closest('tr').find("[type ='text']").val());
-                if ($(checkbox).closest('tr').find("[type ='text']").val() !== "" && !isNaN($(checkbox).closest('tr').find("[type ='text']").val())) {
-                    console.log("worked");
-                } else {
-                    console.log("borked");
-                }
-            });
-        });
     });
 };
