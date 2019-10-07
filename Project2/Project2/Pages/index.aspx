@@ -15,11 +15,14 @@
             $('#button-reset').prop('disabled', true);
             $.fn.verify();
             $.fn.verifyTableData();
-            //$.fn.editTableData();
+            $.fn.editTableData();
         })
     </script>
 <body>
     <form id="order" runat="server">
+            <div>
+                <asp:Label ID="errorlabel" runat="server"></asp:Label>
+            </div>
             <div class="container" id="customerform">
                 <h1>Customer Information: </h1>
                 <fieldset class="form-group">
@@ -96,7 +99,7 @@
                                 <asp:CheckBox ID="checkbox" runat="server" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <%--<asp:BoundField DataField="item_id" ItemStyle-CssClass="hidden-form" HeaderStyle-CssClass="hidden-form" ReadOnly="true"/>--%>
+                        <asp:BoundField DataField="item_id" ItemStyle-CssClass="hidden-form" HeaderStyle-CssClass="hidden-form" ReadOnly="true"/>
                         <asp:BoundField DataField="item_id" HeaderText="Id" ReadOnly="true"/>
                         <asp:BoundField DataField="item_title" HeaderText="Drink Name" ReadOnly="true" />
                         <asp:BoundField DataField="item_description" HeaderText="Drink Description" ReadOnly="true" />
@@ -135,7 +138,7 @@
                                     <asp:CheckBox id="checkbox" runat="server" />
                                 </ItemTemplate>
                         </asp:TemplateField>
-                        <%--<asp:BoundField DataField="item_id" ItemStyle-CssClass="hidden-form" HeaderStyle-CssClass="hidden-form" ReadOnly="true"/>--%>
+                        <asp:BoundField DataField="item_id" ItemStyle-CssClass="hidden-form" HeaderStyle-CssClass="hidden-form" ReadOnly="true"/>
                         <asp:BoundField DataField="item_id" HeaderText="Id" ReadOnly="true"/>
                         <asp:BoundField DataField="item_title" HeaderText="Drink Name" ReadOnly="true" />
                         <asp:BoundField DataField="item_description" HeaderText="Drink Description" ReadOnly="true" />

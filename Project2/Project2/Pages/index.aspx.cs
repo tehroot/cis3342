@@ -14,8 +14,10 @@ namespace Project2.Pages {
 
         DBConnect dBConnect = new DBConnect();
         protected void Page_Load(object sender, EventArgs e) {
+
             if (!IsPostBack) {
                 displayData();
+                
             }
         }
 
@@ -29,10 +31,18 @@ namespace Project2.Pages {
         }
 
         protected void buildOrderObject_Click(object sender, EventArgs e) {
-            foreach (String key in Request.Form.AllKeys) {
-                Debug.WriteLine(key);
+            try {
+                if (Request.Form["rewardsnumber"] != "") {
+                    Customer customer = new Customer(Request.Form["firstname"], Request.Form["lastname"], Request.Form["rewardsnumber"]);
+                    if (Customer.rewardsDiscount(customer)) {
+                        customer.rewards_discount = true;
+                    }
+                } else {
+                    Customer customer = new Customer(Request.Form["firstname"], Request.Form["lastname"]);
+                }
+            } catch (Exception a) {
+                errorlabel.Text = a.Message;
             }
-            
             foreach (GridViewRow row in gvTea.Rows) {
                 Drink drink = new Drink();
                 CheckBox selected = (CheckBox)row.FindControl("checkbox");
