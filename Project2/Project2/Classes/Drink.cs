@@ -12,5 +12,11 @@ namespace Project2.Classes {
         public float item_price { get; set; }
         public float item_total_sales { get; set; }
         public int item_quantity_sold { get; set; }
+
+        public Drink() {
+            
+        }
+
+
     }
 }

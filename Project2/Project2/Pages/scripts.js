@@ -22,7 +22,7 @@
         if (values.length === 5) {
             $('#customerform input').each(function () {
                 $('#invalidPhoneNumber').css("visibility", "hidden");
-                $(this).prop('disabled', true);
+                $(this).attr('readonly', true);
             });
             $('#button-reset').prop('disabled', false);
             $('#button-submit').prop('disabled', true);
@@ -32,10 +32,9 @@
             //alert("Fill out the form properly.");
         }
     });
-
     $('#button-reset').on('click', function () {
         $('#customerform input').each(function () {
-            $(this).prop('disabled', false);
+            $(this).attr('readonly', false);
         });
         $('#order-form').toggleClass("hidden-form");
         $('#button-submit').prop('disabled', false);
@@ -70,10 +69,10 @@ $.fn.verifyTableData = function () {
                     $inputs = $row.find('input'),
                     $dropdowns = $row.find('select');
                 $inputs.each(function (i, input) {
-                    $(input).prop('disabled', true);
+                    $(input).attr('readonly', true);
                 });
                 $dropdowns.each(function (i, dropdown) {
-                    $(dropdown).prop('disabled', true);
+                    $(dropdown).attr('readonly', true);
                 });
             });
             $('#order-submit-button').css('visibility', 'visible');
@@ -91,11 +90,12 @@ $.fn.editTableData = function () {
                 $inputs = $row.find('input'),
                 $dropdowns = $row.find('select');
             $inputs.each(function (i, input) {
-                $(input).prop('disabled', false);
+                $(input).attr('readonly', false);
             });
             $dropdowns.each(function (i, dropdown) {
-                $(dropdown).prop('disabled', false);
+                $(dropdown).attr('readonly', false);
             });
         });
+
     });
 };

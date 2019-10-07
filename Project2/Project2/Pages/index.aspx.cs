@@ -29,13 +29,17 @@ namespace Project2.Pages {
         }
 
         protected void buildOrderObject_Click(object sender, EventArgs e) {
+            foreach (String key in Request.Form.AllKeys) {
+                Debug.WriteLine(key);
+            }
+            
             foreach (GridViewRow row in gvTea.Rows) {
                 Drink drink = new Drink();
                 CheckBox selected = (CheckBox)row.FindControl("checkbox");
+                Debug.WriteLine(selected.Checked.ToString());
                 if (selected.Checked) {
                     for (int i = 0; i < row.Cells.Count; i++) {
-                        Debug.WriteLine(row.Cells[i]);
-
+                       
                     }
                 }
             }

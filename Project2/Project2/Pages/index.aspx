@@ -15,7 +15,7 @@
             $('#button-reset').prop('disabled', true);
             $.fn.verify();
             $.fn.verifyTableData();
-            $.fn.editTableData();
+            //$.fn.editTableData();
         })
     </script>
 <body>
@@ -26,14 +26,14 @@
                 <div class="row">
                     <label for="firstname" class="col-sm-2 col-form-label">First Name: </label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="firstnname" name="firstname" placeholder="Please enter your first name here." pattern="[a-zA-Z]+"/>
+                        <input type="text" runat="server" class="form-control" id="firstnname" name="firstname" placeholder="Please enter your first name here." pattern="[a-zA-Z]+"/>
                     </div>
                 </div>
                     <br />
                 <div class="row">
                     <label for="lastname" class="col-sm-2 col-form-label">Last Name: </label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Please enter your last name here." pattern="[a-zA-Z]+" />
+                        <input type="text" runat="server" class="form-control" id="lastname" name="lastname" placeholder="Please enter your last name here." pattern="[a-zA-Z]+" />
                     </div>
                 </div>
                     <br />
@@ -41,14 +41,14 @@
                 <div class="row">
                     <label for="phonenumber" class="col-sm-2 col-form-label">Phone Number: </label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="phonenumber" name="phonenumber" placeholder="Please enter your phone number here."/>
+                        <input type="text" runat="server" class="form-control" id="phonenumber" name="phonenumber" placeholder="Please enter your phone number here."/>
                      </div>
                 </div>
                 <br />
                 <div class="row">
                     <label for="rewardsnumber" class="col-sm-2 col-form-label">Reward Number: </label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="rewardsnumber" name="rewardsnumber" placeholder="Please enter your rewards number here."/>
+                        <input type="text" runat="server" class="form-control" id="rewardsnumber" name="rewardsnumber" placeholder="Please enter your rewards number here."/>
                     </div>
                 </div>
                     <br />
@@ -62,13 +62,13 @@
                             </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="gridRadios" value="Normal Delivery" required/>
+                          <input class="form-check-input" runat="server" type="radio" name="gridRadios" value="Normal Delivery" required/>
                           <label class="form-check-label" for="gridRadios2">
                             Normal Delivery
                           </label>
                         </div>
                         <div class="form-check disabled">
-                          <input class="form-check-input" type="radio" name="gridRadios" value="Curbside Delivery" required/>
+                          <input class="form-check-input" runat="server" type="radio" name="gridRadios" value="Curbside Delivery" required/>
                           <label class="form-check-label" for="gridRadios3">
                             Curbside Delivery
                           </label>
@@ -173,7 +173,7 @@
                 </div>
                 <div class="form-group row hidden-submit-button" id="order-submit-button">
                     <div class="col-sm-10">
-                        <asp:Button id="buildOrderObject" runat="server" Text="Submit Order" OnClick="buildOrderObject_Click" OnClientClick="" CssClass="btn btn-primary "/>
+                        <asp:Button id="buildOrderObject" runat="server" Text="Submit Order" OnClick="buildOrderObject_Click" CssClass="btn btn-primary"/>
                         <button type="button" id="button-edit" class="btn btn-secondary btn-danger">Edit Information</button>
                     </div>
                 </div> 
