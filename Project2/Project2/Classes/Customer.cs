@@ -19,9 +19,7 @@ namespace Project2.Classes {
         public Customer(String name, String phone_number, String rewards_id) {
 
         }
+        
 
-        public Customer(String name, String phone_number) {
-
-        }
     }
 }
