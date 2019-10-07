@@ -43,18 +43,58 @@
     });
 };
 
-$.fn.getTableData = function () {
+$.fn.verifyTableData = function () {
     $('#button-verify').on('click', function () {
-        $('#gvTea tr').each(function (i, row) {
+        var x = 0;
+        var y = 0;
+        $('* > tbody > tr').each(function (i, row) {
             var $row = $(row),
                 $checkBoxes = $row.find('input[type=checkbox]:checked');
             $checkBoxes.each(function (i, checkbox) {
-                console.log($(checkbox).closest('tr').find("[type ='text']").val());
-                if ($(checkbox).closest('tr').find("[type ='text']").val() !== "" && !isNaN($(checkbox).closest('tr').find("[type ='text']").val())) {
-                    console.log("worked");
-                } else {
-                    console.log("borked");
+                y++;
+                if ($(checkbox).closest('tr').find("[type ='text']").val() === "" || isNaN($(checkbox).closest('tr').find("[type ='text']").val())) {
+                    x++;
                 }
+            });
+        });
+        if (x > 0) {
+            $('#invalidOrder').css("visibility", "visible");
+            $('#invalidOrder').text("Please enter a valid order amount");
+        } else if (y === 0) {
+            $('#invalidOrder').css("visibility", "visible");
+            $('#invalidOrder').text("Please choose a drink for your order");
+        } else {
+            $('#invalidOrder').css("visibility", "hidden");
+            $('* > tbody > tr').each(function (i, row) {
+                var $row = $(row),
+                    $inputs = $row.find('input'),
+                    $dropdowns = $row.find('select');
+                $inputs.each(function (i, input) {
+                    $(input).prop('disabled', true);
+                });
+                $dropdowns.each(function (i, dropdown) {
+                    $(dropdown).prop('disabled', true);
+                });
+            });
+            $('#order-submit-button').css('visibility', 'visible');
+            $('#order-verify-button').css('visibility','hidden');
+        }
+    });
+};
+
+$.fn.editTableData = function () {
+    $('#button-edit').on('click', function () {
+        $('#order-submit-button').css('visibility', 'hidden');
+        $('#order-verify-button').css('visibility', 'visible');
+        $('* > tbody > tr').each(function (i, row) {
+            var $row = $(row),
+                $inputs = $row.find('input'),
+                $dropdowns = $row.find('select');
+            $inputs.each(function (i, input) {
+                $(input).prop('disabled', false);
+            });
+            $dropdowns.each(function (i, dropdown) {
+                $(dropdown).prop('disabled', false);
             });
         });
     });

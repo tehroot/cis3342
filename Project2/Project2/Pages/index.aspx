@@ -14,7 +14,8 @@
         $(document).ready(function () {
             $('#button-reset').prop('disabled', true);
             $.fn.verify();
-            $.fn.getTableData();
+            $.fn.verifyTableData();
+            $.fn.editTableData();
         })
     </script>
 <body>
@@ -87,6 +88,7 @@
             <div class ="container">
                 <h1>Order Products: </h1>
             <div>
+                <div class="warning" id="invalidOrder"></div>
                 <asp:GridView ID="gvCoffee" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-condensed">
                     <Columns>
                         <asp:TemplateField HeaderText="Add to Order">
@@ -164,14 +166,15 @@
                     </Columns>
                 </asp:GridView>
             </div>
-                <div class="form-group row">
+                <div class="form-group row hidden-verify-button" id="order-verify-button">
                     <div class="col-sm-10">
                         <button type="button" class="btn btn-primary" id="button-verify">Verify Order</button>
                     </div>
                 </div>
-                <div class="form-group row hidden-form" id="order-submit-button">
+                <div class="form-group row hidden-submit-button" id="order-submit-button">
                     <div class="col-sm-10">
-                        <asp:Button ID="buildOrderObject" runat="server" Text="Submit Order" OnClick="buildOrderObject_Click" OnClientClick="" CssClass="btn btn-primary"/>
+                        <asp:Button id="buildOrderObject" runat="server" Text="Submit Order" OnClick="buildOrderObject_Click" OnClientClick="" CssClass="btn btn-primary "/>
+                        <button type="button" id="button-edit" class="btn btn-secondary btn-danger">Edit Information</button>
                     </div>
                 </div> 
             </div>

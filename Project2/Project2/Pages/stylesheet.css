@@ -9,3 +9,11 @@
     text-align: center;
     background-color: #ff0000;
 }
+
+.hidden-submit-button {
+    visibility: hidden;
+}
+
+.hidden-verify-button {
+    visibility: visible;
+}
