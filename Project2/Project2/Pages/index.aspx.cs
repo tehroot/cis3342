@@ -35,16 +35,16 @@ namespace Project2.Pages {
                 if (Request.Form["rewardsnumber"] != "") {
                     Customer customer = new Customer(Request.Form["firstname"], Request.Form["lastname"], Request.Form["rewardsnumber"]);
                     if (Customer.rewardsDiscount(customer)) {
-                        customer.rewards_discount = true;
+                        //customer.rewards_discount = true;
                     }
                 } else {
                     Customer customer = new Customer(Request.Form["firstname"], Request.Form["lastname"]);
                 }
             } catch (Exception a) {
-                errorlabel.Text = a.Message;
+                //errorlabel.Text = a.Message;
             }
             foreach (GridViewRow row in gvTea.Rows) {
-                Drink drink = new Drink();
+                //Drink drink = new Drink();
                 CheckBox selected = (CheckBox)row.FindControl("checkbox");
                 Debug.WriteLine(selected.Checked.ToString());
                 if (selected.Checked) {

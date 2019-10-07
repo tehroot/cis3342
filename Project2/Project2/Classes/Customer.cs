@@ -10,15 +10,69 @@ using System.Data;
 
 namespace Project2.Classes {
     public class Customer {
-        [Range (0, 999999, ErrorMessage = "Rewards ID not valid")]
-        public int customer_reward_id { get; set; }
-        public String customer_name { get; set; }
-        public String customer_phone_number { get; set; }
-        [Range (0, 9999999, ErrorMessage = "Integer non-conformant to sales, gross_sales")]
-        public float customer_gross_sales { get; set; }
-        [Range (0, 9999999, ErrorMessage = "Integer non-conformant to sales, total_orders")]
-        public int customer_total_orders { get; set; }
-        public bool rewards_discount { get; set; }
+        private int _customer_reward_id { get; set; }
+        public int customer_reward_id {
+            get { return _customer_reward_id; }
+            set {
+                if (value > 0 || value < 999999) {
+                    _customer_reward_id = value;
+                } else {
+                    throw new ArgumentException("Invalid Customer Reward ID");
+                }
+            }
+        }
+        private String _customer_name { get; set; }
+        public String customer_name {
+            get { return _customer_name; }
+            set {
+                if(value != "" && value != null) {
+                    _customer_name = value;
+                } else {
+                    throw new ArgumentException("Invalid Customer Name");
+                }
+            }
+        }
+        private String _customer_phone_number { get; set; }
+        public String customer_phone_number {
+            get { return _customer_phone_number; }
+            set {
+                if(value != "" && value != null) {
+                    _customer_phone_number = value;
+                } else {
+                    throw new ArgumentException("Invalid Customer Phone Number");
+                }
+            }
+        }
+        private float _customer_gross_sales { get; set; }
+        public float customer_gross_sales {
+            get { return _customer_gross_sales; }
+            set {
+                if (value >= 0) {
+                    _customer_gross_sales = value;
+                } else {
+                    throw new ArgumentException("Invalid Gross Sales");
+                }
+            }
+        }
+        private int _customer_total_orders { get; set; }
+        public int customer_total_orders {
+            get { return _customer_total_orders; }
+            set {
+                if (value >= 0) {
+                    _customer_total_orders = value;
+                } else {
+                    throw new ArgumentException("Invalid Total Orders");
+                }
+            }
+        }
+
+        private bool _rewards_discount { get; set; }
+        public bool rewards_discount {
+            get { return _rewards_discount; }
+            set {
+                _rewards_discount = value;
+            }
+        }
 
         public Customer(String name, String phone_number) {
             customer_phone_number = phone_number;
@@ -54,7 +108,7 @@ namespace Project2.Classes {
             DBConnect dBConnect = new DBConnect();
             float current_total = 0;
             float total = 0;
-            String sql_get = $"SELECT customer_gross_sales FROM rewards_account WHERE customer_reward_id like '{customer.customer_reward_id}'";
+            String sql_get = $"SELECT customer_gross_sales FROM rewards_account WHERE customer_reward_id LIKE '{customer.customer_reward_id}'";
             if (customer.rewards_discount == true) {
                 DataSet set = dBConnect.GetDataSet(sql_get);
                 DataRow x = set.Tables[0].Rows[0];

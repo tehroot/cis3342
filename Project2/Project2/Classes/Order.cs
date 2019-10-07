@@ -7,5 +7,8 @@ namespace Project2.Classes {
     public class Order {
         public List<Drink> drinks = new List<Drink>();
 
+        public Order() {
+
+        }
     }
 }
