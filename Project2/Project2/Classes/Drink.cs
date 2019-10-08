@@ -6,6 +6,14 @@ using System.Web;
 
 namespace Project2.Classes {
     public class Drink {
+        private Dictionary<String, float> priceMultipliers = new Dictionary<String, float> {
+            ["Tall"] = 1.0F,
+            ["Grande"]= 1.2F,
+            ["Venti"] = 1.4F,
+            ["Trenta"] = 1.6F
+        };
+        
+
         private int _item_id { get; set; }
         public int item_id {
             get { return _item_id; }
@@ -103,7 +111,7 @@ namespace Project2.Classes {
             if(int.TryParse(order_amount, out order_item_size)) {
                 item_order_amount = order_item_size;
             } else {
-                throw new Exception("Order amoutn invalid");
+                throw new Exception("Order amount invalid");
             }
             if (int.TryParse(id, out order_item_id)) {
                 item_id = order_item_id;
@@ -112,10 +120,12 @@ namespace Project2.Classes {
             }
             item_size = size;
             item_category = category;
+            item_price = priceMultipliers[size] * order_item_size;
         }
 
         public Drink() {
 
         }
+        
     }
 }

@@ -32,15 +32,6 @@
                 <div>
                     <asp:RequiredFieldValidator ID="rfvphonenumber" runat="server" ControlToValidate="phonenumber" ErrorMessage="Please enter something in the phonenumber textbox." InitialValue=""></asp:RequiredFieldValidator>
                 </div>
-               <%-- <div>
-                    <asp:RequiredFieldValidator ID="rfvdrinksize" runat="server" ControlToValidate="drink_size" ErrorMessage="Please enter something in the lastname textbox." InitialValue=""></asp:RequiredFieldValidator>
-                </div>    
-                <div>
-                    <asp:RequiredFieldValidator ID="rfvtemperaturechoice" runat="server" ControlToValidate="temperature_choice" ErrorMessage="Please enter something in the lastname textbox." InitialValue=""></asp:RequiredFieldValidator>
-                </div>--%>
-                <div>
-                    <%--<asp:CustomValidator ID="cfvorderquantity" runat="server" ControlToValidate="order_quantity" ErrorMessage ="Please enter something in the order textbox." OnServerValidate="validateTextbox_OnServerValidate"></asp:CustomValidator>--%>
-                </div>
             <div class="container" id="customerform">
                 <h1>Customer Information: </h1>
                 <fieldset class="form-group">

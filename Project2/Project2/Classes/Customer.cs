@@ -112,7 +112,7 @@ namespace Project2.Classes {
             if (customer.rewards_discount == true) {
                 DataSet set = dBConnect.GetDataSet(sql_get);
                 DataRow x = set.Tables[0].Rows[0];
-                if(x.ToString() != "") {
+                if(x.ToString() != "" && x.ToString() != null) {
                     current_total = float.Parse(x.ToString());
                 } else {
                     current_total = 0;
@@ -133,7 +133,7 @@ namespace Project2.Classes {
             }
         }
 
-        public bool updateCustomerTotalOrders(Customer customer, Order order) {
+        public static bool updateCustomerTotalOrders(Customer customer, Order order) {
             DBConnect dBConnect = new DBConnect();
             int current_total = 0;
             int total = 0;
@@ -141,7 +141,7 @@ namespace Project2.Classes {
             if (customer.rewards_discount == true) {
                 DataSet set = dBConnect.GetDataSet(sql_get);
                 DataRow x = set.Tables[0].Rows[0];
-                if (x.ToString() != "") {
+                if (x.ToString() != "" && x.ToString() != null) {
                     current_total = int.Parse(x.ToString());
                 } else {
                     current_total = 0;
