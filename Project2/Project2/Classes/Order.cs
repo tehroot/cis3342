@@ -24,7 +24,7 @@ namespace Project2.Classes {
             float current_total = 0;
             float total = 0;
             foreach (Drink drink in initialList) {
-                String sql_get = $"SELECT item_total_sales FROM drinks WHERE drink_id LIKE '{drink.item_id}'";
+                String sql_get = $"SELECT item_total_sales FROM drinks WHERE item_id LIKE '{drink.item_id}'";
                 DataSet set = dBConnect.GetDataSet(sql_get);
                 DataRow x = set.Tables[0].Rows[0];
                 if (x.ToString() != null || x.ToString() != "") {
@@ -33,7 +33,7 @@ namespace Project2.Classes {
                     current_total = 0;
                 }
                 current_total += drink.item_price * drink.item_order_amount;
-                String sql = $"UPDATE drink SET item_gross_sales = '{current_total}' WHERE drink_id LIKE '{drink.item_id}'";
+                String sql = $"UPDATE drink SET item_gross_sales = '{current_total}' WHERE item_id LIKE '{drink.item_id}'";
                 int rows = dBConnect.DoUpdate(sql);
                 if(rows == 1) {
                     return true;
@@ -50,7 +50,7 @@ namespace Project2.Classes {
             int total = 0;
             List<Drink> initialList = order.drinks;
             foreach (Drink drink in initialList) {
-                String sql_get = $"SELECT item_quantity_sold FROM drinks WHERE drink_id LIKE '{drink.item_id}'";
+                String sql_get = $"SELECT item_quantity_sold FROM drinks WHERE item_id LIKE '{drink.item_id}'";
                 DataSet set = dBConnect.GetDataSet(sql_get);
                 DataRow x = set.Tables[0].Rows[0];
                 if (x.ToString() != null || x.ToString() != "") {
@@ -59,7 +59,7 @@ namespace Project2.Classes {
                     current_total = 0;
                 }
                 current_total += drink.item_order_amount;
-                String sql = $"UPDATE drink SET item_total_orders = '{current_total}' WHERE drink_id LIKE '{drink.item_id}'";
+                String sql = $"UPDATE drink SET item_total_orders = '{current_total}' WHERE item_id LIKE '{drink.item_id}'";
                 int rows = dBConnect.DoUpdate(sql);
                 if (rows == 1) {
                     return true;

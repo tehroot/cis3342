@@ -178,6 +178,12 @@
                     </Columns>
                 </asp:GridView>
             </div>
+                <div>
+                    <asp:Gridview id="gvOutput" runat="server" AutoGenerateColumns="true" CssClass="table table-bordered table-condensed">
+                        
+                    </asp:Gridview>
+                </div>
+                    
                 <div class="form-group row hidden-verify-button" id="order-verify-button">
                     <div class="col-sm-10">
                         <button type="button" class="btn btn-primary" id="button-verify">Verify Order</button>

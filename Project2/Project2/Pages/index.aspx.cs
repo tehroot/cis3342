@@ -28,6 +28,11 @@ namespace Project2.Pages {
             gvCoffee.DataBind();
         }
 
+        public void displayOutputData(Order order) {
+            gvOutput.DataSource = order.drinks;
+            gvOutput.DataBind();
+        }
+
         protected void validateTextbox_OnServerValidate(object source, ServerValidateEventArgs e) {
             try {
                 foreach (GridViewRow row in gvTea.Rows) {
@@ -47,10 +52,10 @@ namespace Project2.Pages {
         protected void buildOrderObject_Click(object sender, EventArgs e) {
             //required validator page validation for form information
             try {
-                Order order = new Order();
                 if (Page.IsValid) {
                     try {
                         if (rewardsnumber.Text != "" && rewardsnumber.Text != null) {
+                            Order order = new Order();
                             Customer customer = new Customer(firstname.Text+" "+lastname.Text, phonenumber.Text, rewardsnumber.Text);
                             if (Customer.rewardsDiscount(customer)) {
                                 foreach (GridViewRow row in gvCoffee.Rows) {
@@ -75,6 +80,7 @@ namespace Project2.Pages {
                                 }
                             }
                         } else {
+                            Order order = new Order();
                             Customer customer = new Customer(firstname.Text + " " + lastname.Text, phonenumber.Text);
                             foreach (GridViewRow row in gvCoffee.Rows) {
                                 CheckBox coffee_selected = (CheckBox)row.FindControl("checkbox");
@@ -83,7 +89,6 @@ namespace Project2.Pages {
                                     DropDownList temp_list = (DropDownList)row.Cells[5].FindControl("temperature_choice");
                                     TextBox order_amount = (TextBox)row.Cells[7].FindControl("order_quantity");
                                     Drink drink = new Drink(row.Cells[1].Text, size_list.SelectedValue, order_amount.Text, temp_list.SelectedValue);
-                                    // TODO = II WAS HERE
                                     order.addDrink(drink);
                                 }
                             }
@@ -97,6 +102,7 @@ namespace Project2.Pages {
                                     order.addDrink(drink);
                                 }
                             }
+                            displayOutputData(order);
                         }
                     } catch (Exception a) {
                         //errorlabel.Text = a.Message;

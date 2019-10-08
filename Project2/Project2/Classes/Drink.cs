@@ -106,6 +106,7 @@ namespace Project2.Classes {
         }
 
         public Drink(String id, String size, String order_amount, String category) {
+            
             int order_item_id = 0;
             int order_item_size = 0;
             if(int.TryParse(order_amount, out order_item_size)) {
@@ -115,6 +116,7 @@ namespace Project2.Classes {
             }
             if (int.TryParse(id, out order_item_id)) {
                 item_id = order_item_id;
+                String sql = $"SELECT * FROM drinks WHERE item_id LIKE '{order_item_id}'";
             } else {
                 throw new Exception("Customer_rewards invalid");
             }
