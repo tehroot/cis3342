@@ -14,10 +14,8 @@ namespace Project2.Pages {
 
         DBConnect dBConnect = new DBConnect();
         protected void Page_Load(object sender, EventArgs e) {
-
             if (!IsPostBack) {
                 displayData();
-                
             }
         }
 
@@ -30,12 +28,35 @@ namespace Project2.Pages {
             gvCoffee.DataBind();
         }
 
+        protected void validateTextbox_OnServerValidate(object source, ServerValidateEventArgs e) {
+            try {
+                foreach (GridViewRow row in gvTea.Rows) {
+                    CheckBox selected = (CheckBox)row.FindControl("checkbox");
+                    if (selected.Checked) {
+                        TextBox rowBox = (TextBox)row.FindControl("textbox");
+                        if (rowBox.Text != "" && rowBox.Text != null) {
+                            e.IsValid = true;
+                        }
+                    }
+                }
+            } catch (Exception ex) {
+                e.IsValid = false;
+            }
+        }
+
         protected void buildOrderObject_Click(object sender, EventArgs e) {
+            //required validator page validation for form information
+            if (Page.IsValid) {
+
+            } else {
+                errorlabel.Text = "ERROR";
+            }
+
             try {
                 if (Request.Form["rewardsnumber"] != "") {
                     Customer customer = new Customer(Request.Form["firstname"], Request.Form["lastname"], Request.Form["rewardsnumber"]);
                     if (Customer.rewardsDiscount(customer)) {
-                        //customer.rewards_discount = true;
+                       
                     }
                 } else {
                     Customer customer = new Customer(Request.Form["firstname"], Request.Form["lastname"]);

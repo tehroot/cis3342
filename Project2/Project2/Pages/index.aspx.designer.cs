@@ -22,13 +22,49 @@ namespace Project2.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlForm order;
         
         /// <summary>
-        /// firstnname control.
+        /// errorlabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText firstnname;
+        protected global::System.Web.UI.WebControls.Label errorlabel;
+        
+        /// <summary>
+        /// rfvfirstname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvfirstname;
+        
+        /// <summary>
+        /// rfvlastname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvlastname;
+        
+        /// <summary>
+        /// rfvphonenumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvphonenumber;
+        
+        /// <summary>
+        /// firstname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox firstname;
         
         /// <summary>
         /// lastname control.
@@ -37,7 +73,7 @@ namespace Project2.Pages {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText lastname;
+        protected global::System.Web.UI.WebControls.TextBox lastname;
         
         /// <summary>
         /// phonenumber control.
@@ -46,7 +82,7 @@ namespace Project2.Pages {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText phonenumber;
+        protected global::System.Web.UI.WebControls.TextBox phonenumber;
         
         /// <summary>
         /// rewardsnumber control.
@@ -55,7 +91,7 @@ namespace Project2.Pages {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText rewardsnumber;
+        protected global::System.Web.UI.WebControls.TextBox rewardsnumber;
         
         /// <summary>
         /// gvCoffee control.

@@ -23,20 +23,38 @@
             <div>
                 <asp:Label ID="errorlabel" runat="server"></asp:Label>
             </div>
+               <div>
+                   <asp:RequiredFieldValidator ID="rfvfirstname" runat="server" ControlToValidate="firstname" ErrorMessage="Please enter something in the firstname textbox." InitialValue=""></asp:RequiredFieldValidator>
+               </div>
+                <div>
+                    <asp:RequiredFieldValidator ID="rfvlastname" runat="server" ControlToValidate="lastname" ErrorMessage="Please enter something in the lastname textbox." InitialValue=""></asp:RequiredFieldValidator>
+                </div>
+                <div>
+                    <asp:RequiredFieldValidator ID="rfvphonenumber" runat="server" ControlToValidate="phonenumber" ErrorMessage="Please enter something in the phonenumber textbox." InitialValue=""></asp:RequiredFieldValidator>
+                </div>
+               <%-- <div>
+                    <asp:RequiredFieldValidator ID="rfvdrinksize" runat="server" ControlToValidate="drink_size" ErrorMessage="Please enter something in the lastname textbox." InitialValue=""></asp:RequiredFieldValidator>
+                </div>    
+                <div>
+                    <asp:RequiredFieldValidator ID="rfvtemperaturechoice" runat="server" ControlToValidate="temperature_choice" ErrorMessage="Please enter something in the lastname textbox." InitialValue=""></asp:RequiredFieldValidator>
+                </div>--%>
+                <div>
+                    <%--<asp:CustomValidator ID="cfvorderquantity" runat="server" ControlToValidate="order_quantity" ErrorMessage ="Please enter something in the order textbox." OnServerValidate="validateTextbox_OnServerValidate"></asp:CustomValidator>--%>
+                </div>
             <div class="container" id="customerform">
                 <h1>Customer Information: </h1>
                 <fieldset class="form-group">
                 <div class="row">
                     <label for="firstname" class="col-sm-2 col-form-label">First Name: </label>
                     <div class="col-sm-8">
-                        <input type="text" runat="server" class="form-control" id="firstnname" name="firstname" placeholder="Please enter your first name here." pattern="[a-zA-Z]+"/>
+                        <asp:TextBox ID="firstname" runat="server" CssClass="form-control" placeholder="Please enter your first name here." pattern="[a-zA-Z]+" required></asp:TextBox>
                     </div>
                 </div>
                     <br />
                 <div class="row">
                     <label for="lastname" class="col-sm-2 col-form-label">Last Name: </label>
                     <div class="col-sm-8">
-                        <input type="text" runat="server" class="form-control" id="lastname" name="lastname" placeholder="Please enter your last name here." pattern="[a-zA-Z]+" />
+                        <asp:TextBox ID="lastname" runat="server" CssClass="form-control" placeholder="Please enter your last name here." pattern="[a-zA-Z]+" required></asp:TextBox>
                     </div>
                 </div>
                     <br />
@@ -44,14 +62,14 @@
                 <div class="row">
                     <label for="phonenumber" class="col-sm-2 col-form-label">Phone Number: </label>
                     <div class="col-sm-8">
-                        <input type="text" runat="server" class="form-control" id="phonenumber" name="phonenumber" placeholder="Please enter your phone number here."/>
+                        <asp:TextBox ID="phonenumber" runat="server" CssClass="form-control" placeholder="Please enter your phone number here." pattern="[a-zA-Z]+" required></asp:TextBox>
                      </div>
                 </div>
                 <br />
                 <div class="row">
                     <label for="rewardsnumber" class="col-sm-2 col-form-label">Reward Number: </label>
                     <div class="col-sm-8">
-                        <input type="text" runat="server" class="form-control" id="rewardsnumber" name="rewardsnumber" placeholder="Please enter your rewards number here."/>
+                        <asp:TextBox ID="rewardsnumber" runat="server" CssClass="form-control" placeholder="Please enter your rewards number here if you have one." required></asp:TextBox>
                     </div>
                 </div>
                     <br />
@@ -124,7 +142,8 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Order Amount">
                             <ItemTemplate>
-                                <asp:TextBox ID="order_quantity" runat="server" CssClass="form-control" pattern="[0-9]+"></asp:TextBox>
+                                <asp:TextBox ID="order_quantity" runat="server" CssClass="form-control" pattern="[0-9]+" CausesValidation="true"></asp:TextBox>
+                                <asp:CustomValidator ID="cfvorderquantity" runat="server" ControlToValidate="order_quantity" ErrorMessage ="Please enter something in the order textbox." OnServerValidate="validateTextbox_OnServerValidate"></asp:CustomValidator>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -163,7 +182,8 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Order Amount">
                             <ItemTemplate>
-                                <asp:TextBox ID="txtQtyAdd" runat="server" CssClass="form-control" pattern="[0-9]+"></asp:TextBox>
+                                <asp:TextBox ID="order_quantity" runat="server" CssClass="form-control" pattern="[0-9]+" CausesValidation="true"></asp:TextBox>
+                                <asp:CustomValidator ID="cfvorderquantity" runat="server" ControlToValidate="order_quantity" ErrorMessage ="Please enter something in the order textbox." OnServerValidate="validateTextbox_OnServerValidate"></asp:CustomValidator>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
