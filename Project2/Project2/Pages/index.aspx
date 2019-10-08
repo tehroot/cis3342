@@ -20,7 +20,7 @@
     </script>
 <body>
     <form id="order" runat="server">
-            <div>
+            <div class="">
                 <asp:Label ID="errorlabel" runat="server"></asp:Label>
             </div>
                <div>
@@ -118,7 +118,6 @@
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="item_id" ItemStyle-CssClass="hidden-form" HeaderStyle-CssClass="hidden-form" ReadOnly="true"/>
-                        <asp:BoundField DataField="item_id" HeaderText="Id" ReadOnly="true"/>
                         <asp:BoundField DataField="item_title" HeaderText="Drink Name" ReadOnly="true" />
                         <asp:BoundField DataField="item_description" HeaderText="Drink Description" ReadOnly="true" />
                         <asp:BoundField DataField="item_base_price" HeaderText="Drink Price" ReadOnly="true" />
@@ -158,7 +157,6 @@
                                 </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="item_id" ItemStyle-CssClass="hidden-form" HeaderStyle-CssClass="hidden-form" ReadOnly="true"/>
-                        <asp:BoundField DataField="item_id" HeaderText="Id" ReadOnly="true"/>
                         <asp:BoundField DataField="item_title" HeaderText="Drink Name" ReadOnly="true" />
                         <asp:BoundField DataField="item_description" HeaderText="Drink Description" ReadOnly="true" />
                         <asp:BoundField DataField="item_base_price" HeaderText="Drink Price" ReadOnly="true" />

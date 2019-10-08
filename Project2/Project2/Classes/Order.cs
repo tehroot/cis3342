@@ -8,7 +8,11 @@ namespace Project2.Classes {
         public List<Drink> drinks = new List<Drink>();
 
         public Order() {
+            
+        }
 
+        public void addDrink(Drink drink) {
+            drinks.Add(drink);
         }
     }
 }

@@ -33,7 +33,7 @@ namespace Project2.Pages {
                 foreach (GridViewRow row in gvTea.Rows) {
                     CheckBox selected = (CheckBox)row.FindControl("checkbox");
                     if (selected.Checked) {
-                        TextBox rowBox = (TextBox)row.FindControl("textbox");
+                        TextBox rowBox = (TextBox)row.FindControl("order_quantity");
                         if (rowBox.Text != "" && rowBox.Text != null) {
                             e.IsValid = true;
                         }
@@ -46,33 +46,48 @@ namespace Project2.Pages {
 
         protected void buildOrderObject_Click(object sender, EventArgs e) {
             //required validator page validation for form information
-            if (Page.IsValid) {
-
-            } else {
-                errorlabel.Text = "ERROR";
-            }
-
             try {
-                if (Request.Form["rewardsnumber"] != "") {
-                    Customer customer = new Customer(Request.Form["firstname"], Request.Form["lastname"], Request.Form["rewardsnumber"]);
-                    if (Customer.rewardsDiscount(customer)) {
-                       
+                Order order = new Order();
+                if (Page.IsValid) {
+                    try {
+                        if (rewardsnumber.Text != "") {
+                            Customer customer = new Customer(firstname.Text+" "+lastname.Text, phonenumber.Text, rewardsnumber.Text);
+                            if (Customer.rewardsDiscount(customer)) {
+                                
+                            } else {
+
+                            }
+                        } else {
+                            Customer customer = new Customer(Request.Form["firstname"], Request.Form["lastname"]);
+                        }
+                    } catch (Exception a) {
+                        //errorlabel.Text = a.Message;
+                    }
+                    foreach (GridViewRow row in gvCoffee.Rows) {
+                        CheckBox coffee_selected = (CheckBox)row.FindControl("checkbox");
+                        if (coffee_selected.Checked) {
+                            DropDownList size_list = (DropDownList)row.Cells[6].FindControl("drink_size");
+                            DropDownList temp_list = (DropDownList)row.Cells[5].FindControl("temperature_choice");
+                            TextBox order_amount = (TextBox)row.Cells[7].FindControl("order_quantity");
+                            Drink drink = new Drink(row.Cells[1].Text, size_list.SelectedValue, order_amount.Text, temp_list.SelectedValue);
+                            // TODO == II WAS HERE
+                            order.addDrink(drink);
+                        }
+                    }
+                    foreach (GridViewRow row in gvTea.Rows) {
+                        CheckBox tea_selected = (CheckBox)row.FindControl("checkbox");
+                        if (tea_selected.Checked) {
+                            for (int i = 0; i < row.Cells.Count; i++) {
+                                Debug.WriteLine(row.Cells[i].Text);
+                            }
+                        }
                     }
                 } else {
-                    Customer customer = new Customer(Request.Form["firstname"], Request.Form["lastname"]);
+                    errorlabel.Text = "-- ERROR PROCESSING FORMS --";
                 }
-            } catch (Exception a) {
-                //errorlabel.Text = a.Message;
-            }
-            foreach (GridViewRow row in gvTea.Rows) {
-                //Drink drink = new Drink();
-                CheckBox selected = (CheckBox)row.FindControl("checkbox");
-                Debug.WriteLine(selected.Checked.ToString());
-                if (selected.Checked) {
-                    for (int i = 0; i < row.Cells.Count; i++) {
-                       
-                    }
-                }
+            } catch (Exception ex) {
+                Debug.WriteLine(ex.Message);
+                Debug.WriteLine(ex.StackTrace);
             }
         }
     }

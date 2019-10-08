@@ -97,11 +97,25 @@ namespace Project2.Classes {
             }
         }
 
-
-        private Drink() {
-            
+        public Drink(String id, String size, String order_amount, String category) {
+            int order_item_id = 0;
+            int order_item_size = 0;
+            if(int.TryParse(order_amount, out order_item_size)) {
+                item_order_amount = order_item_size;
+            } else {
+                throw new Exception("Order amoutn invalid");
+            }
+            if (int.TryParse(id, out order_item_id)) {
+                item_id = order_item_id;
+            } else {
+                throw new Exception("Customer_rewards invalid");
+            }
+            item_size = size;
+            item_category = category;
         }
 
+        public Drink() {
 
+        }
     }
 }

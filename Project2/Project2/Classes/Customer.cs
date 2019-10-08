@@ -160,7 +160,6 @@ namespace Project2.Classes {
             } else {
                 return false;
             }
-            
         }
     }
 }
