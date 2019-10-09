@@ -11,6 +11,9 @@ using System.Data.SqlClient;
 
 namespace Project2.Classes {
     public class Customer {
+
+        //field backing stuff here
+        //all of it
         private int _customer_reward_id { get; set; }
         public int customer_reward_id {
             get { return _customer_reward_id; }
@@ -74,7 +77,7 @@ namespace Project2.Classes {
                 _rewards_discount = value;
             }
         }
-
+        //constructor
         public Customer(String name, String phone_number) {
             customer_phone_number = phone_number;
             customer_name = name;
@@ -91,6 +94,7 @@ namespace Project2.Classes {
             customer_name = name;
         }
         
+        //verify that the reward number is right
         public static bool rewardsDiscount(Customer customer) {
             DBConnect dBConnect = new DBConnect();
             int recordsReturned = 0;
@@ -105,6 +109,7 @@ namespace Project2.Classes {
             }
         }
 
+        //update reward members total gross sales
         protected static bool updateCustomerGrossSales(Customer customer, Order order) {
             DBConnect dBConnect = new DBConnect();
             float current_total = 0;
@@ -119,7 +124,7 @@ namespace Project2.Classes {
                     current_total = 0;
                 }
                 foreach(Drink drink in order.drinks) {
-                    total += drink.item_price;
+                    total += drink.item_total_price;
                 }
                 total += current_total;
                 String sql = $"UPDATE reward_accounts SET customer_gross_sales = '{total}' WHERE customer_reward_id LIKE '{ customer.customer_reward_id }'";
@@ -134,6 +139,7 @@ namespace Project2.Classes {
             }
         }
 
+        //update reward members total orders
         protected static bool updateCustomerTotalOrders(Customer customer, Order order) {
             DBConnect dBConnect = new DBConnect();
             int current_total = 0;
@@ -162,7 +168,7 @@ namespace Project2.Classes {
                 return false;
             }
         }
-
+        //public method to perform above two methods externally easily
         public static void updateCustomerRewardsTable(Customer customer, Order order) {
             bool confirmedGross = updateCustomerGrossSales(customer, order);
             bool confirmedTotal = updateCustomerTotalOrders(customer, order);

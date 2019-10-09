@@ -20,6 +20,7 @@ namespace Project2.Pages {
             }
         }
 
+        //bind the initial gridviews to sql datasets
         public void displayData() {
             String selectCoffeeProducts = "SELECT * FROM drinks WHERE item_category = 'Coffee'";
             String selectTeaProducts = "SELECT * FROM drinks WHERE item_category ='tea'";
@@ -29,6 +30,7 @@ namespace Project2.Pages {
             gvCoffee.DataBind();
         }
 
+        //display to the output grid and do some formatting and footer stuff
         public void displayOutputData(Order order, Customer customer) {
             if (customer.rewards_discount) {
                 float totalCost = 0;
@@ -55,6 +57,7 @@ namespace Project2.Pages {
             }
         }
 
+        //validation method for the page applied on checkbox/etc
         protected void validateTextbox_OnServerValidate(object source, ServerValidateEventArgs e) {
             try {
                 foreach (GridViewRow row in gvTea.Rows) {
@@ -80,6 +83,7 @@ namespace Project2.Pages {
                             Order order = new Order();
                             Customer customer = new Customer(firstname.Text+" "+lastname.Text, phonenumber.Text, rewardsnumber.Text);
                             if (Customer.rewardsDiscount(customer)) {
+                                //checkbox form select stuff
                                 foreach (GridViewRow row in gvCoffee.Rows) {
                                     CheckBox coffee_selected = (CheckBox)row.FindControl("checkbox");
                                     if (coffee_selected.Checked) {
@@ -90,6 +94,7 @@ namespace Project2.Pages {
                                         order.addDrink(drink);
                                     }
                                 }
+                                //iterate through the respective grid controls
                                 foreach (GridViewRow row in gvTea.Rows) {
                                     CheckBox tea_selected = (CheckBox)row.FindControl("checkbox");
                                     if (tea_selected.Checked) {
@@ -101,9 +106,14 @@ namespace Project2.Pages {
                                     }
                                 }
                             }
+                            //UI management outside javascript for form completion stuff after submission
+                            postCustomerUICreate(customer);
                             orderform.Visible = false;
+                            customerform.Style.Add("display", "none");
+                            orderoutput.Style.Remove("display");
                             displayOutputData(order, customer);
                             Order.updateDrinksTable(order);
+                            Customer.updateCustomerRewardsTable(customer, order);
                         } else {
                             Order order = new Order();
                             Customer customer = new Customer(firstname.Text + " " + lastname.Text, phonenumber.Text);
@@ -127,12 +137,14 @@ namespace Project2.Pages {
                                     order.addDrink(drink);
                                 }
                             }
+                            //UI management outside javascript for form completion stuff after submission
+                            postCustomerUICreate(customer);
                             orderform.Visible = false;
                             customerform.Style.Add("display", "none");
                             orderoutput.Style.Remove("display");
-
                             displayOutputData(order, customer);
                             Order.updateDrinksTable(order);
+                            Customer.updateCustomerRewardsTable(customer, order);
                         }
                     } catch (Exception a) {
                         //errorlabel.Text = a.Message;
@@ -145,14 +157,22 @@ namespace Project2.Pages {
             }
         }
 
-        protected void postCustomerUICreate() {
-
+        //ui elements method for order summary
+        protected void postCustomerUICreate(Customer customer) {
+            outputname.Text = customer.customer_name;
+            outputphonenumber.Text = customer.customer_phone_number;
+            if (customer.customer_reward_id != 0) {
+                outputrewardsnumber.Text = customer.customer_reward_id.ToString();
+            }
+            outputdelivery_choice.Text = Request.Form["gridRadios"].ToString();
         }
 
+        //reset the form to base with redirect to rawuri parameter
         protected void resetForm_Click(object sender, EventArgs e) {
             Response.Redirect(Request.RawUrl);
         }
 
+        //redirect to the management page
         protected void showManagementReport_Click(object sender, EventArgs e) {
             Response.Redirect("~/Pages/userform.aspx");
         }

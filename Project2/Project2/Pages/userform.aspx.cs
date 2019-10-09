@@ -23,5 +23,9 @@ namespace Project2.Pages {
             gvManagementReport.DataBind();
             gvManagementRewards.DataBind();
         }
+
+        protected void resetForm_Click(object sender, EventArgs e) {
+            Response.Redirect("~/Pages/index.aspx");
+        }
     }
 }

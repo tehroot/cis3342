@@ -8,6 +8,7 @@ using Utilities;
 
 namespace Project2.Classes {
     public class Drink {
+        //reference for drink size multiplier
         private Dictionary<String, float> priceMultipliers = new Dictionary<String, float> {
             ["Tall"] = 1.0F,
             ["Grande"]= 1.2F,
@@ -15,7 +16,7 @@ namespace Project2.Classes {
             ["Trenta"] = 1.6F
         };
         
-
+        //get all sorts of shit here with the field-backing properties
         private int _item_id { get; set; }
         public int item_id {
             get { return _item_id; }
@@ -133,6 +134,8 @@ namespace Project2.Classes {
             }
         }
 
+        //building a drink(yay sql)
+        //easiest since it doesn't need to do that much besides just building the object itself and setting the stuff for display/update
         public Drink(String id, String size, String order_amount, String category) {
             DBConnect dbConnect = new DBConnect();
             int order_item_id = 0;

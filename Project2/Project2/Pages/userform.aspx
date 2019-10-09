@@ -17,22 +17,28 @@
 <body>
     <form id="form1" runat="server">
         <div class="">
+            <h1>Management Report: </h1>
            <asp:GridView ID="gvManagementReport" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-condensed">
                <Columns>
                    <asp:BoundField DataField="item_title" HeaderText="Drink Name" ReadOnly="true" />
                    <asp:BoundField DataField="item_description" HeaderText="Drink Description" ReadOnly="true" />
-                   <asp:BoundField DataField="item_total_sales" HeaderText="Drink Gross Sales" ReadOnly="true" />
+                   <asp:BoundField DataField="item_total_sales" HeaderText="Drink Gross Sales" ReadOnly="true" DataFormatString="{0:c}"/>
                    <asp:BoundField DataField="item_quantity_sold" HeaderText="Total Drink Units Sold" ReadOnly="true" />
                </Columns>
            </asp:GridView>
-
+            <h1>Rewards Report: </h1>
             <asp:GridView ID="gvManagementRewards" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-condensed"> 
                 <Columns>
                     <asp:BoundField DataField="customer_reward_id" HeaderText="Rewards Customer ID" ReadOnly="true" />
                     <asp:BoundField DataField="customer_name" HeaderText="Rewards Customer Name" ReadOnly="true" />
-                    <asp:BoundField DataField="customer_gross_sales" HeaderText="Rewards Customer Gross Sales" ReadOnly="true" />
+                    <asp:BoundField DataField="customer_gross_sales" HeaderText="Rewards Customer Gross Sales" ReadOnly="true" DataFormatString="{0:c}"/>
                 </Columns>
             </asp:GridView>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <asp:Button ID="neworderbutton" runat="server" Text="New Order" OnClick="resetForm_Click" CssClass="btn btn-primary" UseSubmitBehavior="false"/>
+                </div>
+            </div>
         </div>
     </form>
 </body>

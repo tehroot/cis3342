@@ -99,10 +99,13 @@
         <div class="container" runat="server" id="orderoutput" style="display: none">
             <div runat="server" id="customerdata">
                 <h1>Your Order Information:</h1>
-                <asp:Label ID="outputname" runat="server"></asp:Label>
-                <asp:Label ID="outputphonenumber" runat="server"></asp:Label>
-                <asp:Label ID="outputrewardsnumber" runat="server"></asp:Label>
-                <asp:Label ID="outputdelivery_choice" runat="server"></asp:Label>
+                <span class="badge badge-primary">Your Name:</span> <asp:Label ID="outputname" CssClass="badge badge-danger" runat="server"></asp:Label>
+                <br />
+                <span class="badge badge-primary">Your Phone Number:</span><asp:Label ID="outputphonenumber" CssClass="badge badge-danger" runat="server"></asp:Label>
+                <br />
+                <span class="badge badge-primary">Your Rewards Number:</span> <asp:Label ID="outputrewardsnumber" CssClass="badge badge-danger" runat="server"></asp:Label>
+                <br />
+                <span class="badge badge-primary">Your Delivery Choice:</span> <asp:Label ID="outputdelivery_choice" CssClass="badge badge-danger" runat="server"></asp:Label>
             </div>
             <div>
                 <h1>Your Submitted Order:</h1>
@@ -120,8 +123,8 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-10">
-                    <asp:Button ID="neworderbutton" runat="server" Text="New Order" OnClick="resetForm_Click" CssClass="btn btn-primary" />
-                    <asp:Button id="managementbutton" runat="server" Text="View Management Report" OnClick="showManagementReport_Click" CssClass="btn btn-secondary btn-danger" />
+                    <asp:Button ID="neworderbutton" runat="server" Text="New Order" OnClick="resetForm_Click" CssClass="btn btn-primary" UseSubmitBehavior="false"/>
+                    <asp:Button id="managementbutton" runat="server" Text="View Management Report" OnClick="showManagementReport_Click" CssClass="btn btn-secondary btn-danger" UseSubmitBehavior="false"/>
                 </div> 
             </div>
         </div>

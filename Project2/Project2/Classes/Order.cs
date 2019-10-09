@@ -18,6 +18,7 @@ namespace Project2.Classes {
             drinks.Add(drink);
         }
 
+        //update drink gross sales individual, order by order
         protected static bool updateDrinkGrossSales(Order order) {
             DBConnect dBConnect = new DBConnect();
             List<Drink> initialList = order.drinks;
@@ -32,7 +33,7 @@ namespace Project2.Classes {
                 } else {
                     current_total = 0;
                 }
-                current_total += drink.item_price * drink.item_order_amount;
+                current_total += drink.item_total_price;
                 String sql = $"UPDATE drinks SET item_total_sales = '{current_total}' WHERE item_id LIKE '{drink.item_id}'";
                 int rows = dBConnect.DoUpdate(sql);
                 if(rows == 1) {
@@ -43,7 +44,7 @@ namespace Project2.Classes {
             }
             return false;
         }
-
+        //update drink total orders, sql query stuff
         protected static bool updateDrinkTotalOrders(Order order) {
             DBConnect dBConnect = new DBConnect();
             int current_total = 0;
@@ -70,6 +71,7 @@ namespace Project2.Classes {
             return false;
         }
 
+        //public method to perform above two methods externally easily
         public static void updateDrinksTable(Order order) {
             bool confirmedTotal = updateDrinkTotalOrders(order);
             bool confirmedGross = updateDrinkGrossSales(order);
