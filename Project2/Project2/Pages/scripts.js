@@ -26,7 +26,7 @@
             });
             $('#button-reset').prop('disabled', false);
             $('#button-submit').prop('disabled', true);
-            $('#order-form').toggleClass("hidden-form");
+            $('#orderform').css("display", "unset");
         } else {
             values = new Array();
             //alert("Fill out the form properly.");
@@ -36,7 +36,7 @@
         $('#customerform input').each(function () {
             $(this).attr('readonly', false);
         });
-        $('#order-form').toggleClass("hidden-form");
+        $('#orderform').css("display", "none");
         $('#button-submit').prop('disabled', false);
         $('#button-reset').prop('disabled', true);
     });

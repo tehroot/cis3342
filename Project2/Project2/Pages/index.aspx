@@ -32,7 +32,7 @@
                 <div>
                     <asp:RequiredFieldValidator ID="rfvphonenumber" runat="server" ControlToValidate="phonenumber" ErrorMessage="Please enter something in the phonenumber textbox." InitialValue=""></asp:RequiredFieldValidator>
                 </div>
-            <div class="container" id="customerform">
+            <div class="container" id="customerform" runat="server">
                 <h1>Customer Information: </h1>
                 <fieldset class="form-group">
                 <div class="row">
@@ -96,7 +96,26 @@
                 <br />
                 <br />
         </div>
-        <div class="hidden-form" id="order-form">
+        <div runat="server" id="customerdata">
+            <asp:Label ID="outputname" runat="server"></asp:Label>
+            <asp:Label ID="outputphonenumber" runat="server"></asp:Label>
+            <asp:Label ID="outputrewardsnumber" runat="server"></asp:Label>
+            <asp:Label ID="outputdelivery_choice" runat="server"></asp:Label>
+        </div>
+        <div runat="server" id="orderoutput">
+            <asp:Gridview id="gvOutput" runat="server" ShowFooter="True" AutoGenerateColumns="False" CssClass="table table-bordered table-condensed">
+                <Columns>
+                    <asp:BoundField DataField="item_title" HeaderText="Drink Name" ReadOnly="true" />
+                    <asp:BoundField DataField="item_description" HeaderText="Drink Description" ReadOnly="true" />
+                    <asp:BoundField DataField="item_size" HeaderText="Drink Size" ReadOnly="true" />
+                    <asp:BoundField DataField="item_category" HeaderText="Drink Temperature" ReadOnly="true" />
+                    <asp:BoundField DataField="item_price" HeaderText="Drink Price" ReadOnly="true" />
+                    <asp:BoundField DataField="item_order_amount" HeaderText="Order Amount" ReadOnly="true" />
+                    <asp:BoundField DataField="item_total_price" DataFormatString="{0:c}" HeaderText="Total Item Cost" ReadOnly="true" />
+                </Columns>
+            </asp:Gridview>
+        </div>
+        <div class="hidden-form" id="orderform" runat="server" >
             <div class ="container">
                 <h1>Order Products: </h1>
             <div>
@@ -108,7 +127,7 @@
                                 <asp:CheckBox ID="checkbox" runat="server" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="item_id" ItemStyle-CssClass="hidden-form" HeaderStyle-CssClass="hidden-form" ReadOnly="true"/>
+                        <asp:BoundField DataField="item_id" ItemStyle-CssClass="hiddenCol" HeaderStyle-CssClass="hiddenCol" ReadOnly="true"/>
                         <asp:BoundField DataField="item_title" HeaderText="Drink Name" ReadOnly="true" />
                         <asp:BoundField DataField="item_description" HeaderText="Drink Description" ReadOnly="true" />
                         <asp:BoundField DataField="item_base_price" HeaderText="Drink Price" ReadOnly="true" />
@@ -147,7 +166,7 @@
                                     <asp:CheckBox id="checkbox" runat="server" />
                                 </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="item_id" ItemStyle-CssClass="hidden-form" HeaderStyle-CssClass="hidden-form" ReadOnly="true"/>
+                        <asp:BoundField DataField="item_id" ItemStyle-CssClass="hiddenCol" HeaderStyle-CssClass="hiddenCol" ReadOnly="true"/>
                         <asp:BoundField DataField="item_title" HeaderText="Drink Name" ReadOnly="true" />
                         <asp:BoundField DataField="item_description" HeaderText="Drink Description" ReadOnly="true" />
                         <asp:BoundField DataField="item_base_price" HeaderText="Drink Price" ReadOnly="true" />
@@ -178,12 +197,7 @@
                     </Columns>
                 </asp:GridView>
             </div>
-                <div>
-                    <asp:Gridview id="gvOutput" runat="server" AutoGenerateColumns="true" CssClass="table table-bordered table-condensed">
-                        
-                    </asp:Gridview>
-                </div>
-                    
+                <div runat="server" id="outputbuttons">
                 <div class="form-group row hidden-verify-button" id="order-verify-button">
                     <div class="col-sm-10">
                         <button type="button" class="btn btn-primary" id="button-verify">Verify Order</button>
@@ -195,6 +209,7 @@
                         <button type="button" id="button-edit" class="btn btn-secondary btn-danger">Edit Information</button>
                     </div>
                 </div> 
+                </div>
             </div>
         </div>
         </form>

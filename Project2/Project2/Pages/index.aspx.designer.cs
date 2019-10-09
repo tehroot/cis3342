@@ -58,6 +58,15 @@ namespace Project2.Pages {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvphonenumber;
         
         /// <summary>
+        /// customerform control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl customerform;
+        
+        /// <summary>
         /// firstname control.
         /// </summary>
         /// <remarks>
@@ -94,6 +103,78 @@ namespace Project2.Pages {
         protected global::System.Web.UI.WebControls.TextBox rewardsnumber;
         
         /// <summary>
+        /// customerdata control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl customerdata;
+        
+        /// <summary>
+        /// outputname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label outputname;
+        
+        /// <summary>
+        /// outputphonenumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label outputphonenumber;
+        
+        /// <summary>
+        /// outputrewardsnumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label outputrewardsnumber;
+        
+        /// <summary>
+        /// outputdelivery_choice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label outputdelivery_choice;
+        
+        /// <summary>
+        /// orderoutput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl orderoutput;
+        
+        /// <summary>
+        /// gvOutput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvOutput;
+        
+        /// <summary>
+        /// orderform control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl orderform;
+        
+        /// <summary>
         /// gvCoffee control.
         /// </summary>
         /// <remarks>
@@ -110,7 +191,15 @@ namespace Project2.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvTea;
-        protected global::System.Web.UI.WebControls.GridView gvOutput;
+        
+        /// <summary>
+        /// outputbuttons control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl outputbuttons;
         
         /// <summary>
         /// buildOrderObject control.

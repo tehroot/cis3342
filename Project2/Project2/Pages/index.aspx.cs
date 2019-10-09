@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -28,9 +29,30 @@ namespace Project2.Pages {
             gvCoffee.DataBind();
         }
 
-        public void displayOutputData(Order order) {
-            gvOutput.DataSource = order.drinks;
-            gvOutput.DataBind();
+        public void displayOutputData(Order order, Customer customer) {
+            if (customer.rewards_discount) {
+                float totalCost = 0;
+                gvOutput.DataSource = order.drinks;
+                gvOutput.Columns[0].FooterText = "Total Cost: ";
+                for (int i = 0; i < order.drinks.Count; i++) {
+                    totalCost += order.drinks[i].item_total_price;
+                }
+                float discount = totalCost * .10F;
+                totalCost = totalCost - discount;
+                String formatted = String.Format(totalCost.ToString(), NumberStyles.Currency);
+                gvOutput.Columns[6].FooterText = "DISCOUNT APPLIED: " + "$" + formatted;
+                gvOutput.DataBind();
+            } else {
+                float totalCost = 0;
+                gvOutput.DataSource = order.drinks;
+                gvOutput.Columns[0].FooterText = "Total Cost: ";
+                for (int i = 0; i < order.drinks.Count; i++) {
+                    totalCost += order.drinks[i].item_total_price;
+                }
+                String formatted = String.Format(totalCost.ToString(), NumberStyles.Currency);
+                gvOutput.Columns[6].FooterText = "$" + formatted;
+                gvOutput.DataBind();
+            }
         }
 
         protected void validateTextbox_OnServerValidate(object source, ServerValidateEventArgs e) {
@@ -79,6 +101,9 @@ namespace Project2.Pages {
                                     }
                                 }
                             }
+                            orderform.Visible = false;
+                            displayOutputData(order, customer);
+                            Order.updateDrinksTable(order);
                         } else {
                             Order order = new Order();
                             Customer customer = new Customer(firstname.Text + " " + lastname.Text, phonenumber.Text);
@@ -102,7 +127,10 @@ namespace Project2.Pages {
                                     order.addDrink(drink);
                                 }
                             }
-                            displayOutputData(order);
+                            orderform.Visible = false;
+                            customerform.Style.Add("display", "none");
+                            displayOutputData(order, customer);
+                            Order.updateDrinksTable(order);
                         }
                     } catch (Exception a) {
                         //errorlabel.Text = a.Message;
@@ -112,8 +140,11 @@ namespace Project2.Pages {
                 }
             } catch (Exception ex) {
                 Debug.WriteLine(ex.Message);
-                Debug.WriteLine(ex.StackTrace);
             }
         }
+
+        //protected showManagementReport_Click(object sender, EventArgs e) {
+
+        //}
     }
 }

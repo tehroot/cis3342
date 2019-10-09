@@ -18,7 +18,7 @@ namespace Project2.Classes {
             drinks.Add(drink);
         }
 
-        public static bool updateDrinkGrossSales(Order order) {
+        protected static bool updateDrinkGrossSales(Order order) {
             DBConnect dBConnect = new DBConnect();
             List<Drink> initialList = order.drinks;
             float current_total = 0;
@@ -27,13 +27,13 @@ namespace Project2.Classes {
                 String sql_get = $"SELECT item_total_sales FROM drinks WHERE item_id LIKE '{drink.item_id}'";
                 DataSet set = dBConnect.GetDataSet(sql_get);
                 DataRow x = set.Tables[0].Rows[0];
-                if (x.ToString() != null || x.ToString() != "") {
-                    current_total = float.Parse(x.ToString());
+                if (x[0].ToString() != null || x[0].ToString() != "") {
+                    current_total = float.Parse(x[0].ToString());
                 } else {
                     current_total = 0;
                 }
                 current_total += drink.item_price * drink.item_order_amount;
-                String sql = $"UPDATE drink SET item_gross_sales = '{current_total}' WHERE item_id LIKE '{drink.item_id}'";
+                String sql = $"UPDATE drinks SET item_total_sales = '{current_total}' WHERE item_id LIKE '{drink.item_id}'";
                 int rows = dBConnect.DoUpdate(sql);
                 if(rows == 1) {
                     return true;
@@ -44,7 +44,7 @@ namespace Project2.Classes {
             return false;
         }
 
-        public static bool updateDrinkTotalOrders(Order order) {
+        protected static bool updateDrinkTotalOrders(Order order) {
             DBConnect dBConnect = new DBConnect();
             int current_total = 0;
             int total = 0;
@@ -53,13 +53,13 @@ namespace Project2.Classes {
                 String sql_get = $"SELECT item_quantity_sold FROM drinks WHERE item_id LIKE '{drink.item_id}'";
                 DataSet set = dBConnect.GetDataSet(sql_get);
                 DataRow x = set.Tables[0].Rows[0];
-                if (x.ToString() != null || x.ToString() != "") {
-                    current_total = int.Parse(x.ToString());
+                if (x[0].ToString() != null || x[0].ToString() != "") {
+                    current_total = int.Parse(x[0].ToString());
                 } else {
                     current_total = 0;
                 }
                 current_total += drink.item_order_amount;
-                String sql = $"UPDATE drink SET item_total_orders = '{current_total}' WHERE item_id LIKE '{drink.item_id}'";
+                String sql = $"UPDATE drinks SET item_quantity_sold = '{current_total}' WHERE item_id LIKE '{drink.item_id}'";
                 int rows = dBConnect.DoUpdate(sql);
                 if (rows == 1) {
                     return true;
@@ -68,6 +68,14 @@ namespace Project2.Classes {
                 }
             }
             return false;
+        }
+
+        public static void updateDrinksTable(Order order) {
+            bool confirmedTotal = updateDrinkTotalOrders(order);
+            bool confirmedGross = updateDrinkGrossSales(order);
+            if(!confirmedTotal || !confirmedGross) {
+                throw new Exception("Error updating Drink Tables");
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI.WebControls.WebParts;
 using Utilities;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace Project2.Classes {
     public class Customer {
@@ -93,7 +94,7 @@ namespace Project2.Classes {
         public static bool rewardsDiscount(Customer customer) {
             DBConnect dBConnect = new DBConnect();
             int recordsReturned = 0;
-            String sql = $"SELECT * FROM rewards_account WHERE customer_reward_id LIKE '{customer.customer_reward_id}'";
+            String sql = $"SELECT * FROM reward_accounts WHERE customer_reward_id LIKE '{customer.customer_reward_id}'";
             dBConnect.GetDataSet(sql, out recordsReturned);
             if (recordsReturned == 1) {
                 customer.rewards_discount = true;
@@ -104,16 +105,16 @@ namespace Project2.Classes {
             }
         }
 
-        public static bool updateCustomerGrossSales(Customer customer, Order order) {
+        protected static bool updateCustomerGrossSales(Customer customer, Order order) {
             DBConnect dBConnect = new DBConnect();
             float current_total = 0;
             float total = 0;
-            String sql_get = $"SELECT customer_gross_sales FROM rewards_account WHERE customer_reward_id LIKE '{customer.customer_reward_id}'";
+            String sql_get = $"SELECT customer_gross_sales FROM reward_accounts WHERE customer_reward_id LIKE '{customer.customer_reward_id}'";
             if (customer.rewards_discount == true) {
                 DataSet set = dBConnect.GetDataSet(sql_get);
                 DataRow x = set.Tables[0].Rows[0];
-                if(x.ToString() != "" && x.ToString() != null) {
-                    current_total = float.Parse(x.ToString());
+                if(x[0].ToString() != "" && x[0].ToString() != null) {
+                    current_total = float.Parse(x[0].ToString());
                 } else {
                     current_total = 0;
                 }
@@ -121,7 +122,7 @@ namespace Project2.Classes {
                     total += drink.item_price;
                 }
                 total += current_total;
-                String sql = $"UPDATE rewards_account SET customer_gross_sales = '{total}' WHERE customer_reward_id LIKE '{ customer.customer_reward_id }'";
+                String sql = $"UPDATE reward_accounts SET customer_gross_sales = '{total}' WHERE customer_reward_id LIKE '{ customer.customer_reward_id }'";
                 int rowsUpdated = dBConnect.DoUpdate(sql);
                 if (rowsUpdated == 1) {
                     return true;
@@ -133,16 +134,16 @@ namespace Project2.Classes {
             }
         }
 
-        public static bool updateCustomerTotalOrders(Customer customer, Order order) {
+        protected static bool updateCustomerTotalOrders(Customer customer, Order order) {
             DBConnect dBConnect = new DBConnect();
             int current_total = 0;
             int total = 0;
-            String sql_get = $"SELECT customer_total_orders FROM rewards_account WHERE customer_reward_id LIKE '{customer.customer_reward_id}'";
+            String sql_get = $"SELECT customer_total_orders FROM reward_accounts WHERE customer_reward_id LIKE '{customer.customer_reward_id}'";
             if (customer.rewards_discount == true) {
                 DataSet set = dBConnect.GetDataSet(sql_get);
                 DataRow x = set.Tables[0].Rows[0];
-                if (x.ToString() != "" && x.ToString() != null) {
-                    current_total = int.Parse(x.ToString());
+                if (x[0].ToString() != "" && x[0].ToString() != null) {
+                    current_total = int.Parse(x[0].ToString());
                 } else {
                     current_total = 0;
                 }
@@ -150,7 +151,7 @@ namespace Project2.Classes {
                     total += drink.item_order_amount;
                 }
                 total += current_total;
-                String sql = $"UPDATE rewards_account SET customer_total_orders = '{total}' WHERE customer_reward_id LIKE '{ customer.customer_reward_id }'";
+                String sql = $"UPDATE reward_accounts SET customer_total_orders = '{total}' WHERE customer_reward_id LIKE '{ customer.customer_reward_id }'";
                 int rows = dBConnect.DoUpdate(sql);
                 if (rows == 1) {
                     return true;
@@ -159,6 +160,14 @@ namespace Project2.Classes {
                 }
             } else {
                 return false;
+            }
+        }
+
+        public static void updateCustomerRewardsTable(Customer customer, Order order) {
+            bool confirmedGross = updateCustomerGrossSales(customer, order);
+            bool confirmedTotal = updateCustomerTotalOrders(customer, order);
+            if (!confirmedTotal || !confirmedGross) {
+                throw new Exception("Error updating Customer Tables");
             }
         }
     }

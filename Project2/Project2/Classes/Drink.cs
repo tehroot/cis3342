@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.Linq;
 using System.Web;
+using Utilities;
 
 namespace Project2.Classes {
     public class Drink {
@@ -101,15 +103,43 @@ namespace Project2.Classes {
             set {
                 if (value > 0 || value < 999999999) {
                     _item_quantity_sold = value;
+                } else {
+                    throw new ArgumentException("Invalid Item Sold");
+                }
+            }
+        }
+
+        private String _item_description { get; set; }
+        public String item_description {
+            get { return _item_description; }
+            set {
+                if(value != "" && value != null) {
+                    _item_description = value;
+                } else {
+                    throw new ArgumentException("Invalid String set, description");
+                }
+            }
+        }
+
+        private float _item_total_price { get; set; }
+        public float item_total_price {
+            get { return _item_total_price; }
+            set {
+                if (value >= 0 || value < 999999999) {
+                    _item_total_price = value;
+                } else {
+                    throw new ArgumentException("Invalid item total price");
                 }
             }
         }
 
         public Drink(String id, String size, String order_amount, String category) {
-            
+            DBConnect dbConnect = new DBConnect();
             int order_item_id = 0;
             int order_item_size = 0;
-            if(int.TryParse(order_amount, out order_item_size)) {
+            item_size = size;
+            item_category = category;
+            if (int.TryParse(order_amount, out order_item_size)) {
                 item_order_amount = order_item_size;
             } else {
                 throw new Exception("Order amount invalid");
@@ -117,14 +147,16 @@ namespace Project2.Classes {
             if (int.TryParse(id, out order_item_id)) {
                 item_id = order_item_id;
                 String sql = $"SELECT * FROM drinks WHERE item_id LIKE '{order_item_id}'";
+                DataSet set = dbConnect.GetDataSet(sql);
+                DataRow x = set.Tables[0].Rows[0];
+                item_title = x[1].ToString();
+                item_description = x[2].ToString();
+                item_price = float.Parse(x[4].ToString());
+                item_total_price = (item_price * priceMultipliers[item_size]) * (item_order_amount);
             } else {
                 throw new Exception("Customer_rewards invalid");
             }
-            item_size = size;
-            item_category = category;
-            item_price = priceMultipliers[size] * order_item_size;
         }
-
         public Drink() {
 
         }
