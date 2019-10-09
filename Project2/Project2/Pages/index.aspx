@@ -96,24 +96,34 @@
                 <br />
                 <br />
         </div>
-        <div runat="server" id="customerdata">
-            <asp:Label ID="outputname" runat="server"></asp:Label>
-            <asp:Label ID="outputphonenumber" runat="server"></asp:Label>
-            <asp:Label ID="outputrewardsnumber" runat="server"></asp:Label>
-            <asp:Label ID="outputdelivery_choice" runat="server"></asp:Label>
-        </div>
-        <div runat="server" id="orderoutput">
-            <asp:Gridview id="gvOutput" runat="server" ShowFooter="True" AutoGenerateColumns="False" CssClass="table table-bordered table-condensed">
-                <Columns>
-                    <asp:BoundField DataField="item_title" HeaderText="Drink Name" ReadOnly="true" />
-                    <asp:BoundField DataField="item_description" HeaderText="Drink Description" ReadOnly="true" />
-                    <asp:BoundField DataField="item_size" HeaderText="Drink Size" ReadOnly="true" />
-                    <asp:BoundField DataField="item_category" HeaderText="Drink Temperature" ReadOnly="true" />
-                    <asp:BoundField DataField="item_price" HeaderText="Drink Price" ReadOnly="true" />
-                    <asp:BoundField DataField="item_order_amount" HeaderText="Order Amount" ReadOnly="true" />
-                    <asp:BoundField DataField="item_total_price" DataFormatString="{0:c}" HeaderText="Total Item Cost" ReadOnly="true" />
-                </Columns>
-            </asp:Gridview>
+        <div class="container" runat="server" id="orderoutput" style="display: none">
+            <div runat="server" id="customerdata">
+                <h1>Your Order Information:</h1>
+                <asp:Label ID="outputname" runat="server"></asp:Label>
+                <asp:Label ID="outputphonenumber" runat="server"></asp:Label>
+                <asp:Label ID="outputrewardsnumber" runat="server"></asp:Label>
+                <asp:Label ID="outputdelivery_choice" runat="server"></asp:Label>
+            </div>
+            <div>
+                <h1>Your Submitted Order:</h1>
+                <asp:Gridview id="gvOutput" runat="server" ShowFooter="True" AutoGenerateColumns="False" CssClass="table table-bordered table-condensed">
+                    <Columns>
+                        <asp:BoundField DataField="item_title" HeaderText="Drink Name" ReadOnly="true" />
+                        <asp:BoundField DataField="item_description" HeaderText="Drink Description" ReadOnly="true" />
+                        <asp:BoundField DataField="item_size" HeaderText="Drink Size" ReadOnly="true" />
+                        <asp:BoundField DataField="item_category" HeaderText="Drink Temperature" ReadOnly="true" />
+                        <asp:BoundField DataField="item_price" HeaderText="Drink Price" ReadOnly="true" />
+                        <asp:BoundField DataField="item_order_amount" HeaderText="Order Amount" ReadOnly="true" />
+                        <asp:BoundField DataField="item_total_price" DataFormatString="{0:c}" HeaderText="Total Item Cost" ReadOnly="true" />
+                    </Columns>
+                </asp:Gridview>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <asp:Button ID="neworderbutton" runat="server" Text="New Order" OnClick="resetForm_Click" CssClass="btn btn-primary" />
+                    <asp:Button id="managementbutton" runat="server" Text="View Management Report" OnClick="showManagementReport_Click" CssClass="btn btn-secondary btn-danger" />
+                </div> 
+            </div>
         </div>
         <div class="hidden-form" id="orderform" runat="server" >
             <div class ="container">
@@ -197,7 +207,7 @@
                     </Columns>
                 </asp:GridView>
             </div>
-                <div runat="server" id="outputbuttons">
+                <div id="outputbuttons">
                 <div class="form-group row hidden-verify-button" id="order-verify-button">
                     <div class="col-sm-10">
                         <button type="button" class="btn btn-primary" id="button-verify">Verify Order</button>
@@ -210,7 +220,7 @@
                     </div>
                 </div> 
                 </div>
-            </div>
+                </div>
         </div>
         </form>
     </body>

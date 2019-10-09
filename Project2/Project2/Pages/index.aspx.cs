@@ -129,6 +129,8 @@ namespace Project2.Pages {
                             }
                             orderform.Visible = false;
                             customerform.Style.Add("display", "none");
+                            orderoutput.Style.Remove("display");
+
                             displayOutputData(order, customer);
                             Order.updateDrinksTable(order);
                         }
@@ -143,8 +145,16 @@ namespace Project2.Pages {
             }
         }
 
-        //protected showManagementReport_Click(object sender, EventArgs e) {
+        protected void postCustomerUICreate() {
 
-        //}
+        }
+
+        protected void resetForm_Click(object sender, EventArgs e) {
+            Response.Redirect(Request.RawUrl);
+        }
+
+        protected void showManagementReport_Click(object sender, EventArgs e) {
+            Response.Redirect("~/Pages/userform.aspx");
+        }
     }
 }

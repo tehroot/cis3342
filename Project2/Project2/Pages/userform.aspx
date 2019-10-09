@@ -16,7 +16,7 @@
     </script>
 <body>
     <form id="form1" runat="server">
-        <div class="container">
+        <div class="">
            <asp:GridView ID="gvManagementReport" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-condensed">
                <Columns>
                    <asp:BoundField DataField="item_title" HeaderText="Drink Name" ReadOnly="true" />
