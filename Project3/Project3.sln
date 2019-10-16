@@ -1,6 +1,7 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29409.12
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project3", "Project3\Project3.csproj", "{70D32F94-F658-44CB-A501-84E3C9EFAAFD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project3.Tests", "Project3.Tests\Project3.Tests.csproj", "{D016CE76-CE6A-4E75-9C51-D7E190CCE80D}"
@@ -19,5 +20,11 @@ Global
 		{D016CE76-CE6A-4E75-9C51-D7E190CCE80D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D016CE76-CE6A-4E75-9C51-D7E190CCE80D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D016CE76-CE6A-4E75-9C51-D7E190CCE80D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7236B574-E498-4F18-9421-DF91F7399EFF}
 	EndGlobalSection
 EndGlobal
