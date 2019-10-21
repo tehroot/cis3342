@@ -40,7 +40,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Common, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.Common.4.3.0\lib\net451\System.Data.Common.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Entity" />
@@ -56,13 +61,36 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pages\admin.aspx" />
+    <Content Include="Pages\inbox.aspx" />
+    <Content Include="Pages\scripts.js" />
+    <Content Include="Pages\stylesheet.css" />
     <Content Include="Web.config" />
     <Content Include="Global.asax" />
     <Content Include="Pages\login.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Connection.cs" />
+    <Compile Include="Classes\Email.cs" />
+    <Compile Include="Classes\emailService.cs" />
+    <Compile Include="Classes\loginService.cs" />
+    <Compile Include="Classes\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\admin.aspx.cs">
+      <DependentUpon>admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\admin.aspx.designer.cs">
+      <DependentUpon>admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\inbox.aspx.cs">
+      <DependentUpon>inbox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\inbox.aspx.designer.cs">
+      <DependentUpon>inbox.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
@@ -73,7 +101,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Classes\" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

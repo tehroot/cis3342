@@ -1,0 +1,23 @@
+﻿.hidden-form {
+    display: none;
+}
+
+.warning {
+    border: 1px solid red;
+    border-radius: 4px;
+    visibility: hidden;
+    text-align: center;
+    background-color: #ff0000;
+}
+
+.hidden-submit-button {
+    visibility: hidden;
+}
+
+.hidden-verify-button {
+    visibility: visible;
+}
+
+.hiddenCol {
+    display: none;
+}
