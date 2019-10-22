@@ -9,11 +9,18 @@ namespace Project3.Classes {
         private String _password { get; set; }
         private Boolean _adminFlag { get; set; }
         private Boolean _banFlag { get; set; }
+        private String _firstname { get; set; }
+        private String _lastname { get; set; }
+        private String _alternateemail { get; set; }
 
         public String username { get { return _username; }
             set {
                 if (value != null && value != "") {
-                    _username = value;
+                    if (!loginService.checkUsername(username)) {
+                        _username = value;
+                    } else {
+                        throw new ArgumentException("Username already taken.");
+                    }
                 } else {
                     throw new ArgumentException("Username cannot be blank.");
                 }
@@ -37,6 +44,33 @@ namespace Project3.Classes {
             set {
                 _banFlag = value;
             }
+        }
+
+        public String firstname { get { return _firstname; } set {
+                if (value != null && value != "") {
+                    _firstname = value;
+                } else {
+                    throw new ArgumentException("Firstname cannot be blank");
+                }
+            } 
+        }
+
+        public String lastname { get { return _lastname; } set {
+                if (value != null && value != "") {
+                    _lastname = value;
+                } else {
+                    throw new ArgumentException("Firstname cannot be blank");
+                }
+            } 
+        }
+
+        public String alternateemail { get { return _alternateemail; } set {
+                if (value != null && value != "") {
+                    _alternateemail = value;
+                } else {
+                    throw new ArgumentException("Firstname cannot be blank");
+                }
+            } 
         }
     }
 }

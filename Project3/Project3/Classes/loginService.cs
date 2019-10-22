@@ -69,5 +69,9 @@ namespace Project3.Classes {
         public static bool login(String username, String password) {
             return checkUserLogin(username, password);
         }
+
+        public static bool checkUsername(String username) {
+            return checkUser(username);
+        }
     }
 }

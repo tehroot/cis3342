@@ -10,5 +10,9 @@ namespace Project3.Pages {
         protected void Page_Load(object sender, EventArgs e) {
 
         }
+
+        protected void checkAccount_Click(object sender, EventArgs e) {
+
+        }
     }
 }

@@ -63,6 +63,7 @@
   <ItemGroup>
     <Content Include="Pages\admin.aspx" />
     <Content Include="Pages\inbox.aspx" />
+    <Content Include="Pages\newuser.aspx" />
     <Content Include="Pages\scripts.js" />
     <Content Include="Pages\stylesheet.css" />
     <Content Include="Web.config" />
@@ -99,9 +100,19 @@
     <Compile Include="Pages\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\newuser.aspx.cs">
+      <DependentUpon>newuser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\newuser.aspx.designer.cs">
+      <DependentUpon>newuser.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\avatars\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

@@ -33,7 +33,7 @@
 		    <div class="warning" id="invalidLogin" runat="server"></div>
 		    <div class="form-group">
 			    <label for="email">Email Address</label>
-			    <asp:TextBox runat="server" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control" id="email" aria-describedby="email" placeholder="Enter Email here" required></asp:TextBox>
+			    <asp:TextBox runat="server" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" CssClass="form-control" id="email" aria-describedby="email" placeholder="Enter Email here" required></asp:TextBox>
 			    <small id="emailHelp" class="form-text text-muted">Enter your email here to login.</small>
 		    </div>
 		    <div class="form-group">
@@ -41,7 +41,7 @@
 			    <asp:TextBox runat="server" class="form-control" id="password" placeholder="Enter password here" required></asp:TextBox>
 			    <small id="passwordHelp" class="form-text text-muted">Enter your password here to login.</small>
 		    </div>
-		    <asp:Button id="loginButton" text="Login" runat="server" type="submit" class="btn btn-primary" OnClick="checkLogin_Click"/>
+		    <asp:Button id="loginButton" text="Login" runat="server" type="submit" CssClass="btn btn-primary" OnClick="checkLogin_Click"/>
 	    </form>
 	    </div>
     </div>

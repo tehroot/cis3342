@@ -23,7 +23,8 @@ namespace Project3.Pages {
             //fire off the requisite storedprocedure for returning all of the users emails and subsequently filling in the 
             //dropdown for the labeling page.
 
-            //if it's an admin, we need to figure out the session caching/application caching requirements in order to facilitate the transferance of that to the admin page functionality
+            //if it's an admin, we need to figure out the session caching/application caching requirements in order to facilitate the transferance of 
+            //that to the admin page functionality
             //in order to comply with the requirements of the project
             try {
                 bool loginStatus = loginService.login(email.Text, password.Text);
