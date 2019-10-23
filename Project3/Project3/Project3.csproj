@@ -63,6 +63,7 @@
   <ItemGroup>
     <Content Include="Pages\admin.aspx" />
     <Content Include="Pages\inbox.aspx" />
+    <Content Include="Pages\landing.aspx" />
     <Content Include="Pages\newuser.aspx" />
     <Content Include="Pages\scripts.js" />
     <Content Include="Pages\stylesheet.css" />
@@ -92,6 +93,13 @@
     </Compile>
     <Compile Include="Pages\inbox.aspx.designer.cs">
       <DependentUpon>inbox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\landing.aspx.cs">
+      <DependentUpon>landing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\landing.aspx.designer.cs">
+      <DependentUpon>landing.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>

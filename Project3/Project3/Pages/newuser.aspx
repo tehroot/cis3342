@@ -33,6 +33,7 @@
         <div class="container">
             <div class="justify-content-center">
                 <form id="form1" runat="server">
+                    <asp:CustomValidator runat="server" id="formvalidator" Display="Dynamic" OnServerValidate="formValidation" />
                     <div runat="server" CssClass="warning" id="warningdiv"></div>
                     <br />
                     <br />
@@ -43,8 +44,8 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
 						    <label for="username" class="text-dark">Desired Username:</label>
-						    <asp:Textbox runat="server" CssClass="form-control" id="email" placeholder="Enter First Name" required pattern="[a-z0-9]"></asp:Textbox>
-                            <small id="emailHelp" class="form-text text-muted">Please enter only lowercase letters or numerical digits</small>
+						    <asp:Textbox runat="server" CssClass="form-control" id="email" placeholder="Enter Username" required></asp:Textbox>
+                            <small id="emailHelp" class="form-text text-muted">Please enter only lowercase letters and numerical digits</small>
 					    </div>
                     </div>
                     <div class="form-row">
@@ -57,14 +58,14 @@
                     <div class="form-row">
                         <div class="form-group col-md-4">
 						    <label for="firstname" class="text-dark">First Name:</label>
-						    <asp:Textbox runat="server" CssClass="form-control" id="firstname" placeholder="Enter First Name" required name="firstname" pattern="[a-zA-Z]"></asp:Textbox>
+						    <asp:Textbox runat="server" CssClass="form-control" id="firstname" placeholder="Enter First Name" required name="firstname"></asp:Textbox>
 					    </div>
 					    <div class="form-group col-md-4">
 						    <label for="lastname" class="text-dark">Last Name:</label>
-						    <asp:Textbox runat="server" CssClass="form-control" id="lastname" placeholder="Enter Last Name" required name="lastname" pattern="[a-zA-Z]"></asp:Textbox>
+						    <asp:Textbox runat="server" CssClass="form-control" id="lastname" placeholder="Enter Last Name" required name="lastname"></asp:Textbox>
 					    </div>
                         <div class="form-group col-md-4">
-						    <label for="alternateemail" class="text-dark">Last Name:</label>
+						    <label for="alternateemail" class="text-dark">Alternate Email: </label>
 						    <asp:Textbox runat="server" CssClass="form-control" id="alternateemail" placeholder="Enter Alternate E-mail address." required name="lastname" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"></asp:Textbox>
                             <small id="alternateEmailHelp" class="form-text text-muted">Please enter a recovery email address</small>
 					    </div>
@@ -75,104 +76,84 @@
                     <div class="form-row">
                         <div class="col-md-2">
                             <div class="thumbnail">
-                              <a href="/Pages/avatars/avatar-1.svg">
-                                <img src="/Pages/avatars/avatar-1.svg" alt="avatar" style="width:50%">
-                                <div class="caption">
-                                  <p>Lorem ipsum...</p>
+                                <img src="/Pages/avatars/avatar-1.svg" alt="avatar" style="width:25%">
+                                <div class="caption center-block">
+                                  <input type="radio" name="avatar" value="avatar-1.svg" required name="avatarVal">
                                 </div>
-                              </a>
                             </div>
                           </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                              <a href="/Pages/avatars/avatar-2.svg">
-                                <img src="/Pages/avatars/avatar-2.svg" alt="avatar" style="width:50%">
+                                <img src="/Pages/avatars/avatar-2.svg" alt="avatar" style="width:25%">
                                 <div class="caption">
-                                  <p>Lorem ipsum...</p>
+                                  <input type="radio" name="avatar" value="avatar-2.svg" required name="avatarVal">
                                 </div>
-                              </a>
                             </div>
                           </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                              <a href="/Pages/avatars/avatar-3.svg">
-                                <img src="/Pages/avatars/avatar-3.svg" alt="avatar" style="width:50%">
+                                <img src="/Pages/avatars/avatar-3.svg" alt="avatar" style="width:25%">
                                 <div class="caption">
-                                  <p>Lorem ipsum...</p>
+                                  <input type="radio" name="avatar" value="avatar-3.svg" required name="avatarVal">
                                 </div>
-                              </a>
                             </div>
                           </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                              <a href="/Pages/avatars/avatar-4.svg">
-                                <img src="/Pages/avatars/avatar-4.svg" alt="avatar" style="width:50%">
+                                <img src="/Pages/avatars/avatar-4.svg" alt="avatar" style="width:25%">
                                 <div class="caption">
-                                  <p>Lorem ipsum...</p>
+                                  <input type="radio" name="avatar" value="avatar-4.svg" required name="avatarVal">
                                 </div>
-                              </a>
                             </div>
                           </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                              <a href="/Pages/avatars/avatar-5.svg">
-                                <img src="/Pages/avatars/avatar-5.svg" alt="avatar" style="width:50%">
+                                <img src="/Pages/avatars/avatar-5.svg" alt="avatar" style="width:25%">
                                 <div class="caption">
-                                  <p>Lorem ipsum...</p>
+                                  <input type="radio" name="avatar" value="avatar-5.svg" required name="avatarVal">
                                 </div>
-                              </a>
                             </div>
                           </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-2">
                             <div class="thumbnail">
-                              <a href="/Pages/avatars/avatar-6.svg">
-                                <img src="/Pages/avatars/avatar-6.svg" alt="avatar" style="width:50%">
+                                <img src="/Pages/avatars/avatar-6.svg" alt="avatar" style="width:25%">
                                 <div class="caption">
-                                  <p>Lorem ipsum...</p>
+                                  <input type="radio" name="avatar" value="avatar-6.svg" required name="avatarVal">
                                 </div>
-                              </a>
                             </div>
                           </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                              <a href="/Pages/avatars/avatar-7.svg">
-                                <img src="/Pages/avatars/avatar-7.svg" alt="avatar" style="width:50%">
+                                <img src="/Pages/avatars/avatar-7.svg" alt="avatar" style="width:25%">
                                 <div class="caption">
-                                  <p>Lorem ipsum...</p>
+                                  <input type="radio" name="avatar" value="avatar-7.svg" required name="avatarVal">
                                 </div>
-                              </a>
                             </div>
                           </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                              <a href="/Pages/avatars/avatar-8.svg">
-                                <img src="/Pages/avatars/avatar-8.svg" alt="avatar" style="width:50%">
+                                <img src="/Pages/avatars/avatar-8.svg" alt="avatar" style="width:25%">
                                 <div class="caption">
-                                  <p>Lorem ipsum...</p>
+                                  <input type="radio" name="avatar" value="avatar-8.svg" required name="avatarVal">
                                 </div>
-                              </a>
                             </div>
                           </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                              <a href="/Pages/avatars/avatar-9.svg">
-                                <img src="/Pages/avatars/avatar-9.svg" alt="avatar" style="width:50%">
+                                <img src="/Pages/avatars/avatar-9.svg" alt="avatar" style="width:25%">
                                 <div class="caption">
-                                  <p>Lorem ipsum...</p>
+                                  <input type="radio" name="avatar" value="avatar-9.svg" required name="avatarVal">
                                 </div>
-                              </a>
                             </div>
                           </div>
                         <div class="col-md-2">
                             <div class="thumbnail">
-                              <a href="/Pages/avatars/avatar-10.svg">
-                                <img src="/Pages/avatars/avatar-10.svg" alt="avatar" style="width:50%">
+                                <img src="/Pages/avatars/avatar-10.svg" alt="avatar" style="width:25%">
                                 <div class="caption">
-                                  <p>Lorem ipsum...</p>
+                                  <input type="radio" name="avatar" value="avatar-10.svg" required name="avatarVal">
                                 </div>
-                              </a>
                             </div>
                           </div>
                     </div>
