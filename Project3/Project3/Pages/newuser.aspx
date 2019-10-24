@@ -44,7 +44,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
 						    <label for="username" class="text-dark">Desired Username:</label>
-						    <asp:Textbox runat="server" CssClass="form-control" id="email" placeholder="Enter Username" required></asp:Textbox>
+						    <asp:Textbox runat="server" CssClass="form-control" id="email" placeholder="Enter Username" required pattern="[A-Za-z]+"></asp:Textbox>
                             <small id="emailHelp" class="form-text text-muted">Please enter only lowercase letters and numerical digits</small>
 					    </div>
                     </div>
@@ -58,11 +58,11 @@
                     <div class="form-row">
                         <div class="form-group col-md-4">
 						    <label for="firstname" class="text-dark">First Name:</label>
-						    <asp:Textbox runat="server" CssClass="form-control" id="firstname" placeholder="Enter First Name" required name="firstname"></asp:Textbox>
+						    <asp:Textbox runat="server" CssClass="form-control" id="firstname" placeholder="Enter First Name" required name="firstname" pattern="[A-Za-z]+"></asp:Textbox>
 					    </div>
 					    <div class="form-group col-md-4">
 						    <label for="lastname" class="text-dark">Last Name:</label>
-						    <asp:Textbox runat="server" CssClass="form-control" id="lastname" placeholder="Enter Last Name" required name="lastname"></asp:Textbox>
+						    <asp:Textbox runat="server" CssClass="form-control" id="lastname" placeholder="Enter Last Name" required name="lastname" pattern="[A-Za-z]+"></asp:Textbox>
 					    </div>
                         <div class="form-group col-md-4">
 						    <label for="alternateemail" class="text-dark">Alternate Email: </label>

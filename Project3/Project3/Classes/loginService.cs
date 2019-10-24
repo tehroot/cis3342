@@ -10,15 +10,24 @@ namespace Project3.Classes {
     public class loginService {
         
 
-        protected static bool createUser(String username, String password) {
-            if (checkUser(username) == false) {
+        protected static bool addUser(User user) {
+            if (checkUser(user.username) == false) {
                 DBConnect dbConnect = new DBConnect();
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "createNewUser";
+                cmd.Parameters.AddWithValue("@username", user.username);
+                cmd.Parameters.AddWithValue("@password", user.password);
+                cmd.Parameters.AddWithValue("@adminflag", user.adminflag);
+                cmd.Parameters.AddWithValue("@banflag", user.banflag);
+                cmd.Parameters.AddWithValue("@firstname", user.firstname);
+                cmd.Parameters.AddWithValue("@lastname", user.lastname);
+                cmd.Parameters.AddWithValue("@alternateemail", user.alternateemail);
+                cmd.Parameters.AddWithValue("@avatar", user.avatar);
                 SqlParameter rowsAffected = new SqlParameter("@return", DbType.Int32);
                 rowsAffected.Direction = ParameterDirection.ReturnValue;
                 cmd.Parameters.Add(rowsAffected);
+                dbConnect.GetDataSetUsingCmdObj(cmd);
                 int rowCount = int.Parse(cmd.Parameters["@return"].Value.ToString());
                 if (rowCount != -1 && rowCount == 1) {
                     return true;
@@ -72,6 +81,10 @@ namespace Project3.Classes {
 
         public static bool checkUsername(String username) {
             return checkUser(username);
+        }
+
+        public static bool createUser(User user) {
+            return addUser(user);
         }
     }
 }

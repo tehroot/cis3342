@@ -30,6 +30,7 @@
 	<div class="container h-100 d-flex justify-content-center align-items-center bg-light">
 	    <div class="d-flex justify-content-center h-100">
 	    <form id="loginform" runat="server">
+            <asp:CustomValidator runat="server" ID="formvalidator" Display="Dynamic" OnServerValidate="formValidation" />
 		    <div class="warning" id="invalidLogin" runat="server"></div>
 		    <div class="form-group">
 			    <label for="email">Email Address</label>

@@ -28,6 +28,7 @@ namespace Project3.Pages {
             //in order to comply with the requirements of the project
             try {
                 bool loginStatus = loginService.login(email.Text, password.Text);
+
             } catch (Exception ex) {
                 Debug.WriteLine(ex.StackTrace);
             }
