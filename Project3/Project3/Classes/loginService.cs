@@ -75,6 +75,20 @@ namespace Project3.Classes {
             }
         }
 
+        protected static User returnUserInformation(String username, String password) {
+            if (checkUserLogin(username, password)) {
+                DBConnect dbConnect = new DBConnect();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "getUserByInfo";
+                cmd.Parameters.AddWithValue("@accountID", username);
+                DataSet userSet = dbConnect.GetDataSetUsingCmdObj(cmd);
+                for (int i = 0; i < userSet.Tables[0].Rows.Count; i++) {
+                    User user = new User(userSet.Tables[0].Rows[0][]);
+                }
+            }
+        }
+
         public static bool login(String username, String password) {
             return checkUserLogin(username, password);
         }

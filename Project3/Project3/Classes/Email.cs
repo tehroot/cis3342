@@ -12,6 +12,10 @@ namespace Project3.Classes {
         private String _email_subject { get; set; }
         private Boolean _email_flag { get; set; }
 
+        public Email(String sender, String recipient, String content, String subject) {
+
+        }
+
         public String email_id {
             get { return _email_id; }
             set {

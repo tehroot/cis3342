@@ -27,8 +27,15 @@ namespace Project3.Pages {
             //that to the admin page functionality
             //in order to comply with the requirements of the project
             try {
-                bool loginStatus = loginService.login(email.Text, password.Text);
+                if(loginService.login(email.Text, password.Text)) {
+                    Session["email"] = email.Text;
 
+                    //procedure return user object from sql procedure
+                    if () {
+                        Response.Redirect();
+                    }
+                }
+                
             } catch (Exception ex) {
                 Debug.WriteLine(ex.StackTrace);
             }

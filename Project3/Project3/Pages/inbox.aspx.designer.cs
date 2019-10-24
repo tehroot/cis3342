@@ -13,6 +13,14 @@ namespace Project3.Pages {
 	
 	public partial class inbox {
 		
+		protected System.Web.UI.WebControls.Button composeEmail;
+		
+		protected System.Web.UI.WebControls.Button accountButton;
+		
+		protected System.Web.UI.WebControls.Button logoutButton;
+		
 		protected System.Web.UI.HtmlControls.HtmlForm form1;
+		
+		protected System.Web.UI.WebControls.CustomValidator formvalidator;
 	}
 }
