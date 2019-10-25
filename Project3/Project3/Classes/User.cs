@@ -14,19 +14,19 @@ namespace Project3.Classes {
         private String _alternateemail { get; set; }
         private String _avatar { get; set; }
 
-        public User(String username, String password, Boolean adminflag, Boolean banflag, String firstname, String lastname, String alternateemail) {
-            this.username = username;
-            this.password = password;
+        public User(String Username, String Password, Boolean adminflag, Boolean banflag, String Firstname, String Lastname, String Alternateemail) {
+            this.username = Username;
+            this.password = Password;
             this.adminflag = adminflag;
             this.banflag = banflag;
-            this.firstname = firstname;
-            this.lastname = lastname;
-            this.alternateemail = alternateemail;
+            this.firstname = Firstname;
+            this.lastname = Lastname;
+            this.alternateemail = Alternateemail;
         }
 
         public User(String Username, String Password, String Firstname, String Lastname, String Alternateemail, String Avatar) {
-            username = Username;
-            password = Password;
+            this.username = Username;
+            this.password = Password;
             this.adminflag = false;
             this.banflag = false;
             this.firstname = Firstname;
@@ -34,6 +34,18 @@ namespace Project3.Classes {
             this.alternateemail = Alternateemail;
             this.avatar = Avatar;
         }
+
+        public User(String Username, String Password, Boolean adminflag, Boolean banflag, String Firstname, String Lastname, String Alternateemail, String Avatar) {
+            this.username = Username;
+            this.password = Password;
+            this.adminflag = false;
+            this.banflag = false;
+            this.firstname = Firstname;
+            this.lastname = Lastname;
+            this.alternateemail = Alternateemail;
+            this.avatar = Avatar;
+        }
+
 
         public String username { get { return _username; }
             set {

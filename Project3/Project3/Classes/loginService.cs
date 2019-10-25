@@ -13,9 +13,10 @@ namespace Project3.Classes {
         protected static bool addUser(User user) {
             if (checkUser(user.username) == false) {
                 DBConnect dbConnect = new DBConnect();
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "createNewUser";
+                SqlCommand cmd = new SqlCommand {
+                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "createNewUser"
+                };
                 cmd.Parameters.AddWithValue("@username", user.username);
                 cmd.Parameters.AddWithValue("@password", user.password);
                 cmd.Parameters.AddWithValue("@adminflag", user.adminflag);
@@ -41,9 +42,10 @@ namespace Project3.Classes {
 
         protected static bool checkUser(String username) {
             DBConnect dbConnect = new DBConnect();
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.CommandText = "getAccountByID";
+            SqlCommand cmd = new SqlCommand {
+                CommandType = System.Data.CommandType.StoredProcedure,
+                CommandText = "getAccountByID"
+            };
             cmd.Parameters.AddWithValue("@accountID", username);
             DataSet accountIDDataSet = dbConnect.GetDataSetUsingCmdObj(cmd);
             if (accountIDDataSet.Tables[0].Rows.Count == 1) {
@@ -56,9 +58,10 @@ namespace Project3.Classes {
         protected static bool checkUserLogin(String username, String password) {
             if (checkUser(username) == true) {
                 DBConnect dbConnect = new DBConnect();
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "getAccountPassword";
+                SqlCommand cmd = new SqlCommand {
+                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "getAccountPassword"
+                };
                 cmd.Parameters.AddWithValue("@accountID", username);
                 DataSet accountPasswordDataSet = dbConnect.GetDataSetUsingCmdObj(cmd);
                 if (accountPasswordDataSet.Tables[0].Rows.Count == 1) {
@@ -78,14 +81,19 @@ namespace Project3.Classes {
         protected static User returnUserInformation(String username, String password) {
             if (checkUserLogin(username, password)) {
                 DBConnect dbConnect = new DBConnect();
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "getUserByInfo";
+                SqlCommand cmd = new SqlCommand {
+                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "getUserByInfo"
+                };
                 cmd.Parameters.AddWithValue("@accountID", username);
                 DataSet userSet = dbConnect.GetDataSetUsingCmdObj(cmd);
-                for (int i = 0; i < userSet.Tables[0].Rows.Count; i++) {
-                    User user = new User(userSet.Tables[0].Rows[0][]);
-                }
+                User user = new User(userSet.Tables[0].Rows[0][0].ToString(), userSet.Tables[0].Rows[0][1].ToString(), 
+                    bool.Parse(userSet.Tables[0].Rows[0][2].ToString()), bool.Parse(userSet.Tables[0].Rows[0][3].ToString()), 
+                    userSet.Tables[0].Rows[0][4].ToString(), userSet.Tables[0].Rows[0][5].ToString(), 
+                    userSet.Tables[0].Rows[0][6].ToString(), userSet.Tables[0].Rows[0][7].ToString());
+                return user;
+            } else {
+                return null;
             }
         }
 

@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace Project3.Pages {
 
@@ -27,18 +28,23 @@ namespace Project3.Pages {
             //that to the admin page functionality
             //in order to comply with the requirements of the project
             try {
-                if(loginService.login(email.Text, password.Text)) {
-                    Session["email"] = email.Text;
-
-                    //procedure return user object from sql procedure
-                    if () {
-                        Response.Redirect();
+                if (Page.IsValid) {
+                    if (loginService.login(email.Text, password.Text)) {
+                        Session.Add("Username", email.Text);
+                        //procedure return user object from sql procedure
+                        Response.Redirect("~/Pages/inbox.aspx");
                     }
+                    } else {
+
                 }
-                
             } catch (Exception ex) {
+                //THREADING EXCEPTIONS ARE NORMAL HERE, RESPONSE PROCS A THREADING ABORT EXCEPTION BY BREAKING THE CONTEXT BEFORE SWITCHING TO A NEW PAGE
                 Debug.WriteLine(ex.StackTrace);
             }
+        }
+
+        protected void formValidation(Object sender, ServerValidateEventArgs e) {
+
         }
     }
 }

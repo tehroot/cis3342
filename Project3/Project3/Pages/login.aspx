@@ -34,7 +34,7 @@
 		    <div class="warning" id="invalidLogin" runat="server"></div>
 		    <div class="form-group">
 			    <label for="email">Email Address</label>
-			    <asp:TextBox runat="server" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" CssClass="form-control" id="email" aria-describedby="email" placeholder="Enter Email here" required></asp:TextBox>
+			    <asp:TextBox runat="server" pattern="[A-Za-z]+" CssClass="form-control" id="email" aria-describedby="email" placeholder="Enter Email here" required></asp:TextBox>
 			    <small id="emailHelp" class="form-text text-muted">Enter your email here to login.</small>
 		    </div>
 		    <div class="form-group">

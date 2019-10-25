@@ -11,9 +11,16 @@ namespace Project3.Classes {
         private String _email_content { get; set; }
         private String _email_subject { get; set; }
         private Boolean _email_flag { get; set; }
+        private DateTime _email_datetime { get; set; }
 
-        public Email(String sender, String recipient, String content, String subject) {
-
+        public Email(String ID, String Sender, String Recipient, String Content, String Subject, DateTime SendTime) {
+            this.email_id = ID;
+            this.email_sender = Sender;
+            this.email_recipient = Recipient;
+            this.email_content = Content;
+            this.email_subject = Subject;
+            this.email_flag = false;
+            this.email_datetime = SendTime;
         }
 
         public String email_id {
@@ -73,6 +80,18 @@ namespace Project3.Classes {
             set {
                 _email_flag = value;    
             }
+        }
+
+        public DateTime email_datetime { get { return _email_datetime; } 
+            set {
+                DateTime time = new DateTime(1970, 1, 1, 0, 0, 0);
+                if (value > time) {
+                    _email_datetime = value;
+                } else {
+                    throw new ArgumentException("Email Datetime not valid");
+                }
+                
+            } 
         }
     }
 }
