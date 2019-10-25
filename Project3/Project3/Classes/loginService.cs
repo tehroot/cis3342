@@ -9,7 +9,6 @@ using Utilities;
 namespace Project3.Classes {
     public class loginService {
         
-
         protected static bool addUser(User user) {
             if (checkUser(user.username) == false) {
                 DBConnect dbConnect = new DBConnect();

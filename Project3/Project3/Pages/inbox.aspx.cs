@@ -27,6 +27,7 @@ namespace Project3.Pages {
 
         protected void createFolder_Click(Object sender, EventArgs e) {
             //create folder chain, dropdown or something here, not sure about this yet
+            //side pop box for folder addition, modal for adding to list?
         }
 
         protected void checkLogout_Click(Object sender, EventArgs e) {

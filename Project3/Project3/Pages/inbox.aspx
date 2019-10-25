@@ -49,28 +49,15 @@
             </ul>
         </div>
     </div>
-    <%--<nav class ="navbar navbar-expand-lg navbar-light bg-dark sticky-top">
-        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <asp:Button id="accountButton" text="Account" runat="server" type="submit" CssClass="btn btn-outline-light navbar-btn" OnClick="checkLogin_Click"/>
-                </li>
-            </ul>
-        </div>
-        <div class="mx-auto my-2 order-0 order-md-1 position-relative">
-            <a class="navbar-brand text-light mx-auto">FMail</a>
-        </div>
-        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <asp:Button id="logoutButton" text="Logout" runat="server" type="submit" CssClass="btn btn-outline-light navbar-btn" OnClick="checkLogout_Click"/>
-                </li>
-            </ul> 
-        </div>
-    </nav>--%>
-        <div class="container">
-            <asp:CustomValidator runat="server" ID="formvalidator" Display="Dynamic" OnServerValidate="formValidation"/>
-            <div>
+    <div class="container">
+        <asp:CustomValidator runat="server" ID="formvalidator" Display="Dynamic" OnServerValidate="formValidation"/>
+        <div class="row">
+            <div class="col-2">
+                <asp:RadioButtonList id="folderSelect" runat="server">
+                    
+                </asp:RadioButtonList>            
+            </div>
+            <div class="col-10">
                 <asp:GridView ID="gvEmails" runat="server" AutoGenerateColumns="false" CssClass="table-condensed table-bordered table-hover">
                     <Columns>
                         <ItemTemplate>
@@ -86,6 +73,7 @@
                 </asp:GridView>
             </div>
         </div>
+    </div>
     </form>
 </body>
 </html>

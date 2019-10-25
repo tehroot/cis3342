@@ -16,7 +16,7 @@
 </head>
 <script>
 	$(document).ready(function(){
-		$.fn.register();
+		
 	});
 </script>
 <body>
