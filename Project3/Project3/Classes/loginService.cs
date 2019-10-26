@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using Utilities;
@@ -11,27 +12,34 @@ namespace Project3.Classes {
         
         protected static bool addUser(User user) {
             if (checkUser(user.username) == false) {
-                DBConnect dbConnect = new DBConnect();
-                SqlCommand cmd = new SqlCommand {
-                    CommandType = CommandType.StoredProcedure,
-                    CommandText = "createNewUser"
-                };
-                cmd.Parameters.AddWithValue("@username", user.username);
-                cmd.Parameters.AddWithValue("@password", user.password);
-                cmd.Parameters.AddWithValue("@adminflag", user.adminflag);
-                cmd.Parameters.AddWithValue("@banflag", user.banflag);
-                cmd.Parameters.AddWithValue("@firstname", user.firstname);
-                cmd.Parameters.AddWithValue("@lastname", user.lastname);
-                cmd.Parameters.AddWithValue("@alternateemail", user.alternateemail);
-                cmd.Parameters.AddWithValue("@avatar", user.avatar);
-                SqlParameter rowsAffected = new SqlParameter("@return", DbType.Int32);
-                rowsAffected.Direction = ParameterDirection.ReturnValue;
-                cmd.Parameters.Add(rowsAffected);
-                dbConnect.GetDataSetUsingCmdObj(cmd);
-                int rowCount = int.Parse(cmd.Parameters["@return"].Value.ToString());
-                if (rowCount != -1 && rowCount == 1) {
-                    return true;
-                } else {
+                try {
+                    DBConnect dbConnect = new DBConnect();
+                    SqlCommand cmd = new SqlCommand {
+                        CommandType = CommandType.StoredProcedure,
+                        CommandText = "createNewUser"
+                    };
+                    cmd.Parameters.AddWithValue("@username", user.username);
+                    cmd.Parameters.AddWithValue("@password", user.password);
+                    cmd.Parameters.AddWithValue("@adminflag", user.adminflag);
+                    cmd.Parameters.AddWithValue("@banflag", user.banflag);
+                    cmd.Parameters.AddWithValue("@firstname", user.firstname);
+                    cmd.Parameters.AddWithValue("@lastname", user.lastname);
+                    cmd.Parameters.AddWithValue("@alternateemail", user.alternateemail);
+                    cmd.Parameters.AddWithValue("@avatar", user.avatar);
+                    SqlParameter rowsAffected = new SqlParameter("@return", DbType.Int32);
+                    rowsAffected.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(rowsAffected);
+                    int rowCount = dbConnect.DoUpdateUsingCmdObj(cmd);
+                    //int rowCount = int.Parse(cmd.Parameters["@return"].Value.ToString());
+                    if (rowCount != -1 && rowCount == 1) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } catch (SqlException ex) {
+                    Debug.WriteLine("SQL Exception in creating an email.");
+                    Debug.WriteLine(ex.StackTrace);
+                    Debug.WriteLine(ex.Message);
                     return false;
                 }
             } else {

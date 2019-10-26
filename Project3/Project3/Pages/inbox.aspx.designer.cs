@@ -22,22 +22,22 @@ namespace Project3.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Button1 control.
+        /// accountButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button accountButton;
 
         /// <summary>
-        /// Button2 control.
+        /// logoutButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button logoutButton;
 
         /// <summary>
         /// composeEmail control.
@@ -58,6 +58,24 @@ namespace Project3.Pages {
         protected global::System.Web.UI.WebControls.Button createFolder;
 
         /// <summary>
+        /// searchToggle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button searchToggle;
+
+        /// <summary>
+        /// searchButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button searchButton;
+
+        /// <summary>
         /// formvalidator control.
         /// </summary>
         /// <remarks>
@@ -67,6 +85,15 @@ namespace Project3.Pages {
         protected global::System.Web.UI.WebControls.CustomValidator formvalidator;
 
         /// <summary>
+        /// folderSelect control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList folderSelect;
+
+        /// <summary>
         /// gvEmails control.
         /// </summary>
         /// <remarks>
@@ -74,14 +101,5 @@ namespace Project3.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvEmails;
-
-        /// <summary>
-        /// checkbox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox checkbox;
     }
 }
