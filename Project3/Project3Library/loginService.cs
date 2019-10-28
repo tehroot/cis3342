@@ -7,7 +7,7 @@ using System.Linq;
 using System.Web;
 using Utilities;
 
-namespace Project3.Classes {
+namespace Utilities {
     public class loginService {
         
         protected static bool addUser(User user) {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Project3.Classes {
+namespace Utilities {
     public class Email {
         private String _email_id { get; set; }
         private String _email_sender { get; set; }

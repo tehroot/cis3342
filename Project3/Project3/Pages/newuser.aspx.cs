@@ -1,11 +1,11 @@
-﻿using Project3.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilities;
 
 namespace Project3.Pages {
     public partial class newuser : System.Web.UI.Page {

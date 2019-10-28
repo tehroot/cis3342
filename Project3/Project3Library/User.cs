@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Project3.Classes {
+namespace Utilities {
     public class User {
         private String _username { get; set; }
         private String _password { get; set; }

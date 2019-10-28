@@ -46,29 +46,34 @@
                     <asp:Button ID="createFolder" Text="Create Folder" runat="server" type="submit" CssClass="btn btn-secondary" OnClick="createFolder_Click"/>
                 </div>
                 <div class="btn-group ml-auto" role="group">
-                    <asp:Button ID="searchToggle" Text="Search Emails" runat="server" type="submit" CssClass="btn btn-outline-primary" OnClick="searchToggle_Click"/>
+                    <div class="input-group md-form form-sm form-2 pl-0">
+                        <input class="form-control my-0 py-1" type="text" placeholder="Search Emails" />
+                        <div class="input-group-append">
+                            <asp:Button ID="searchToggle" Text="Run Search" runat="server" type="submit" CssClass="btn btn-primary" OnClick="searchEmails_Click" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="navbar navbar-light bg-light navbar-expand pl-2" id="third">
+        <%--<div class="navbar navbar-light bg-light navbar-expand pl-2" id="third">
             <div class="input-group md-form form-sm form-2 pl-0">
                 <input class="form-control my-0 py-1" type="text" placeholder="Search Emails" />
                 <div class="input-group-append">
                     <asp:Button ID="searchButton" Text="Run Search" runat="server" type="submit" CssClass="btn btn-primary" OnClick="searchEmails_Click" />
                 </div>
             </div>
-        </div>
+        </div>--%>
     </div>
-    <div class="container">
+    <div class="container-fluid w-100" style="padding-top: 150px;">
         <asp:CustomValidator runat="server" ID="formvalidator" Display="Dynamic" OnServerValidate="formValidation"/>
         <div class="row">
             <div class="col-2">
                 <asp:RadioButtonList id="folderSelect" runat="server">
                     
-                </asp:RadioButtonList>            
+                </asp:RadioButtonList>
             </div>
             <div class="col-10">
-                <asp:GridView ID="gvEmails" runat="server" AutoGenerateColumns="false" CssClass="table-condensed table-bordered table-hover">
+                <asp:GridView ID="gvEmails" runat="server" AutoGenerateColumns="false" Class="table-condensed table-bordered table-striped table-hover w-100">
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>

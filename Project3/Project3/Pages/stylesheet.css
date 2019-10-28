@@ -22,10 +22,12 @@
     display: none;
 }
 
+.hidden
+
 .btn-space {
     margin-right: 10px;
 }
 
-.hiddenCol {
-    display: none;
+.div-padding {
+    padding-top: 100px;
 }

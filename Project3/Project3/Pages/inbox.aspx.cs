@@ -1,19 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilities;
 
 namespace Project3.Pages {
     public partial class inbox : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
             //if statement start here
-
+            if (!IsPostBack) {
+                bindControls();
+            } else {
+                Debug.WriteLine("Test Val");
+            }
             //session management to check if the user is logged in,
             //if not in the session cache we need to push the user out back
             //to the login page
             
+        }
+
+        protected void bindControls() {
+            gvEmails.DataSource = emailService.getEmails(Session["Username"].ToString());
+            gvEmails.DataBind();
         }
 
         protected void checkLogin_Click(Object sender, EventArgs e) {
@@ -48,6 +59,7 @@ namespace Project3.Pages {
                 //e.Row.Attributes["onclick"] = 
             }
         }
+
         protected String returnEmailId() {
             throw new NotImplementedException();
         }

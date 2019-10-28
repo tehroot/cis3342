@@ -110,11 +110,6 @@
     <Content Include="Pages\login.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Connection.cs" />
-    <Compile Include="Classes\Email.cs" />
-    <Compile Include="Classes\emailService.cs" />
-    <Compile Include="Classes\loginService.cs" />
-    <Compile Include="Classes\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -162,6 +157,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".editorconfig" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +175,12 @@
     <Analyzer Include="..\packages\Microsoft.NetCore.Analyzers.2.9.6\analyzers\dotnet\cs\Microsoft.NetCore.CSharp.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.6\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.6\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Project3Library\Project3Library.csproj">
+      <Project>{10B48D25-77B8-42BE-BE81-5A0A4915BC2C}</Project>
+      <Name>Project3Library</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
