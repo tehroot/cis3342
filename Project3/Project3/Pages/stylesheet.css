@@ -31,3 +31,8 @@
 .div-padding {
     padding-top: 100px;
 }
+
+.btn {
+    white-space:normal;
+    word-wrap:break-word;
+}

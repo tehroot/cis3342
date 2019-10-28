@@ -69,7 +69,7 @@ namespace Utilities {
                 DBConnect dbConnect = new DBConnect();
                 SqlCommand get_folders = new SqlCommand {
                     CommandType = System.Data.CommandType.StoredProcedure,
-                    CommandText = "getAllUsersEmailFolders"
+                    CommandText = "getAllUserEmailFolders"
                 };
                 get_folders.Parameters.AddWithValue("@username", username);
                 DataSet folderset = dbConnect.GetDataSetUsingCmdObj(get_folders);
@@ -89,6 +89,10 @@ namespace Utilities {
 
         public static DataSet getEmails(String username) {
             return getEmailDataSet(username);
+        }
+
+        public static List<String> getFolders(String username) {
+            return getFolderList(username);
         }
     }
 }

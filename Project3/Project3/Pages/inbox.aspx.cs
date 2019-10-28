@@ -9,6 +9,7 @@ using Utilities;
 
 namespace Project3.Pages {
     public partial class inbox : System.Web.UI.Page {
+
         protected void Page_Load(object sender, EventArgs e) {
             //if statement start here
             if (!IsPostBack) {
@@ -25,6 +26,8 @@ namespace Project3.Pages {
         protected void bindControls() {
             gvEmails.DataSource = emailService.getEmails(Session["Username"].ToString());
             gvEmails.DataBind();
+            rblFolders.DataSource = emailService.getFolders(Session["Username"].ToString());
+            rblFolders.DataBind();
         }
 
         protected void checkLogin_Click(Object sender, EventArgs e) {
@@ -56,6 +59,8 @@ namespace Project3.Pages {
             if (e.Row.RowType == DataControlRowType.DataRow) {
                 //onclick redirect to email view
                 //session shit maybe here?
+                //get the email id and use the session object in order to extract the username necessary
+
                 //e.Row.Attributes["onclick"] = 
             }
         }
@@ -68,8 +73,6 @@ namespace Project3.Pages {
 
         }
 
-        protected void searchEmails_Click(object sender, EventArgs e) {
 
-        }
     }
 }

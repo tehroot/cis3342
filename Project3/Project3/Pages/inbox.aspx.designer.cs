@@ -66,6 +66,10 @@ namespace Project3.Pages {
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button searchToggle;
 
+        protected global::System.Web.UI.WebControls.Button deleteEmail;
+        protected global::System.Web.UI.WebControls.Button refreshpage;
+
+
         /// <summary>
         /// formvalidator control.
         /// </summary>
@@ -82,7 +86,7 @@ namespace Project3.Pages {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList folderSelect;
+        protected global::System.Web.UI.WebControls.RadioButtonList rblFolders;
 
         /// <summary>
         /// gvEmails control.

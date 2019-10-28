@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <link rel='stylesheet' href='site-sheet.css'/>
+    <link rel='stylesheet' href='stylesheet.css'/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="scripts.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -45,6 +45,13 @@
                 <div class="btn-group mr-1" role="group">
                     <asp:Button ID="createFolder" Text="Create Folder" runat="server" type="submit" CssClass="btn btn-secondary" OnClick="createFolder_Click"/>
                 </div>
+                <div class="btn-group mr-1" role="group">
+                    <asp:Button ID="deleteEmail" Text="Delete Selected" runat="server" type="submit" CssClass="btn btn-danger"/>
+                </div>
+                <div class="btn-group mr-1" role="group">
+                    <asp:Button ID="refreshPage" Text="Refresh Inbox" runat="server" type="submit" CssClass="btn btn-secondary"/>
+                </div>
+                
                 <div class="btn-group ml-auto" role="group">
                     <div class="input-group md-form form-sm form-2 pl-0">
                         <input class="form-control my-0 py-1" type="text" placeholder="Search Emails" />
@@ -55,35 +62,39 @@
                 </div>
             </div>
         </div>
-        <%--<div class="navbar navbar-light bg-light navbar-expand pl-2" id="third">
-            <div class="input-group md-form form-sm form-2 pl-0">
-                <input class="form-control my-0 py-1" type="text" placeholder="Search Emails" />
-                <div class="input-group-append">
-                    <asp:Button ID="searchButton" Text="Run Search" runat="server" type="submit" CssClass="btn btn-primary" OnClick="searchEmails_Click" />
-                </div>
-            </div>
-        </div>--%>
     </div>
     <div class="container-fluid w-100" style="padding-top: 150px;">
         <asp:CustomValidator runat="server" ID="formvalidator" Display="Dynamic" OnServerValidate="formValidation"/>
         <div class="row">
-            <div class="col-2">
-                <asp:RadioButtonList id="folderSelect" runat="server">
-                    
-                </asp:RadioButtonList>
+            <div class="col-2 border-right">
+                <div>
+                    <asp:RadioButtonList id="rblFolders" CssClass="justify-content-center" runat="server"></asp:RadioButtonList>
+                </div>
+                <div class="btn-group-vertical btn-group-justified d-flex">
+                    <asp:Button id="addEmailToFolder" Text="Add Selected Email to Folder" runat="server" type="submit" CssClass="btn btn-primary"></asp:Button>
+                    <asp:Button id="viewEmailsInFolder" Text="View All Emails in Selected Folder" runat="server" type="submit" CssClass="btn btn-secondary"></asp:Button>
+                </div>
             </div>
-            <div class="col-10">
+            <div class="col-1">
+                
+            </div>
+            <div class="col-9">
                 <asp:GridView ID="gvEmails" runat="server" AutoGenerateColumns="false" Class="table-condensed table-bordered table-striped table-hover w-100">
                     <Columns>
-                        <asp:TemplateField>
+                        <asp:TemplateField HeaderText="Select Email">
                             <ItemTemplate>
-                                <asp:Checkbox ID="checkbox" runat="server" />
+                                <asp:Checkbox ID="select_checkbox" runat="server" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="id" ItemStyle-CssClass="hiddenCol" HeaderStyle-CssClass="hiddenCol" ReadOnly="true" />
                         <asp:BoundField DataField="sender" HeaderText="From" ReadOnly="true" />
                         <asp:BoundField DataField="subject" HeaderText="Subject" ReadOnly="true" />
                         <asp:BoundField DataField="timestamp" HeaderText="Date, Time" ReadOnly="true" />
+                        <asp:TemplateField HeaderText="Flag Inappropriate Email">
+                            <ItemTemplate>
+                                <asp:Checkbox id="flag_checkbox" runat="server"/>  
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </div>
