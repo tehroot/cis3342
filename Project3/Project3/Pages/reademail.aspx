@@ -44,8 +44,6 @@
     <div class="container-fluid h-100 d-flex justify-content-center align-item-center bg-light">
         <div class="container">
             <div class="justify-content-center">
-                
-                    <asp:CustomValidator runat="server" id="formvalidator" Display="Dynamic" OnServerValidate="formValidation" />
                     <div runat="server" CssClass="warning" id="warningdiv"></div>
                     <div class="form-row">
                         <div class="form-group col-md-12">

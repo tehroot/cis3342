@@ -39,6 +39,7 @@ namespace Project3.Pages {
         protected void composeEmail_Click(Object sender, EventArgs e) {
             //push to compose aspx page and deal with that binding shit for the dropdown list
             //for users, need to set default folder to inbox
+            Response.Redirect("~/Pages/compose.aspx", false);
         }
 
         protected void createFolder_Click(Object sender, EventArgs e) {
@@ -59,13 +60,19 @@ namespace Project3.Pages {
 
         protected void gvEmails_RowDataBound(Object sender, GridViewRowEventArgs e) {
             if (e.Row.RowType == DataControlRowType.DataRow) {
-
+                //String emailID = (e.Row.Cells[1].Text);
+                e.Row.Attributes["onclick"] = String.Format("window.location = 'reademail.aspx?emailID={0}'; ",
+                    DataBinder.Eval(e.Row.DataItem, "id"));
                 //onclick redirect to email view
                 //session shit maybe here?
                 //get the email id and use the session object in order to extract the username necessary
 
                 //e.Row.Attributes["onclick"] = 
             }
+        }
+
+        protected void redirectQuery(String param) {
+            Response.Redirect("~/Pages/reademail.aspx ?emailid="+param, false);
         }
 
         protected String returnEmailId() {

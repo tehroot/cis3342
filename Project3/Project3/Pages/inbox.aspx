@@ -56,7 +56,7 @@
                     <div class="input-group md-form form-sm form-2 pl-0">
                         <input class="form-control my-0 py-1" type="text" placeholder="Search Emails" />
                         <div class="input-group-append">
-                            <asp:Button ID="searchToggle" Text="Run Search" runat="server" type="submit" CssClass="btn btn-primary" OnClick="searchEmails_Click" />
+                            <asp:Button ID="searchToggle" Text="Run Search" runat="server" type="submit" CssClass="btn btn-primary" OnClick="searchToggle_Click" />
                         </div>
                     </div>
                 </div>
@@ -67,20 +67,17 @@
         <div CssClass="warning" id="invalidLogin" runat="server"></div>
         <asp:CustomValidator runat="server" ID="formvalidator" Display="Dynamic" OnServerValidate="formValidation"/>
         <div class="row">
-            <div class="col-2 border-right">
+            <div class="col-3 border-right">
                 <div>
-                    <asp:RadioButtonList id="rblFolders" CssClass="justify-content-center" runat="server"></asp:RadioButtonList>
+                    <asp:RadioButtonList id="rblFolders" CssClass="d-flex justify-content-center" runat="server"></asp:RadioButtonList>
                 </div>
                 <div class="btn-group-vertical btn-group-justified d-flex">
                     <asp:Button id="addEmailToFolder" Text="Add Selected Email to Folder" runat="server" type="submit" CssClass="btn btn-primary"></asp:Button>
                     <asp:Button id="viewEmailsInFolder" Text="View All Emails in Selected Folder" runat="server" type="submit" CssClass="btn btn-secondary"></asp:Button>
                 </div>
             </div>
-            <div class="col-1">
-                
-            </div>
             <div class="col-9">
-                <asp:GridView ID="gvEmails" runat="server" AutoGenerateColumns="false" Class="table-condensed table-bordered table-striped table-hover w-100">
+                <asp:GridView ID="gvEmails" OnRowDataBound="gvEmails_RowDataBound" runat="server" AutoGenerateColumns="false" Class="table-condensed table-bordered table-striped table-hover w-100">
                     <Columns>
                         <asp:TemplateField HeaderText="Select Email">
                             <ItemTemplate>
