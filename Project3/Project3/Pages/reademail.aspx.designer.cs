@@ -40,13 +40,13 @@ namespace Project3.Pages {
         protected global::System.Web.UI.WebControls.Button logoutButton;
 
         /// <summary>
-        /// inboxButton control.
+        /// returnInbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button inboxButton;
+        protected global::System.Web.UI.WebControls.Button returnInbox;
 
         /// <summary>
         /// warningdiv control.

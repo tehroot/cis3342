@@ -34,39 +34,43 @@
                     <li class="nav-item">
                         <asp:Button id="logoutButton" text="Logout" runat="server" type="submit" CssClass="btn btn-outline-light navbar-btn" OnClick="checkLogout_Click"/>
                     </li>
-                    <li class="nav-item">
-                        <asp:Button id="inboxButton" text="Logout" runat="server" type="submit" CssClass="btn btn-outline-light navbar-btn" OnClick="checkInbox_Click"/>
-                    </li>
                 </ul> 
+            </div>
+        </div>
+         <div class="navbar navbar-light bg-light navbar-expand pl-2" id="second">
+            <div class="btn-toolbar w-100" role="toolbar">
+                 <div class="btn-group mr-1" role="group">
+                    <asp:Button id="returnInbox" text="Compose" runat="server" type="submit" CssClass="btn btn-primary" OnClick="checkInbox_Click"/>
+                </div>
             </div>
         </div>
     </div>
     <div class="container-fluid h-100 d-flex justify-content-center align-item-center bg-light">
-        <div class="container">
+        <div class="container" style="padding-top: 150px;">
             <div class="justify-content-center">
                     <div runat="server" CssClass="warning" id="warningdiv"></div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="timestamp" class="text-dark">Timestamp: </label> 
-                            <asp:TextBox runat="server" CssClass="form-control" ID="timestamp" name="timestampMail"></asp:TextBox>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="timestamp" name="timestampMail" ReadOnly="true"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="sender" class="text-dark">Sender: </label> 
-                            <asp:TextBox runat="server" CssClass="form-control" ID="sender" name="emailSender"></asp:TextBox>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="sender" name="emailSender" ReadOnly="true"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="recipient" class="text-dark">Recipient: </label> 
-                            <asp:TextBox runat="server" CssClass="form-control" ID="recipient" name="emailRecipient"></asp:TextBox>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="recipient" name="emailRecipient" ReadOnly="true"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="messageContent" class="text-dark">Content: </label> 
-                            <asp:TextBox runat="server" TextMode="multiline" CssClass="form-control" ID="messageContent" name="messageContent"></asp:TextBox>
+                            <asp:TextBox runat="server" TextMode="multiline" CssClass="form-control" ID="messageContent" name="messageContent" ReadOnly="true"></asp:TextBox>
                         </div>
                     </div>
             </div>

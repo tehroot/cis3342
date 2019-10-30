@@ -4,15 +4,21 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilities;
 
 namespace Project3.Pages {
     public partial class reademail : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
-
+            bindControlData();
         }
 
         protected void bindControlData() {
-            
+            String id = Request.QueryString["emailID"];
+            Email email = emailService.getEmail(id);
+            timestamp.Text = email.email_datetime.ToString();
+            sender.Text = email.email_sender;
+            recipient.Text = email.email_recipient;
+            messageContent.Text = email.email_content;
         }
 
         protected void checkLogout_Click(Object sender, EventArgs e) {

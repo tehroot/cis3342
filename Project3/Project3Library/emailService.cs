@@ -118,8 +118,8 @@ namespace Utilities {
                 get_email.Parameters.AddWithValue("@id", id);
                 DataSet email = dbConnect.GetDataSetUsingCmdObj(get_email);
                 if (email.Tables[0].Rows.Count == 1) {
-                    Email new_email = new Email(email.Tables[0].Rows[0][1].ToString(), email.Tables[0].Rows[0][2].ToString(),
-                        email.Tables[0].Rows[0][4].ToString(), email.Tables[0].Rows[0][3].ToString(),
+                    Email new_email = new Email(email.Tables[0].Rows[0][0].ToString(), email.Tables[0].Rows[0][1].ToString(), email.Tables[0].Rows[0][2].ToString(),
+                        email.Tables[0].Rows[0][3].ToString(), email.Tables[0].Rows[0][4].ToString(),
                         DateTime.Parse(email.Tables[0].Rows[0][6].ToString()));
                     return new_email;
                 } else {
@@ -153,6 +153,10 @@ namespace Utilities {
                 Debug.WriteLine("SQL Error returnValidUserList" + ex.StackTrace);
                 return new List<String>();
             }
+        }
+
+        public static Email getEmail(String id) {
+            return getEmailById(id);
         }
 
         public static Boolean deleteEmail(String username, String id) {

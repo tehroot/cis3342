@@ -23,16 +23,6 @@ namespace Utilities {
             this.email_datetime = SendTime;
         }
 
-        public Email(String Sender, String Recipient, String Subject, String Content, DateTime Time) {
-            this.email_sender = Sender;
-            this.email_subject = Subject;
-            this.email_recipient = Recipient;
-            this.email_content = Content;
-            this.email_datetime = Time;
-            this.email_id = "";
-            this.email_flag = false;
-        }
-
         public String email_id {
             get { return _email_id; }
             set {
