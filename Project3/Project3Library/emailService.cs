@@ -87,6 +87,78 @@ namespace Utilities {
             }
         }
 
+        protected static Boolean deleteUserEmail(String username, String id) {
+            try {
+                DBConnect dBConnect = new DBConnect();
+                SqlCommand delete_user_email = new SqlCommand {
+                    CommandType = System.Data.CommandType.StoredProcedure,
+                    CommandText = "deleteUserSideEmail"
+                };
+                delete_user_email.Parameters.AddWithValue("@id",username);
+                delete_user_email.Parameters.AddWithValue("@username",id);
+                int rowCount = dBConnect.DoUpdateUsingCmdObj(delete_user_email);
+                if (rowCount != -1 && rowCount == 1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch(SqlException ex) {
+                Debug.WriteLine("SQL error deleteUserSideEmail" + ex.StackTrace);
+                return false;
+            }
+        }
+
+        protected static Email getEmailById(String id) {
+            try {
+                DBConnect dbConnect = new DBConnect();
+                SqlCommand get_email = new SqlCommand {
+                    CommandType = System.Data.CommandType.StoredProcedure,
+                    CommandText = "getEmailByID"
+                };
+                get_email.Parameters.AddWithValue("@id", id);
+                DataSet email = dbConnect.GetDataSetUsingCmdObj(get_email);
+                if (email.Tables[0].Rows.Count == 1) {
+                    Email new_email = new Email(email.Tables[0].Rows[0][1].ToString(), email.Tables[0].Rows[0][2].ToString(),
+                        email.Tables[0].Rows[0][4].ToString(), email.Tables[0].Rows[0][3].ToString(),
+                        DateTime.Parse(email.Tables[0].Rows[0][6].ToString()));
+                    return new_email;
+                } else {
+                    return null;
+                }
+            } catch (Exception ex) when (ex is SqlException || ex is FormatException) {
+                Debug.WriteLine("SQL error getEmailById" + ex.StackTrace);
+                return null;
+            }
+        }
+
+        protected static List<String> returnValidUserList(String username) {
+            try {
+                List<String> usernames = new List<String>();
+                DBConnect dBConnect = new DBConnect();
+                SqlCommand get_users = new SqlCommand {
+                    CommandType = System.Data.CommandType.StoredProcedure,
+                    CommandText = "getAllEmailableUsers"
+                };
+                get_users.Parameters.AddWithValue("@username", username);
+                DataSet userSet = dBConnect.GetDataSetUsingCmdObj(get_users);
+                if(userSet.Tables[0].Rows.Count >= 1) {
+                    foreach (DataRow x in userSet.Tables[0].Rows) {
+                        usernames.Add(x["username"].ToString() + "@fmail.io");
+                    }
+                    return usernames;
+                } else {
+                    return new List<String>();
+                }
+            } catch (Exception ex) when (ex is SqlException) {
+                Debug.WriteLine("SQL Error returnValidUserList" + ex.StackTrace);
+                return new List<String>();
+            }
+        }
+
+        public static Boolean deleteEmail(String username, String id) {
+            return deleteUserEmail(username, id);
+        }
+
         public static DataSet getEmails(String username) {
             return getEmailDataSet(username);
         }

@@ -49,6 +49,8 @@ namespace Project3.Pages {
         protected void checkLogout_Click(Object sender, EventArgs e) {
             //remove session data and log user out of application
             //redirect to the landing page ->
+            Session.Abandon();
+            Response.Redirect("~/Pages/landing.aspx");
         }
 
         protected void formValidation(Object sender, ServerValidateEventArgs e) {
@@ -57,6 +59,7 @@ namespace Project3.Pages {
 
         protected void gvEmails_RowDataBound(Object sender, GridViewRowEventArgs e) {
             if (e.Row.RowType == DataControlRowType.DataRow) {
+
                 //onclick redirect to email view
                 //session shit maybe here?
                 //get the email id and use the session object in order to extract the username necessary
@@ -73,6 +76,27 @@ namespace Project3.Pages {
 
         }
 
+        protected void deleteEmail_Click(object sender, EventArgs e) {
+            int count = 0;
+            foreach (GridViewRow row in gvEmails.Rows) {
+                CheckBox selectedEmail = (CheckBox)row.FindControl("select_checkbox");
+                if (selectedEmail.Checked) {
+                    count++;
+                    emailService.deleteEmail(Session["Username"].ToString(), row.Cells[1].Text);
 
+                }
+            }
+            if(count > 0) {
+                invalidLogin.Visible = false;
+                invalidLogin.InnerText = "";
+            } else {
+                invalidLogin.InnerText = "Must Select at least one email to delete.";
+                invalidLogin.Visible = true;
+            }
+        }
+
+        protected void refreshPage_Click(object sender, EventArgs e) {
+            Response.Redirect("~/Pages/inbox.aspx", false);
+        }
     }
 }

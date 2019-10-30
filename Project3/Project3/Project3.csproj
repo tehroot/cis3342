@@ -103,6 +103,7 @@
     <Content Include="Pages\inbox.aspx" />
     <Content Include="Pages\landing.aspx" />
     <Content Include="Pages\newuser.aspx" />
+    <Content Include="Pages\reademail.aspx" />
     <Content Include="Pages\scripts.js" />
     <Content Include="Pages\stylesheet.css" />
     <Content Include="Web.config" />
@@ -154,6 +155,13 @@
     </Compile>
     <Compile Include="Pages\newuser.aspx.designer.cs">
       <DependentUpon>newuser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\reademail.aspx.cs">
+      <DependentUpon>reademail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\reademail.aspx.designer.cs">
+      <DependentUpon>reademail.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

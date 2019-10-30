@@ -32,7 +32,7 @@ namespace Project3.Pages {
                     if (loginService.login(email.Text, password.Text)) {
                         Session.Add("Username", email.Text);
                         //procedure return user object from sql procedure
-                        Response.Redirect("~/Pages/inbox.aspx");
+                        Response.Redirect("~/Pages/inbox.aspx", false);
                     }
                     } else {
 

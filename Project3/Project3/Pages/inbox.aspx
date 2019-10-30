@@ -46,10 +46,10 @@
                     <asp:Button ID="createFolder" Text="Create Folder" runat="server" type="submit" CssClass="btn btn-secondary" OnClick="createFolder_Click"/>
                 </div>
                 <div class="btn-group mr-1" role="group">
-                    <asp:Button ID="deleteEmail" Text="Delete Selected" runat="server" type="submit" CssClass="btn btn-danger"/>
+                    <asp:Button ID="deleteEmail" Text="Delete Selected" runat="server" type="submit" CssClass="btn btn-danger" OnClick="deleteEmail_Click"/>
                 </div>
                 <div class="btn-group mr-1" role="group">
-                    <asp:Button ID="refreshPage" Text="Refresh Inbox" runat="server" type="submit" CssClass="btn btn-secondary"/>
+                    <asp:Button ID="refreshPage" Text="Refresh Inbox" runat="server" type="submit" CssClass="btn btn-secondary" OnClick="refreshPage_Click"/>
                 </div>
                 
                 <div class="btn-group ml-auto" role="group">
@@ -64,6 +64,7 @@
         </div>
     </div>
     <div class="container-fluid w-100" style="padding-top: 150px;">
+        <div CssClass="warning" id="invalidLogin" runat="server"></div>
         <asp:CustomValidator runat="server" ID="formvalidator" Display="Dynamic" OnServerValidate="formValidation"/>
         <div class="row">
             <div class="col-2 border-right">
