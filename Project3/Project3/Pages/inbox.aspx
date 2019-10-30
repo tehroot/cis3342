@@ -76,6 +76,13 @@
                     <asp:Button id="viewEmailsInFolder" Text="View All Emails in Selected Folder" runat="server" type="submit" CssClass="btn btn-secondary"></asp:Button>
                 </div>
             </div>
+            <div class="col-1">
+                <asp:GridView ID="gvEmails_IDs" runat="server" AutoGenerateColumns="false" Class="table-condensed table-bordered table-striped table-hover>
+                    <Columns>
+
+                    </Columns>
+                </asp:GridView>
+            </div>
             <div class="col-9">
                 <asp:GridView ID="gvEmails" OnRowDataBound="gvEmails_RowDataBound" runat="server" AutoGenerateColumns="false" Class="table-condensed table-bordered table-striped table-hover w-100">
                     <Columns>

@@ -40,7 +40,7 @@
          <div class="navbar navbar-light bg-light navbar-expand pl-2" id="second">
             <div class="btn-toolbar w-100" role="toolbar">
                  <div class="btn-group mr-1" role="group">
-                    <asp:Button id="returnInbox" text="Compose" runat="server" type="submit" CssClass="btn btn-primary" OnClick="checkInbox_Click"/>
+                    <asp:Button id="returnInbox" text="Return to Inbox" runat="server" type="submit" CssClass="btn btn-primary" OnClick="checkInbox_Click"/>
                 </div>
             </div>
         </div>
