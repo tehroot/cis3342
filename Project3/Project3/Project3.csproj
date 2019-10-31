@@ -109,6 +109,7 @@
     <Content Include="Web.config" />
     <Content Include="Global.asax" />
     <Content Include="Pages\login.aspx" />
+    <Content Include="Pages\account.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">

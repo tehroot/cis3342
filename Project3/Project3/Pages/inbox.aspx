@@ -77,21 +77,20 @@
                 </div>
             </div>
             <div class="col-1">
-                <asp:GridView ID="gvEmails_IDs" runat="server" AutoGenerateColumns="false" Class="table-condensed table-bordered table-striped table-hover>
+                <asp:GridView ID="gvEmails_IDs" runat="server" AutoGenerateColumns="false" Class="table-condensed table-bordered table-striped table-hover">
                     <Columns>
-
+                        <asp:TemplateField HeaderText="Select Email">
+                            <ItemTemplate>
+                                <asp:CheckBox id ="select_checkbox" runat="server"/>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:BoundField DataField="id" ItemStyle-CssClass="hiddenCol" HeaderStyle-CssClass="hiddenCol" ReadOnly="true" />
                     </Columns>
                 </asp:GridView>
             </div>
             <div class="col-9">
                 <asp:GridView ID="gvEmails" OnRowDataBound="gvEmails_RowDataBound" runat="server" AutoGenerateColumns="false" Class="table-condensed table-bordered table-striped table-hover w-100">
                     <Columns>
-                        <asp:TemplateField HeaderText="Select Email">
-                            <ItemTemplate>
-                                <asp:Checkbox ID="select_checkbox" runat="server" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:BoundField DataField="id" ItemStyle-CssClass="hiddenCol" HeaderStyle-CssClass="hiddenCol" ReadOnly="true" />
                         <asp:BoundField DataField="sender" HeaderText="From" ReadOnly="true" />
                         <asp:BoundField DataField="subject" HeaderText="Subject" ReadOnly="true" />
                         <asp:BoundField DataField="timestamp" HeaderText="Date, Time" ReadOnly="true" />

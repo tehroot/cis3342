@@ -34,7 +34,7 @@
                     <li class="nav-item">
                         <asp:Button id="logoutButton" text="Logout" runat="server" type="submit" CssClass="btn btn-outline-light navbar-btn" OnClick="checkLogout_Click"/>
                     </li>
-                </ul> 
+                </ul>
             </div>
         </div>
          <div class="navbar navbar-light bg-light navbar-expand pl-2" id="second">

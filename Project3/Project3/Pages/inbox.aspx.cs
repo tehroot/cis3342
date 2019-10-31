@@ -12,10 +12,19 @@ namespace Project3.Pages {
 
         protected void Page_Load(object sender, EventArgs e) {
             //if statement start here
-            if (!IsPostBack) {
-                bindControls();
-            } else {
-                Debug.WriteLine("Test Val");
+            if (Page.IsValid) {
+                if (!IsPostBack) {
+                    if (Session["Username"].ToString().Length > 0) {
+                        bindControls();
+                    } else {
+                        Session.Abandon();
+                        Response.Redirect("~/Pages/login.aspx");
+                        //return to login page if session is non-existent
+                    }
+                    bindControls();
+                } else {
+
+                }
             }
             //session management to check if the user is logged in,
             //if not in the session cache we need to push the user out back
@@ -31,6 +40,7 @@ namespace Project3.Pages {
         }
 
         protected void checkLogin_Click(Object sender, EventArgs e) {
+            Response.Redirect("~/Pages/account.aspx", false);
             //redirect to account information page for the user
             //relies on session shit for verification
             //maybe re-authorization using password??
@@ -63,11 +73,6 @@ namespace Project3.Pages {
                 //String emailID = (e.Row.Cells[1].Text);
                 e.Row.Attributes["onclick"] = String.Format("window.location = 'reademail.aspx?emailID={0}'; ",
                     DataBinder.Eval(e.Row.DataItem, "id"));
-                //onclick redirect to email view
-                //session shit maybe here?
-                //get the email id and use the session object in order to extract the username necessary
-
-                //e.Row.Attributes["onclick"] = 
             }
         }
 
