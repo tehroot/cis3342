@@ -105,6 +105,7 @@
     <Content Include="Pages\landing.aspx" />
     <Content Include="Pages\newuser.aspx" />
     <Content Include="Pages\reademail.aspx" />
+    <Content Include="Pages\reademailadmin.aspx" />
     <Content Include="Pages\scripts.js" />
     <Content Include="Pages\stylesheet.css" />
     <Content Include="Web.config" />
@@ -170,6 +171,13 @@
     </Compile>
     <Compile Include="Pages\reademail.aspx.designer.cs">
       <DependentUpon>reademail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\reademailadmin.aspx.cs">
+      <DependentUpon>reademailadmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\reademailadmin.aspx.designer.cs">
+      <DependentUpon>reademailadmin.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

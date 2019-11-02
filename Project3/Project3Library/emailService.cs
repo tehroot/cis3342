@@ -260,6 +260,73 @@ namespace Utilities {
             }
         }
 
+        protected static DataSet getAllFlaggedEmails() {
+            try {
+                DBConnect dBConnect = new DBConnect();
+                SqlCommand get_flagged_dataset = new SqlCommand {
+                    CommandType = System.Data.CommandType.StoredProcedure,
+                    CommandText = "getAllFlaggedEmails"
+                };
+                DataSet flagged_emails_dataset = dBConnect.GetDataSetUsingCmdObj(get_flagged_dataset);
+                return flagged_emails_dataset;
+            } catch (SqlException ex) {
+                Debug.WriteLine("SQL error GetFlaggedEmails" + ex.StackTrace);
+                return null;
+            }
+        }
+
+        protected static Boolean banUser(String username, Boolean banVal) {
+            try {
+                DBConnect dBConnect = new DBConnect();
+                SqlCommand ban_user = new SqlCommand {
+                    CommandType = System.Data.CommandType.StoredProcedure,
+                    CommandText = "banUser"
+                };
+                ban_user.Parameters.AddWithValue("@username", username);
+                ban_user.Parameters.AddWithValue("@banflag", banVal);
+                int rowCount = dBConnect.DoUpdateUsingCmdObj(ban_user);
+                if (rowCount != -1 && rowCount == 1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (SqlException ex) {
+                Debug.WriteLine("Sql exception banUser" +ex.StackTrace);
+                return false;
+            }
+        }
+
+        protected static String returnUserViaEmail(String id) {
+            try {
+                DBConnect dBConnect = new DBConnect();
+                SqlCommand return_user_email = new SqlCommand {
+                    CommandType = System.Data.CommandType.StoredProcedure,
+                    CommandText = "userByEmailIdSender"
+                };
+                return_user_email.Parameters.AddWithValue("@id", id);
+                DataSet user = dBConnect.GetDataSetUsingCmdObj(return_user_email);
+                if (user.Tables[0].Rows.Count == 1) {
+                    return user.Tables[0].Rows[0][0].ToString();
+                } else {
+                    return "";
+                }
+            } catch(SqlException ex) {
+                Debug.WriteLine("SQL Exception returnUserViaEmail" + ex.StackTrace);
+                return "";
+            }
+        }
+
+        public static String returnUserFromEmailId(String id) {
+            return returnUserViaEmail(id);
+        }
+
+        public static Boolean banUsername(String username, Boolean banVal) {
+            return banUser(username, banVal);
+        }
+        public static DataSet getFlaggedEmails() {
+            return getAllFlaggedEmails();
+        }
+
         public static DataSet searchEmailsDataSet(String username, String searchPattern) {
             return getSearchEmailDataSet(username, searchPattern);
         }

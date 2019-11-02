@@ -31,8 +31,12 @@ namespace Project3.Pages {
                 if (Page.IsValid) {
                     if (loginService.login(email.Text, password.Text)) {
                         Session.Add("Username", email.Text);
+                        if (loginService.checkAdmin(email.Text)) {
+                            Response.Redirect("~/Pages/admin.aspx", false);
+                        } else {
+                            Response.Redirect("~/Pages/inbox.aspx", false);
+                        }
                         //procedure return user object from sql procedure
-                        Response.Redirect("~/Pages/inbox.aspx", false);
                     }
                     } else {
 

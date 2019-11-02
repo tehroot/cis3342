@@ -64,11 +64,7 @@ namespace Utilities {
         public String username { get { return _username; }
             set {
                 if (value != null && value != "") {
-                    if (!loginService.checkUsername(value)) {
-                        _username = value;
-                    } else {
-                        throw new ArgumentException("Username already taken.");
-                    }
+                    _username = value;
                 } else {
                     throw new ArgumentException("Username cannot be blank.");
                 }

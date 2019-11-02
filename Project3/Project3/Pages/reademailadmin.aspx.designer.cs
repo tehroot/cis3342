@@ -10,7 +10,7 @@
 namespace Project3.Pages {
 
 
-    public partial class admin {
+    public partial class reademailadmin {
 
         /// <summary>
         /// form1 control.
@@ -22,6 +22,15 @@ namespace Project3.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// accountButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button accountButton;
+
+        /// <summary>
         /// logoutButton control.
         /// </summary>
         /// <remarks>
@@ -31,39 +40,66 @@ namespace Project3.Pages {
         protected global::System.Web.UI.WebControls.Button logoutButton;
 
         /// <summary>
-        /// invalidLogin control.
+        /// returnAdmin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl invalidLogin;
+        protected global::System.Web.UI.WebControls.Button returnAdmin;
 
         /// <summary>
-        /// gvFlaggedEmails_IDs control.
+        /// warningdiv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvFlaggedEmails_IDs;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl warningdiv;
 
         /// <summary>
-        /// gvFlaggedEmails control.
+        /// timestamp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvFlaggedEmails;
+        protected global::System.Web.UI.WebControls.TextBox timestamp;
 
         /// <summary>
-        /// gvAccountsList control.
+        /// sender control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvAccountsList;
+        protected global::System.Web.UI.WebControls.TextBox sender;
+
+        /// <summary>
+        /// recipient control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox recipient;
+
+        /// <summary>
+        /// subject control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox subject;
+
+        /// <summary>
+        /// messageContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox messageContent;
     }
 }

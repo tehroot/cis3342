@@ -21,9 +21,6 @@
             <a class="navbar-toggler p-2 text-white border-0" data-toggle="collapse" data-target=".navbar-collapse"></a>
             <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item">
-                        <asp:Button id="accountButton" text="Account" runat="server" type="submit" CssClass="btn btn-primary" OnClick="checkAccount_Click"/>
-                    </li>
                 </ul>
             </div>
             <div class="mx-auto my-2 order-0 order-md-1 position-relative">
@@ -35,6 +32,59 @@
                         <asp:Button id="logoutButton" text="Logout" runat="server" type="submit" CssClass="btn btn-outline-light navbar-btn" OnClick="checkLogout_Click"/>
                     </li>
                 </ul> 
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid w-100" style="padding-top: 150px;">
+        <div CssClass="warning" id="invalidLogin" runat="server"></div>
+        <div class="row">
+            <div class="col-5">
+                <asp:GridView ID="gvFlaggedEmails_IDs" runat="server" AutoGenerateColumns="false" Class="table-condensed table-bordered table-striped w-100">
+                    <Columns>
+                        <asp:TemplateField HeaderText="Select">
+                            <ItemTemplate>
+                                <asp:CheckBox ID="select_checkbox" runat="server" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="View Sender Account">
+                            <ItemTemplate>
+                                <asp:Button ID="view_user_account" type="submit" Text="View Account" CssClass="btn btn-primary btn-sm" runat="server" OnClick="view_user_account_Click"/>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Ban User">
+                            <ItemTemplate>
+                                <asp:Button ID="banUserAccount" type="submit" Text="Ban User" CssClass="btn btn-danger btn-sm" runat="server" OnClick="banUserAccount_Click"/>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Unflag Email">
+                            <ItemTemplate>
+                                <asp:Button ID="unFlagEmail" type="Submit" Text="Unflag Email" CssClass="btn btn-warning btn-sm" runat="server" OnClick="unFlagEmail_Click" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:BoundField DataField="id" ItemStyle-CssClass="hiddenCol" HeaderStyle-CssClass="hiddenCol" ReadOnly="true" />
+                    </Columns>
+                </asp:GridView>
+            </div>
+            <div class="col-7">
+                <asp:GridView ID="gvFlaggedEmails" OnRowDataBound="gvFlaggedEmails_RowDataBound" runat="server" AutoGenerateColumns="false" Class="table-condensed table-bordered table-striped table-hover w-100">
+                    <Columns>
+                        <asp:BoundField DataField="sender" HeaderText="From" ReadOnly="true" />
+                        <asp:BoundField DataField="subject" HeaderText="Subject" ReadOnly="true" />
+                        <asp:BoundField DataField="timestamp" HeaderText="Date, Time" ReadOnly="true" />
+                        <asp:TemplateField ItemStyle-CssClass="hidden-submit-button">
+                            <ItemTemplate>
+                                <asp:Button id="flag_email" type="submit" Text="Text here" CssClass="btn btn-danger btn-sm hiddenCol" runat="server"/>  
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <asp:GridView ID="gvAccountsList" OnRowDataBound="gvAccountsList_RowDataBound" runat="server" AutoGenerateColumns="false" Class="table-condensed table-bordered table-striped table-hover w-100">
+
+                </asp:GridView>
             </div>
         </div>
     </div>

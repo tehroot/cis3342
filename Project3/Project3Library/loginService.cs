@@ -92,15 +92,46 @@ namespace Utilities {
                     CommandType = CommandType.StoredProcedure,
                     CommandText = "getUserByInfo"
                 };
-                cmd.Parameters.AddWithValue("@accountID", username);
+                cmd.Parameters.AddWithValue("@username", username);
                 DataSet userSet = dbConnect.GetDataSetUsingCmdObj(cmd);
+                Boolean flag = false;
+                if (userSet.Tables[0].Rows[0][4].ToString() == "1") {
+                    flag = true;
+                }
                 User user = new User(userSet.Tables[0].Rows[0][0].ToString(), userSet.Tables[0].Rows[0][1].ToString(), userSet.Tables[0].Rows[0][2].ToString(),
-                    userSet.Tables[0].Rows[0][3].ToString(), bool.Parse(userSet.Tables[0].Rows[0][4].ToString()), userSet.Tables[0].Rows[0][5].ToString());
+                    userSet.Tables[0].Rows[0][3].ToString(), flag, userSet.Tables[0].Rows[0][5].ToString());
                 return user;
             } catch (Exception ex) {
                 Debug.WriteLine("Error in SQL, returnUserInfo" + ex.StackTrace);
                 return new User();
             }
+        }
+
+        protected static Boolean isUserAdmin(String username) {
+            try {
+                DBConnect dBConnect = new DBConnect();
+                SqlCommand cmd = new SqlCommand {
+                    CommandType = System.Data.CommandType.StoredProcedure,
+                    CommandText = "checkUserAdmin"
+                };
+                cmd.Parameters.AddWithValue("@username", username);
+                DataSet userSet = dBConnect.GetDataSetUsingCmdObj(cmd);
+                if(userSet.Tables[0].Rows.Count > 0) {
+                    if (userSet.Tables[0].Rows[0][0].ToString() == username) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            } catch(Exception ex) {
+                Debug.WriteLine("Error in SQL, adminCheck" + ex.StackTrace);
+                return false;
+            }
+        }
+        public static bool checkAdmin(String username) {
+            return isUserAdmin(username);
         }
 
         public static bool login(String username, String password) {
