@@ -49,6 +49,15 @@ namespace Project3.Pages {
         protected global::System.Web.UI.WebControls.Button returnInbox;
 
         /// <summary>
+        /// warningDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl warningDiv;
+
+        /// <summary>
         /// formvalidator control.
         /// </summary>
         /// <remarks>
@@ -56,15 +65,6 @@ namespace Project3.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CustomValidator formvalidator;
-
-        /// <summary>
-        /// warningdiv control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl warningdiv;
 
         /// <summary>
         /// sender control.

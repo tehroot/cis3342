@@ -30,11 +30,16 @@ namespace Project3.Pages {
             try {
                 if (Page.IsValid) {
                     if (loginService.login(email.Text, password.Text)) {
-                        Session.Add("Username", email.Text);
-                        if (loginService.checkAdmin(email.Text)) {
-                            Response.Redirect("~/Pages/admin.aspx", false);
+                        if (!emailService.userBanned(email.Text)) {
+                            Session.Add("Username", email.Text);
+                            if (loginService.checkAdmin(email.Text)) {
+                                Response.Redirect("~/Pages/admin.aspx", false);
+                            } else {
+                                Response.Redirect("~/Pages/inbox.aspx", false);
+                            }
                         } else {
-                            Response.Redirect("~/Pages/inbox.aspx", false);
+                            invalidLogin.InnerText = "Error in form submission, please resubmit and follow rules.";
+                            invalidLogin.Attributes["class"] = "warning";
                         }
                         //procedure return user object from sql procedure
                     }

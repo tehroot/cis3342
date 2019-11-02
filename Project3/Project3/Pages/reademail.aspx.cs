@@ -16,9 +16,9 @@ namespace Project3.Pages {
             String id = Request.QueryString["emailID"];
             Email email = emailService.getEmail(id);
             timestamp.Text = email.email_datetime.ToString();
-            sender.Text = email.email_sender;
+            sender.Text = email.email_sender +"@fmail.io";
             subject.Text = email.email_subject;
-            recipient.Text = email.email_recipient;
+            recipient.Text = email.email_recipient + "@fmail.io";
             messageContent.Text = email.email_content;
         }
 

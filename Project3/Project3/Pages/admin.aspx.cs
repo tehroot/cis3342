@@ -30,6 +30,8 @@ namespace Project3.Pages {
             gvFlaggedEmails_IDs.DataBind();
             gvFlaggedEmails.DataSource = emailService.getFlaggedEmails();
             gvFlaggedEmails.DataBind();
+            gvAccountsList.DataSource = emailService.returnUsersList();
+            gvAccountsList.DataBind();
         }
 
         protected void checkLogout_Click(Object sender, EventArgs e) {
@@ -63,7 +65,7 @@ namespace Project3.Pages {
                 if (count > 0) {
                     invalidLogin.Visible = false;
                     invalidLogin.InnerText = "";
-                    Response.Redirect("~/Pages/account.aspx?username=" + id, false);
+                    Response.Redirect("~/Pages/account.aspx?emailID=" + id, false);
                 } else {
                     invalidLogin.InnerText = "Must Select at least one email to view accounts.";
                     invalidLogin.Visible = true;
@@ -121,6 +123,38 @@ namespace Project3.Pages {
 
         protected void gvAccountsList_RowDataBound(object sender, GridViewRowEventArgs e) {
 
+        }
+
+        protected void unbanUser_Click(object sender, EventArgs e) {
+            try {
+                String id = "";
+                Button btn = (Button)sender;
+                GridViewRow row = (GridViewRow)btn.NamingContainer;
+                id = row.Cells[1].Text;
+                if (emailService.unbanUser(id, false)) {
+                    invalidLogin.InnerText = "User unbanned";
+                    invalidLogin.Visible = true;
+                    bindControls();
+                } else {
+                    invalidLogin.InnerText = "SQL error, try again later";
+                    invalidLogin.Visible = true;
+                    bindControls();
+                }
+            } catch (Exception ex) {
+                Debug.WriteLine(ex.Message + ex.StackTrace);
+            }
+        }
+
+        protected void viewUserAccount_Click(object sender, EventArgs e) {
+            try {
+                String id = "";
+                Button btn = (Button)sender;
+                GridViewRow row = (GridViewRow)btn.NamingContainer;
+                id = row.Cells[1].Text;
+                Response.Redirect("~/Pages/account.aspx?username=" + id, false);
+            } catch (Exception ex) {
+                Debug.WriteLine(ex.Message + ex.StackTrace);
+            }
         }
     }
 }

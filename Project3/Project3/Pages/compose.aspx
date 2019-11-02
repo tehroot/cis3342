@@ -45,11 +45,11 @@
                 </div>
             </div>
         </div>
+        <div CssClass="warning" id="warningDiv" runat="server" style="padding-top: 150px;"></div>
         <asp:CustomValidator runat="server" id="formvalidator" Display="Dynamic" OnServerValidate="formValidation" />
         <div class="container-fluid h-100 d-flex justify-content-center align-item-center bg-light">
         <div class="container" style="padding-top: 150px;">
             <div class="justify-content-center">
-                <div runat="server" CssClass="warning" id="warningdiv"></div>
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label for="sender" class="text-dark">Sender: </label> 

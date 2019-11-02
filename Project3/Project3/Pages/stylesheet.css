@@ -3,11 +3,13 @@
 }
 
 .warning {
+
     border: 1px solid red;
     border-radius: 4px;
     visibility: hidden;
     text-align: center;
     background-color: #ff0000;
+    color:crimson;
 }
 
 .hidden-submit-button {

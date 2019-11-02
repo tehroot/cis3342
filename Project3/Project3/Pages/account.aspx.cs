@@ -21,10 +21,18 @@ namespace Project3.Pages {
                 lastName.Text = user.lastname;
                 alternateEmail.Text = user.alternateemail;
                 userbanStatus.Text = user.banflag.ToString();
-            } else if (Request.QueryString["username"] != null && Session["Username"].ToString() != Request.QueryString["username"]) {
-                String id = Request.QueryString["username"];
+            } else if (Request.QueryString["emailID"] != null && Session["Username"].ToString() != Request.QueryString["emailID"]) {
+                String id = Request.QueryString["emailID"];
                 String user_string = emailService.returnUserFromEmailId(id);
                 User user = loginService.returnUser(user_string);
+                username.Text = user.username;
+                firstName.Text = user.firstname;
+                lastName.Text = user.lastname;
+                alternateEmail.Text = user.alternateemail;
+                userbanStatus.Text = user.banflag.ToString();
+            } else if (Request.QueryString["username"] != null && Session["Username"].ToString() != Request.QueryString["username"]) {
+                String id = Request.QueryString["username"];
+                User user = loginService.returnUser(id);
                 username.Text = user.username;
                 firstName.Text = user.firstname;
                 lastName.Text = user.lastname;
@@ -39,10 +47,12 @@ namespace Project3.Pages {
         }
 
         protected void returnPage_Click(Object sender, EventArgs e) {
-            if (Request.QueryString["username"] == null || Request.QueryString["username"].Length < 1 && Session["Username"] != null) {
-                Response.Redirect("~/Pages/inbox.aspx");
+            if (Request.QueryString["emailID"] != null && Session["Username"].ToString() != Request.QueryString["emailID"]) {
+                Response.Redirect("~/Pages/admin.aspx", false);
             } else if (Request.QueryString["username"] != null && Session["Username"].ToString() != Request.QueryString["username"]) {
-                Response.Redirect("~/Pages/admin.aspx");
+                Response.Redirect("~/Pages/admin.aspx", false);
+            } else {
+                Response.Redirect("~/Pages/inbox.aspx", false);
             }
         }
     }

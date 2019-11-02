@@ -37,6 +37,7 @@
     </div>
     <div class="container-fluid w-100" style="padding-top: 150px;">
         <div CssClass="warning" id="invalidLogin" runat="server"></div>
+        <h3>Flagged Emails List:</h3>
         <div class="row">
             <div class="col-5">
                 <asp:GridView ID="gvFlaggedEmails_IDs" runat="server" AutoGenerateColumns="false" Class="table-condensed table-bordered table-striped w-100">
@@ -80,10 +81,29 @@
                 </asp:GridView>
             </div>
         </div>
+        <br />
+        <br />
+        <br />
+        <h3>Current Users List:</h3>
         <div class="row">
             <div class="col-12">
                 <asp:GridView ID="gvAccountsList" OnRowDataBound="gvAccountsList_RowDataBound" runat="server" AutoGenerateColumns="false" Class="table-condensed table-bordered table-striped table-hover w-100">
-
+                    <Columns>
+                        <asp:imagefield ItemStyle-CssClass="img-style" DataImageUrlField="avatar" nulldisplaytext="no image" readonly="true"></asp:imagefield>
+                        <asp:BoundField DataField="username" HeaderText="Username" ReadOnly="true" />
+                        <asp:BoundField DataField="banflag" HeaderText="Ban Status" ReadOnly="true" />
+                        <asp:BoundField DataField="alternate_email" HeaderText="Alternate Email" ReadOnly="true" />
+                        <asp:TemplateField HeaderText="Unban User">
+                            <ItemTemplate>
+                                <asp:Button ID="unbanUser" type="Submit" Text="Unban User" CssClass="btn btn-warning btn-sm" runat="server" OnClick="unbanUser_Click" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="View User Account">
+                            <ItemTemplate>
+                                <asp:Button ID="viewUserAccount" type="Submit" Text="View User Account" CssClass="btn btn-primary btn-sm" runat="server" OnClick="viewUserAccount_Click" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
                 </asp:GridView>
             </div>
         </div>

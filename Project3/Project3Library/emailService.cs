@@ -52,7 +52,7 @@ namespace Utilities {
                 cmd.Parameters.AddWithValue("@subject", email.email_subject);
                 cmd.Parameters.AddWithValue("@timestamp", now);
                 int rowCount = dbConnect.DoUpdateUsingCmdObj(cmd);
-                if (rowCount != -1 && rowCount == 1) {
+                if (rowCount != -1 && rowCount == 2) {
                     return true;
                 } else {
                     return false;
@@ -275,15 +275,22 @@ namespace Utilities {
             }
         }
 
-        protected static Boolean banUser(String username, Boolean banVal) {
+        protected static Boolean banUser(String id, Boolean banVal) {
             try {
+
                 DBConnect dBConnect = new DBConnect();
                 SqlCommand ban_user = new SqlCommand {
                     CommandType = System.Data.CommandType.StoredProcedure,
                     CommandText = "banUser"
                 };
-                ban_user.Parameters.AddWithValue("@username", username);
-                ban_user.Parameters.AddWithValue("@banflag", banVal);
+                int banInt = 0;
+                ban_user.Parameters.AddWithValue("@id", id);
+                if (banVal == true) {
+                    banInt = 1;
+                } else {
+                    banInt = 0;
+                }
+                ban_user.Parameters.AddWithValue("@banflag", banInt);
                 int rowCount = dBConnect.DoUpdateUsingCmdObj(ban_user);
                 if (rowCount != -1 && rowCount == 1) {
                     return true;
@@ -316,8 +323,82 @@ namespace Utilities {
             }
         }
 
+        protected static Boolean isUserBanned(String username) {
+            try {
+                DBConnect dBConnect = new DBConnect();
+                SqlCommand user_banned = new SqlCommand {
+                    CommandType = System.Data.CommandType.StoredProcedure,
+                    CommandText = "checkifUserBAnned"
+                };
+                user_banned.Parameters.AddWithValue("@username",username);
+                DataSet banned = dBConnect.GetDataSetUsingCmdObj(user_banned);
+                if (banned.Tables[0].Rows.Count == 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch(SqlException ex) {
+                Debug.WriteLine("SQL Exception isUSerBanned" +ex.StackTrace);
+                return false;
+            }
+        }
+
+        protected static DataSet returnEntireUserList() {
+            try {
+                DBConnect dBConnect = new DBConnect();
+                SqlCommand user_list = new SqlCommand {
+                    CommandType = System.Data.CommandType.StoredProcedure,
+                    CommandText = "returnAllUsers"
+                };
+                DataSet users_set = dBConnect.GetDataSetUsingCmdObj(user_list);
+                return users_set;
+            } catch (SqlException ex) {
+                Debug.WriteLine("SQL Exception returnEntireUserList" +ex.StackTrace);
+                return null;
+            }
+        }
+
+        protected static Boolean unbanUserByUsername(String username, Boolean banVal) {
+            try {
+                DBConnect dBConnect = new DBConnect();
+                SqlCommand ban_user = new SqlCommand {
+                    CommandType = System.Data.CommandType.StoredProcedure,
+                    CommandText = "banUserByUsername"
+                };
+                int banInt = 0;
+                ban_user.Parameters.AddWithValue("@username", username);
+                if (banVal == true) {
+                    banInt = 1;
+                } else {
+                    banInt = 0;
+                }
+                ban_user.Parameters.AddWithValue("@banflag", banInt);
+                int rowCount = dBConnect.DoUpdateUsingCmdObj(ban_user);
+                if (rowCount != -1 && rowCount == 1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (SqlException ex) {
+                Debug.WriteLine("Sql exception banUser" + ex.StackTrace);
+                return false;
+            }
+        }
+
+        public static Boolean unbanUser(String username, Boolean banval) {
+            return unbanUserByUsername(username, banval);
+        }
+
+        public static DataSet returnUsersList() {
+            return returnEntireUserList();
+        }
+
         public static String returnUserFromEmailId(String id) {
             return returnUserViaEmail(id);
+        }
+
+        public static Boolean userBanned(String username) {
+            return isUserBanned(username);
         }
 
         public static Boolean banUsername(String username, Boolean banVal) {

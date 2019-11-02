@@ -55,16 +55,14 @@ namespace Project3.Pages {
             try {
                 if (Page.IsValid) {
                     if (emailService.createNewEmail(email)) {
-                        
+                        Response.Redirect("~/Pages/Inbox.aspx", false);
                     } else {
-                        warningdiv.Visible = true;
-                        warningdiv.InnerText = "Error in form submission, please resubmit and follow rules.";
-                        warningdiv.Attributes["class"] = "warning";
+                        warningDiv.Visible = true;
+                        warningDiv.InnerText = "Error in form submission, please resubmit and follow rules (SQL ERROR)";
                     }
                 } else {
-                    warningdiv.Visible = true;
-                    warningdiv.InnerText = "Error in form submission, please resubmit and follow rules.";
-                    warningdiv.Attributes["class"] = "warning";
+                    warningDiv.Visible = true;
+                    warningDiv.InnerText = "Error in form submission, please resubmit and follow rules.";
                 }
             } catch (Exception ex) {
                 Debug.WriteLine(ex.StackTrace + ex.Message);

@@ -10,6 +10,6 @@ namespace Project3.Pages {
         protected global::System.Web.UI.WebControls.TextBox email;
         protected global::System.Web.UI.WebControls.TextBox password;
         protected global::System.Web.UI.WebControls.Button loginButton;
-
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl invalidLogin;
     }
 }
