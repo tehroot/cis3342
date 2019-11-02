@@ -4,17 +4,35 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using Utilities;
 
 namespace Utilities {
     public class emailService {
 
+        /*
         protected static String generateEmailId() {
             byte[] randArray = new byte[32];
             Random rnd = new Random();
             rnd.NextBytes(randArray);
             return System.Text.Encoding.UTF8.GetString(randArray, 0, randArray.Length);
+        }
+        */
+        protected static String generateEmailId() {
+            string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            String s = "";
+            using (RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider()) {
+                while (s.Length < 15) {
+                    byte[] singleByte = new byte[1];
+                    provider.GetBytes(singleByte);
+                    char character = (char)singleByte[0];
+                    if (valid.Contains(character)) {
+                        s += character;
+                    }
+                }
+            }
+            return s;
         }
 
         protected static Boolean createEmail(Email email) {
@@ -47,7 +65,7 @@ namespace Utilities {
             }
         }
 
-        protected static DataSet getEmailDataSet(String username) {
+        protected static DataSet getEmailDataSet(String username, String folder) {
             try {
                 DBConnect dbConnect = new DBConnect();
                 SqlCommand get_aggregate_dataset = new SqlCommand {
@@ -55,6 +73,7 @@ namespace Utilities {
                     CommandText = "mapEmailsandFolders"
                 };
                 get_aggregate_dataset.Parameters.AddWithValue("@username", username);
+                get_aggregate_dataset.Parameters.AddWithValue("@folder_tag", folder);
                 DataSet aggregate_dataset = dbConnect.GetDataSetUsingCmdObj(get_aggregate_dataset);
                 return aggregate_dataset;
             } catch (SqlException ex) {
@@ -94,8 +113,8 @@ namespace Utilities {
                     CommandType = System.Data.CommandType.StoredProcedure,
                     CommandText = "deleteUserSideEmail"
                 };
-                delete_user_email.Parameters.AddWithValue("@id",username);
-                delete_user_email.Parameters.AddWithValue("@username",id);
+                delete_user_email.Parameters.AddWithValue("@id",id);
+                delete_user_email.Parameters.AddWithValue("@username",username);
                 int rowCount = dBConnect.DoUpdateUsingCmdObj(delete_user_email);
                 if (rowCount != -1 && rowCount == 1) {
                     return true;
@@ -118,8 +137,8 @@ namespace Utilities {
                 get_email.Parameters.AddWithValue("@id", id);
                 DataSet email = dbConnect.GetDataSetUsingCmdObj(get_email);
                 if (email.Tables[0].Rows.Count == 1) {
-                    Email new_email = new Email(email.Tables[0].Rows[0][0].ToString(), email.Tables[0].Rows[0][1].ToString(), email.Tables[0].Rows[0][2].ToString(),
-                        email.Tables[0].Rows[0][3].ToString(), email.Tables[0].Rows[0][4].ToString(),
+                    Email new_email = new Email(email.Tables[0].Rows[0][0].ToString(), email.Tables[0].Rows[0][1].ToString(),
+                        email.Tables[0].Rows[0][2].ToString(), email.Tables[0].Rows[0][3].ToString(), email.Tables[0].Rows[0][4].ToString(),
                         DateTime.Parse(email.Tables[0].Rows[0][6].ToString()));
                     return new_email;
                 } else {
@@ -155,6 +174,96 @@ namespace Utilities {
             }
         }
 
+        protected static Boolean updateEmailReportFlag(String id, Boolean flagVal) {
+            try {
+                DBConnect dBConnect = new DBConnect();
+                SqlCommand flag_Email = new SqlCommand {
+                    CommandType = System.Data.CommandType.StoredProcedure,
+                    CommandText = "updateReportFlag"
+                };
+
+                flag_Email.Parameters.AddWithValue("@id", id);
+                if (flagVal) {
+                    flag_Email.Parameters.AddWithValue("@flag", 1);
+                } else {
+                    flag_Email.Parameters.AddWithValue("@flag", 0);
+                }
+                int rowCount = dBConnect.DoUpdateUsingCmdObj(flag_Email);
+                if (rowCount != -1 && rowCount == 1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch(Exception ex) {
+                Debug.WriteLine("SQL Errror updateEmailReportFlag" + ex.StackTrace);
+                return false;
+            }
+        }
+
+        protected static Boolean moveEmailFolder(String id, String folder, String username) {
+            try {
+                DBConnect dBConnect = new DBConnect();
+                SqlCommand move_email = new SqlCommand {
+                    CommandType = System.Data.CommandType.StoredProcedure,
+                    CommandText = "moveEmailToFolder"
+                };
+                move_email.Parameters.AddWithValue("@id", id);
+                move_email.Parameters.AddWithValue("@username", username);
+                move_email.Parameters.AddWithValue("@folder_tag", folder);
+                int rowCount = dBConnect.DoUpdateUsingCmdObj(move_email);
+                if (rowCount != -1 && rowCount == 1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (Exception ex) {
+                Debug.WriteLine("SQL Error moveEmailToFolder" + ex.StackTrace);
+                return false;
+            }
+        }
+
+        protected static Boolean createNewFolder(String username, String folder) {
+            try {
+                DBConnect dBConnect = new DBConnect();
+                SqlCommand create_folder = new SqlCommand {
+                    CommandType = System.Data.CommandType.StoredProcedure,
+                    CommandText = "createNewFolder"
+                };
+                create_folder.Parameters.AddWithValue("@username", username);
+                create_folder.Parameters.AddWithValue("@folder_tag", folder);
+                int rowCount = dBConnect.DoUpdateUsingCmdObj(create_folder);
+                if (rowCount != -1 && rowCount == 1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (Exception ex) {
+                Debug.WriteLine("SQL Error createNewFolder" + ex.StackTrace);
+                return false;
+            }
+            
+        }
+
+        public static Boolean createEmailFolder(String username, String folder) {
+            return createNewFolder(username, folder);
+        }
+
+        public static Boolean moveEmail(String id, String folder, String username) {
+            return moveEmailFolder(id, folder, username);
+        }
+
+        public static Boolean flagEmail(String id, Boolean flagVal) {
+            return updateEmailReportFlag(id, flagVal);
+        }
+
+        public static Boolean createNewEmail(Email email) {
+            return createEmail(email);
+        }
+
+        public static String getID() {
+            return generateEmailId();
+        }
+
         public static Email getEmail(String id) {
             return getEmailById(id);
         }
@@ -163,12 +272,16 @@ namespace Utilities {
             return deleteUserEmail(username, id);
         }
 
-        public static DataSet getEmails(String username) {
-            return getEmailDataSet(username);
+        public static DataSet getEmails(String username, String folder) {
+            return getEmailDataSet(username, folder);
         }
 
         public static List<String> getFolders(String username) {
             return getFolderList(username);
+        }
+
+        public static List<String> returnUsersList(String username) {
+            return returnValidUserList(username);
         }
     }
 }

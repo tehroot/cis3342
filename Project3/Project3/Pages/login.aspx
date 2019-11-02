@@ -33,9 +33,9 @@
             <asp:CustomValidator runat="server" ID="formvalidator" Display="Dynamic" OnServerValidate="formValidation" />
 		    <div class="warning" id="invalidLogin" runat="server"></div>
 		    <div class="form-group">
-			    <label for="email">Email Address</label>
-			    <asp:TextBox runat="server" pattern="[A-Za-z]+" CssClass="form-control" id="email" aria-describedby="email" placeholder="Enter Email here" required></asp:TextBox>
-			    <small id="emailHelp" class="form-text text-muted">Enter your email here to login.</small>
+			    <label for="email">Username</label>
+			    <asp:TextBox runat="server" pattern="[A-Za-z0-9]+" CssClass="form-control" id="email" aria-describedby="email" placeholder="Enter Username here" required></asp:TextBox>
+			    <small id="emailHelp" class="form-text text-muted">Enter your username here to login.</small>
 		    </div>
 		    <div class="form-group">
 			    <label for="passwordInput">Password</label>

@@ -37,13 +37,48 @@
                     </ul> 
                 </div>
             </div>
+            <div class="navbar navbar-light bg-light navbar-expand pl-2" id="second">
+                <div class="btn-toolbar w-100" role="toolbar">
+                     <div class="btn-group mr-1" role="group">
+                        <asp:Button id="returnInbox" text="Return to Inbox" runat="server" type="submit" CssClass="btn btn-primary" OnClick="checkInbox_Click"/>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="container-fluid w-100" style="padding-top: 150px;">
-            <div class="warning" id="invalidLogin" runat="server"></div>
-            <asp:CustomValidator runat="server" id="formvalidator" Display="Dynamic" OnServerValidate="formValidation" />
-
-
+        <asp:CustomValidator runat="server" id="formvalidator" Display="Dynamic" OnServerValidate="formValidation" />
+        <div class="container-fluid h-100 d-flex justify-content-center align-item-center bg-light">
+        <div class="container" style="padding-top: 150px;">
+            <div class="justify-content-center">
+                <div runat="server" CssClass="warning" id="warningdiv"></div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="sender" class="text-dark">Sender: </label> 
+                        <asp:TextBox runat="server" CssClass="form-control" ID="sender" name="emailSender" ReadOnly="true"></asp:TextBox>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="recipient" class="text-dark">Recipient: </label> 
+                        <asp:DropDownList runat="server" CssClass="form-control" ID="recipientList" name="emailRecipient"></asp:DropDownList>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="sender" class="text-dark">Email Subject: </label> 
+                        <asp:TextBox runat="server" CssClass="form-control" ID="subject" name="emailSubject"></asp:TextBox>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="messageContent" class="text-dark">Content: </label> 
+                        <asp:TextBox runat="server" TextMode="multiline" CssClass="form-control" ID="messageContent" name="messageContent"></asp:TextBox>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <asp:Button id="sendEmail" text="Send Email" runat="server" type="submit" CssClass="btn btn-primary" OnClick="sendEmail_Click"/>
         </div>
+    </div>
     </form>
 </body>
 </html>

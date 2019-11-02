@@ -31,7 +31,7 @@ namespace Utilities {
                     cmd.Parameters.Add(rowsAffected);
                     int rowCount = dbConnect.DoUpdateUsingCmdObj(cmd);
                     //int rowCount = int.Parse(cmd.Parameters["@return"].Value.ToString());
-                    if (rowCount != -1 && rowCount == 1) {
+                    if (rowCount != -1 && rowCount == 4) {
                         return true;
                     } else {
                         return false;

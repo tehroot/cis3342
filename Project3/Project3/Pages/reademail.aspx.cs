@@ -17,6 +17,7 @@ namespace Project3.Pages {
             Email email = emailService.getEmail(id);
             timestamp.Text = email.email_datetime.ToString();
             sender.Text = email.email_sender;
+            subject.Text = email.email_subject;
             recipient.Text = email.email_recipient;
             messageContent.Text = email.email_content;
         }

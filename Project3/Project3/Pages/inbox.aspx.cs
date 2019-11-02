@@ -9,22 +9,24 @@ using Utilities;
 
 namespace Project3.Pages {
     public partial class inbox : System.Web.UI.Page {
-
         protected void Page_Load(object sender, EventArgs e) {
             //if statement start here
-            if (Page.IsValid) {
-                if (!IsPostBack) {
-                    if (Session["Username"].ToString().Length > 0) {
-                        bindControls();
+            if (!IsPostBack) {
+                //issues with null fetch from intermittent session dropping, null to catch, just drops the login and redirects
+                //not elegant but what can you do..
+                try {
+                    if (Session["Username"].ToString().Length > 0 && Session["Username"] != null) {
+                        bindControls("inbox");
                     } else {
                         Session.Abandon();
                         Response.Redirect("~/Pages/login.aspx");
                         //return to login page if session is non-existent
                     }
-                    bindControls();
-                } else {
-
+                } catch (NullReferenceException ex) {
+                    Session.Abandon();
+                    Response.Redirect("~/Pages/login.aspx");
                 }
+            } else {
             }
             //session management to check if the user is logged in,
             //if not in the session cache we need to push the user out back
@@ -32,11 +34,13 @@ namespace Project3.Pages {
             
         }
 
-        protected void bindControls() {
-            gvEmails.DataSource = emailService.getEmails(Session["Username"].ToString());
+        protected void bindControls(String folder) {
+            gvEmails.DataSource = emailService.getEmails(Session["Username"].ToString(), folder);
             gvEmails.DataBind();
             rblFolders.DataSource = emailService.getFolders(Session["Username"].ToString());
             rblFolders.DataBind();
+            gvEmails_IDs.DataSource = emailService.getEmails(Session["Username"].ToString(), folder);
+            gvEmails_IDs.DataBind();
         }
 
         protected void checkLogin_Click(Object sender, EventArgs e) {
@@ -55,6 +59,19 @@ namespace Project3.Pages {
         protected void createFolder_Click(Object sender, EventArgs e) {
             //create folder chain, dropdown or something here, not sure about this yet
             //side pop box for folder addition, modal for adding to list?
+            if (folderName.Text.Length > 0 && folderName.Text != null) {
+                if (Session["Username"] != null) {
+                    if (emailService.createEmailFolder(Session["Username"].ToString(), folderName.Text)) {
+                        Response.Redirect("~/Pages/inbox.aspx", false);
+                    }
+                } else {
+                    Session.Abandon();
+                    Response.Redirect("~/Pages/login.aspx");
+                }
+            } else {
+                invalidLogin.InnerText = "Must type something into new folder textbox.";
+                invalidLogin.Visible = true;
+            }
         }
 
         protected void checkLogout_Click(Object sender, EventArgs e) {
@@ -80,27 +97,23 @@ namespace Project3.Pages {
             Response.Redirect("~/Pages/reademail.aspx ?emailid="+param, false);
         }
 
-        protected String returnEmailId() {
-            throw new NotImplementedException();
-        }
-
         protected void searchToggle_Click(object sender, EventArgs e) {
 
         }
 
         protected void deleteEmail_Click(object sender, EventArgs e) {
             int count = 0;
-            foreach (GridViewRow row in gvEmails.Rows) {
+            foreach (GridViewRow row in gvEmails_IDs.Rows) {
                 CheckBox selectedEmail = (CheckBox)row.FindControl("select_checkbox");
                 if (selectedEmail.Checked) {
                     count++;
-                    emailService.deleteEmail(Session["Username"].ToString(), row.Cells[1].Text);
-
+                    emailService.deleteEmail(Session["Username"].ToString(), row.Cells[2].Text);
                 }
             }
             if(count > 0) {
                 invalidLogin.Visible = false;
                 invalidLogin.InnerText = "";
+                Response.Redirect("~/Pages/inbox.aspx", false);
             } else {
                 invalidLogin.InnerText = "Must Select at least one email to delete.";
                 invalidLogin.Visible = true;
@@ -109,6 +122,52 @@ namespace Project3.Pages {
 
         protected void refreshPage_Click(object sender, EventArgs e) {
             Response.Redirect("~/Pages/inbox.aspx", false);
+        }
+
+        protected void flag_email_Click(object sender, EventArgs e) {
+            int count = 0;
+            foreach (GridViewRow row in gvEmails_IDs.Rows) {
+                CheckBox selectedEmail = (CheckBox)row.FindControl("select_checkbox");
+                if (selectedEmail.Checked && Session["Username"] != null) {
+                    count++;
+                    emailService.flagEmail(row.Cells[2].Text, true);
+                }
+            }
+            if (count > 0) {
+                invalidLogin.Visible = false;
+                invalidLogin.InnerText = "";
+                Response.Redirect("~/Pages/inbox.aspx", false);
+            } else {
+                invalidLogin.InnerText = "Must Select at least one email to flag.";
+                invalidLogin.Visible = true;
+            }
+        }
+
+        protected void viewEmailsInFolder_Click(object sender, EventArgs e) {
+            String currentSelection = rblFolders.SelectedValue;
+            bindControls(currentSelection);
+            rblFolders.SelectedValue = currentSelection;
+            selectedFolder.InnerText = currentSelection;
+        }
+
+        protected void addEmailToFolder_Click(object sender, EventArgs e) {
+            String currentSelection = rblFolders.SelectedValue;
+            int count = 0;
+            foreach (GridViewRow row in gvEmails_IDs.Rows) {
+                CheckBox selectedEmail = (CheckBox)row.FindControl("select_checkbox");
+                if (selectedEmail.Checked && Session["Username"] != null) {
+                    count++;
+                    emailService.moveEmail(row.Cells[2].Text, currentSelection, Session["Username"].ToString());
+                }
+            }
+            if (count > 0) {
+                invalidLogin.Visible = false;
+                invalidLogin.InnerText = "";
+                Response.Redirect("~/Pages/inbox.aspx", false);
+            } else {
+                invalidLogin.InnerText = "Must Select at least one email to move folders.";
+                invalidLogin.Visible = true;
+            }
         }
     }
 }

@@ -22,8 +22,6 @@
     display: none;
 }
 
-.hidden
-
 .btn-space {
     margin-right: 10px;
 }
@@ -35,4 +33,8 @@
 .btn {
     white-space:normal;
     word-wrap:break-word;
+}
+
+.img-style {
+    width:4%;
 }

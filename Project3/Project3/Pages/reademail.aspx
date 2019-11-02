@@ -69,6 +69,12 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
+                            <label for="sender" class="text-dark">Sender: </label> 
+                            <asp:TextBox runat="server" CssClass="form-control" ID="subject" name="emailSubject" ReadOnly="true"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
                             <label for="messageContent" class="text-dark">Content: </label> 
                             <asp:TextBox runat="server" TextMode="multiline" CssClass="form-control" ID="messageContent" name="messageContent" ReadOnly="true"></asp:TextBox>
                         </div>
@@ -76,6 +82,6 @@
             </div>
         </div>
     </div>
-        </form>
+    </form>
 </body>
 </html>

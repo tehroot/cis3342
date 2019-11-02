@@ -19,10 +19,14 @@ namespace Project3.Pages {
                 if (Page.IsValid) {
                     if (loginService.createUser(user)) {
                         Response.Redirect("~/Pages/login.aspx");
+                    } else {
+                        warningdiv.InnerText = "Error in form submission, please resubmit and follow rules.";
+                        warningdiv.Attributes["class"] = "warning";
                     }
                 } else {
                     warningdiv.InnerText = "Error in form submission, please resubmit and follow rules.";
-                    warningdiv.Style.Add("visibility", "visible");
+                    warningdiv.Attributes["class"] = "warning";
+                    //Response.Redirect("~/Pages/newuser.aspx");
                 }
             } catch (Exception ex) {
                 Debug.WriteLine(ex.Message + ex.StackTrace);

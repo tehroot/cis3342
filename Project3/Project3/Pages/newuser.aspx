@@ -34,7 +34,7 @@
             <div class="justify-content-center">
                 <form id="form1" runat="server">
                     <asp:CustomValidator runat="server" id="formvalidator" Display="Dynamic" OnServerValidate="formValidation" />
-                    <div runat="server" CssClass="warning" id="warningdiv"></div>
+                    <div runat="server" class="hidden-submit-button" id="warningdiv"></div>
                     <br />
                     <br />
                     <br />
@@ -44,7 +44,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
 						    <label for="username" class="text-dark">Desired Username:</label>
-						    <asp:Textbox runat="server" CssClass="form-control" id="email" placeholder="Enter Username" required pattern="[A-Za-z]+"></asp:Textbox>
+						    <asp:Textbox runat="server" CssClass="form-control" id="email" placeholder="Enter Username" required pattern="[A-Za-z0-9]+"></asp:Textbox>
                             <small id="emailHelp" class="form-text text-muted">Please enter only lowercase letters and numerical digits</small>
 					    </div>
                     </div>
@@ -78,7 +78,7 @@
                             <div class="thumbnail">
                                 <img src="/Pages/avatars/avatar-1.svg" alt="avatar" style="width:25%">
                                 <div class="caption center-block">
-                                  <input type="radio" name="avatar" value="avatar-1.svg" required name="avatarVal">
+                                  <input type="radio" name="avatar" value="/Pages/avatars/avatar-1.svg" required name="avatarVal">
                                 </div>
                             </div>
                           </div>
@@ -86,7 +86,7 @@
                             <div class="thumbnail">
                                 <img src="/Pages/avatars/avatar-2.svg" alt="avatar" style="width:25%">
                                 <div class="caption">
-                                  <input type="radio" name="avatar" value="avatar-2.svg" required name="avatarVal">
+                                  <input type="radio" name="avatar" value="/Pages/avatars/avatar-2.svg" required name="avatarVal">
                                 </div>
                             </div>
                           </div>
@@ -94,7 +94,7 @@
                             <div class="thumbnail">
                                 <img src="/Pages/avatars/avatar-3.svg" alt="avatar" style="width:25%">
                                 <div class="caption">
-                                  <input type="radio" name="avatar" value="avatar-3.svg" required name="avatarVal">
+                                  <input type="radio" name="avatar" value="/Pages/avatars/avatar-3.svg" required name="avatarVal">
                                 </div>
                             </div>
                           </div>
@@ -102,7 +102,7 @@
                             <div class="thumbnail">
                                 <img src="/Pages/avatars/avatar-4.svg" alt="avatar" style="width:25%">
                                 <div class="caption">
-                                  <input type="radio" name="avatar" value="avatar-4.svg" required name="avatarVal">
+                                  <input type="radio" name="avatar" value="/Pages/avatars/avatar-4.svg" required name="avatarVal">
                                 </div>
                             </div>
                           </div>
@@ -110,7 +110,7 @@
                             <div class="thumbnail">
                                 <img src="/Pages/avatars/avatar-5.svg" alt="avatar" style="width:25%">
                                 <div class="caption">
-                                  <input type="radio" name="avatar" value="avatar-5.svg" required name="avatarVal">
+                                  <input type="radio" name="avatar" value="/Pages/avatars/avatar-5.svg" required name="avatarVal">
                                 </div>
                             </div>
                           </div>
@@ -120,7 +120,7 @@
                             <div class="thumbnail">
                                 <img src="/Pages/avatars/avatar-6.svg" alt="avatar" style="width:25%">
                                 <div class="caption">
-                                  <input type="radio" name="avatar" value="avatar-6.svg" required name="avatarVal">
+                                  <input type="radio" name="avatar" value="/Pages/avatars/avatar-6.svg" required name="avatarVal">
                                 </div>
                             </div>
                           </div>
@@ -128,7 +128,7 @@
                             <div class="thumbnail">
                                 <img src="/Pages/avatars/avatar-7.svg" alt="avatar" style="width:25%">
                                 <div class="caption">
-                                  <input type="radio" name="avatar" value="avatar-7.svg" required name="avatarVal">
+                                  <input type="radio" name="avatar" value="/Pages/avatars/avatar-7.svg" required name="avatarVal">
                                 </div>
                             </div>
                           </div>
@@ -136,7 +136,7 @@
                             <div class="thumbnail">
                                 <img src="/Pages/avatars/avatar-8.svg" alt="avatar" style="width:25%">
                                 <div class="caption">
-                                  <input type="radio" name="avatar" value="avatar-8.svg" required name="avatarVal">
+                                  <input type="radio" name="avatar" value="/Pages/avatars/avatar-8.svg" required name="avatarVal">
                                 </div>
                             </div>
                           </div>
@@ -144,7 +144,7 @@
                             <div class="thumbnail">
                                 <img src="/Pages/avatars/avatar-9.svg" alt="avatar" style="width:25%">
                                 <div class="caption">
-                                  <input type="radio" name="avatar" value="avatar-9.svg" required name="avatarVal">
+                                  <input type="radio" name="avatar" value="/Pages/avatars/avatar-9.svg" required name="avatarVal">
                                 </div>
                             </div>
                           </div>
@@ -152,7 +152,7 @@
                             <div class="thumbnail">
                                 <img src="/Pages/avatars/avatar-10.svg" alt="avatar" style="width:25%">
                                 <div class="caption">
-                                  <input type="radio" name="avatar" value="avatar-10.svg" required name="avatarVal">
+                                  <input type="radio" name="avatar" value="/Pages/avatars/avatar-10.svg" required name="avatarVal">
                                 </div>
                             </div>
                           </div>

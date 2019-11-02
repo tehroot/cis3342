@@ -22,6 +22,15 @@ namespace Project3.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// formvalidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator formvalidator;
+
+        /// <summary>
         /// accountButton control.
         /// </summary>
         /// <remarks>
@@ -47,15 +56,6 @@ namespace Project3.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button composeEmail;
-
-        /// <summary>
-        /// createFolder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button createFolder;
 
         /// <summary>
         /// deleteEmail control.
@@ -94,13 +94,13 @@ namespace Project3.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl invalidLogin;
 
         /// <summary>
-        /// formvalidator control.
+        /// selectedFolder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator formvalidator;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl selectedFolder;
 
         /// <summary>
         /// rblFolders control.
@@ -128,6 +128,33 @@ namespace Project3.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button viewEmailsInFolder;
+
+        /// <summary>
+        /// folderName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox folderName;
+
+        /// <summary>
+        /// createNewFolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button createNewFolder;
+
+        /// <summary>
+        /// gvEmails_IDs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvEmails_IDs;
 
         /// <summary>
         /// gvEmails control.
