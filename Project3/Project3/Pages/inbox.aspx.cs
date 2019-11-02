@@ -31,7 +31,6 @@ namespace Project3.Pages {
             //session management to check if the user is logged in,
             //if not in the session cache we need to push the user out back
             //to the login page
-            
         }
 
         protected void bindControls(String folder) {
@@ -40,6 +39,15 @@ namespace Project3.Pages {
             rblFolders.DataSource = emailService.getFolders(Session["Username"].ToString());
             rblFolders.DataBind();
             gvEmails_IDs.DataSource = emailService.getEmails(Session["Username"].ToString(), folder);
+            gvEmails_IDs.DataBind();
+        }
+
+        protected void rebindEmailViews(String searchPattern) {
+            gvEmails.DataSource = emailService.searchEmailsDataSet(Session["Username"].ToString(), searchPattern);
+            gvEmails.DataBind();
+            rblFolders.DataSource = emailService.getFolders(Session["Username"].ToString());
+            rblFolders.DataBind();
+            gvEmails_IDs.DataSource = emailService.searchEmailsDataSet(Session["Username"].ToString(), searchPattern);
             gvEmails_IDs.DataBind();
         }
 
@@ -98,6 +106,18 @@ namespace Project3.Pages {
         }
 
         protected void searchToggle_Click(object sender, EventArgs e) {
+            String input = '%'+searchInput.Value+'%';
+            
+            if (input.Length > 0 && input != null) {
+                if (Session["Username"] != null) {
+                    rebindEmailViews(input);
+                } else {
+                    Session.Abandon();
+                    Response.Redirect("~/Pages/login.aspx");
+                }
+            } else {
+
+            }
 
         }
 

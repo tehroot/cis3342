@@ -241,7 +241,27 @@ namespace Utilities {
                 Debug.WriteLine("SQL Error createNewFolder" + ex.StackTrace);
                 return false;
             }
-            
+        }
+
+        protected static DataSet getSearchEmailDataSet(String username, String searchPattern) {
+            try {
+                DBConnect dbConnect = new DBConnect();
+                SqlCommand get_aggregate_dataset = new SqlCommand {
+                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "searchEmailsWithValue"
+                };
+                get_aggregate_dataset.Parameters.AddWithValue("@username", username);
+                get_aggregate_dataset.Parameters.AddWithValue("@search_term", searchPattern);
+                DataSet aggregate_dataset = dbConnect.GetDataSetUsingCmdObj(get_aggregate_dataset);
+                return aggregate_dataset;
+            } catch (SqlException ex) {
+                Debug.WriteLine("SQL error getEmailDataSet" + ex.StackTrace);
+                return null;
+            }
+        }
+
+        public static DataSet searchEmailsDataSet(String username, String searchPattern) {
+            return getSearchEmailDataSet(username, searchPattern);
         }
 
         public static Boolean createEmailFolder(String username, String folder) {

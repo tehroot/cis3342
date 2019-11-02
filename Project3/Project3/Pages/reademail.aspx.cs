@@ -33,7 +33,7 @@ namespace Project3.Pages {
             //redirect to account information page for the user
             //relies on session shit for verification
             //maybe re-authorization using password??
-            Response.Redirect("~/Pages/admin.aspx", false);
+            Response.Redirect("~/Pages/account.aspx", false);
         }
 
         protected void checkInbox_Click(Object sender, EventArgs e) {

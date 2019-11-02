@@ -76,6 +76,15 @@ namespace Project3.Pages {
         protected global::System.Web.UI.WebControls.Button refreshPage;
 
         /// <summary>
+        /// searchInput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText searchInput;
+
+        /// <summary>
         /// searchToggle control.
         /// </summary>
         /// <remarks>

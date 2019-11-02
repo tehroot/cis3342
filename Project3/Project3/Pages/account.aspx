@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="account.aspx.cs" Inherits="Project3.Pages.account" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,7 @@
             <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                 <ul class="nav navbar-nav">
                     <li class="nav-item">
-                        <asp:Button id="returnInbox" text="Return to Inbox" runat="server" type="submit" CssClass="btn btn-primary" OnClick="checkInbox_Click"/>
+                        <asp:Button id="returnPrevious" text="Return to Previous Page" runat="server" type="submit" CssClass="btn btn-primary" OnClick="returnPage_Click"/>
                     </li>
                 </ul>
             </div>
@@ -33,6 +34,43 @@
                         <asp:Button id="logoutButton" text="Logout" runat="server" type="submit" CssClass="btn btn-outline-light navbar-btn" OnClick="checkLogout_Click"/>
                     </li>
                 </ul> 
+            </div>
+        </div>
+    </div>
+        <div class="container-fluid h-100 d-flex justify-content-center align-item-center bg-light">
+        <div class="d-flex justify-content-center h-100" style="padding-top: 150px;">
+            <div class="justify-content-center">
+                    <div runat="server" CssClass="warning" id="warningdiv"></div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="username" class="text-dark">Username: </label> 
+                            <asp:TextBox runat="server" CssClass="form-control" ID="username" name="username" ReadOnly="true"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="firstName" class="text-dark">First Name: </label> 
+                            <asp:TextBox runat="server" CssClass="form-control" ID="firstName" name="fisrtName" ReadOnly="true"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="lastName" class="text-dark">Last Name: </label> 
+                            <asp:TextBox runat="server" CssClass="form-control" ID="lastName" name="lastName" ReadOnly="true"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="alternateEmail" class="text-dark">Alternate Email: </label> 
+                            <asp:TextBox runat="server" CssClass="form-control" ID="alternateEmail" name="alternateEmail" ReadOnly="true"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="banstatus" class="text-dark">User Banned: </label> 
+                            <asp:TextBox runat="server" CssClass="form-control" ID="userbanStatus" name="userBanStatus" ReadOnly="true"></asp:TextBox>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>

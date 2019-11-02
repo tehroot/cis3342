@@ -85,8 +85,8 @@ namespace Utilities {
             }
         }
 
-        protected static User returnUserInformation(String username, String password) {
-            if (checkUserLogin(username, password)) {
+        protected static User returnUserInformation(String username) {
+            try {
                 DBConnect dbConnect = new DBConnect();
                 SqlCommand cmd = new SqlCommand {
                     CommandType = CommandType.StoredProcedure,
@@ -94,13 +94,12 @@ namespace Utilities {
                 };
                 cmd.Parameters.AddWithValue("@accountID", username);
                 DataSet userSet = dbConnect.GetDataSetUsingCmdObj(cmd);
-                User user = new User(userSet.Tables[0].Rows[0][0].ToString(), userSet.Tables[0].Rows[0][1].ToString(), 
-                    bool.Parse(userSet.Tables[0].Rows[0][2].ToString()), bool.Parse(userSet.Tables[0].Rows[0][3].ToString()), 
-                    userSet.Tables[0].Rows[0][4].ToString(), userSet.Tables[0].Rows[0][5].ToString(), 
-                    userSet.Tables[0].Rows[0][6].ToString(), userSet.Tables[0].Rows[0][7].ToString());
+                User user = new User(userSet.Tables[0].Rows[0][0].ToString(), userSet.Tables[0].Rows[0][1].ToString(), userSet.Tables[0].Rows[0][2].ToString(),
+                    userSet.Tables[0].Rows[0][3].ToString(), bool.Parse(userSet.Tables[0].Rows[0][4].ToString()), userSet.Tables[0].Rows[0][5].ToString());
                 return user;
-            } else {
-                return null;
+            } catch (Exception ex) {
+                Debug.WriteLine("Error in SQL, returnUserInfo" + ex.StackTrace);
+                return new User();
             }
         }
 
@@ -114,6 +113,10 @@ namespace Utilities {
 
         public static bool createUser(User user) {
             return addUser(user);
+        }
+
+        public static User returnUser(String username) {
+            return returnUserInformation(username);
         }
     }
 }

@@ -55,7 +55,7 @@
                 
                 <div class="btn-group ml-auto" role="group">
                     <div class="input-group md-form form-sm form-2 pl-0">
-                        <input class="form-control my-0 py-1" type="text" runat="server" placeholder="Search Emails" />
+                        <input class="form-control my-0 py-1" id="searchInput" type="text" runat="server" placeholder="Search Emails" />
                         <div class="input-group-append">
                             <asp:Button ID="searchToggle" Text="Run Search" runat="server" type="submit" CssClass="btn btn-primary" OnClick="searchToggle_Click" />
                         </div>

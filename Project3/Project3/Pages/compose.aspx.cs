@@ -43,7 +43,8 @@ namespace Project3.Pages {
 
         protected void formValidation(Object sender, ServerValidateEventArgs e) {
             try {
-                email = new Email(emailService.getID(), Session["Username"].ToString(), recipientList.SelectedValue.Split('@')[0], messageContent.Text, subject.Text, DateTime.Now);
+                email = new Email(emailService.getID(), Session["Username"].ToString(), recipientList.SelectedValue.Split('@')[0],
+                    messageContent.Text, subject.Text, DateTime.Now);
             } catch (Exception x) {
                 e.IsValid = false;
                 Debug.WriteLine(x.Message + x.StackTrace);
@@ -55,8 +56,13 @@ namespace Project3.Pages {
                 if (Page.IsValid) {
                     if (emailService.createNewEmail(email)) {
                         
+                    } else {
+                        warningdiv.Visible = true;
+                        warningdiv.InnerText = "Error in form submission, please resubmit and follow rules.";
+                        warningdiv.Attributes["class"] = "warning";
                     }
                 } else {
+                    warningdiv.Visible = true;
                     warningdiv.InnerText = "Error in form submission, please resubmit and follow rules.";
                     warningdiv.Attributes["class"] = "warning";
                 }

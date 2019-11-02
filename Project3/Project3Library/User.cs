@@ -46,6 +46,20 @@ namespace Utilities {
             this.avatar = Avatar;
         }
 
+        public User(String Username, String Firstname, String Lastname, String Alternateemail, Boolean banflag, String Avatar) {
+            this.username = Username;
+            this.password = "temp";
+            this.adminflag = false;
+            this.banflag = banflag;
+            this.firstname = Firstname;
+            this.lastname = Lastname;
+            this.alternateemail = Alternateemail;
+            this.avatar = Avatar;
+        }
+
+        public User() {
+
+        }
 
         public String username { get { return _username; }
             set {
