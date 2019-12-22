@@ -1,9 +1,9 @@
-# cis3342
+# Temple CIS 3342
 3342 project repos
 
 All working projects, excludes last term project.
 
-All projects built against .NET Core 2.1 and .NET Framework 4.6.1
+#All projects built against .NET Core 2.1 and .NET Framework 4.6.1
 
 All database actions build facing T-SQL server
 
